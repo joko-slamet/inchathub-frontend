@@ -40,38 +40,29 @@ export const en: SiteContent = {
   },
 
   omnichannel: {
-    eyebrow: "OMNICHANNEL FEATURES",
-    title: "Every Conversation, One Tidy Workspace",
+    eyebrow: "OMNICHANNEL COMMUNICATION PLATFORM",
+    titleMain: "Manage Every Conversation From One",
+    titleAccent: "Unified Workspace",
     description:
-      "Every incoming message is automatically organized into a single view your whole team can work from — no more switching apps or juggling logins for every channel.",
+      "Modern customers communicate across multiple channels. Your team shouldn't need multiple systems.",
     features: [
       {
         title: "Unified Inbox",
-        description: "Every chat from WhatsApp, Instagram, Email, and other channels lands in the same view.",
       },
       {
         title: "Multi-Agent Collaboration",
-        description: "Several agents can work the same inbox together without stepping on each other's replies.",
       },
       {
         title: "Customer History",
-        description: "Full conversation history is saved automatically, no matter which agent replies.",
-      },
-      {
-        title: "Internal Notes",
-        description: "Your team can leave notes inside a chat that the customer never sees.",
       },
       {
         title: "Ticket Management",
-        description: "Any conversation can become a ticket with a clear status and priority.",
       },
       {
         title: "Performance Analytics",
-        description: "Track response speed and workload per agent in real time.",
       },
       {
         title: "Role-Based Access Control",
-        description: "Control who can view, reply to, or manage specific conversations.",
       },
     ],
     impact: [

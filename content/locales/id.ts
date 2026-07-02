@@ -40,38 +40,29 @@ export const id: SiteContent = {
   },
 
   omnichannel: {
-    eyebrow: "FITUR OMNICHANNEL",
-    title: "Semua Percakapan, Satu Ruang Kerja yang Rapi",
+    eyebrow: "OMNICHANNEL COMMUNICATION PLATFORM",
+    titleMain: "Kelola Setiap Percakapan dari Satu",
+    titleAccent: "Ruang Kerja Terpadu",
     description:
-      "Setiap pesan yang masuk otomatis tersusun dalam satu tampilan yang bisa dikerjakan bersama tim, tanpa perlu berpindah-pindah aplikasi atau login banyak akun berbeda.",
+      "Pelanggan modern berkomunikasi lewat berbagai channel. Tim Anda tidak seharusnya perlu banyak sistem berbeda.",
     features: [
       {
         title: "Unified Inbox",
-        description: "Semua chat dari WhatsApp, Instagram, Email, dan channel lain masuk ke satu tampilan yang sama.",
       },
       {
         title: "Kolaborasi Multi-Agent",
-        description: "Beberapa agent bisa menangani satu inbox bersama tanpa saling tabrak balasan.",
       },
       {
         title: "Riwayat Pelanggan",
-        description: "Histori percakapan lengkap tersimpan otomatis, siapa pun agent yang membalas duluan.",
-      },
-      {
-        title: "Catatan Internal",
-        description: "Tim bisa meninggalkan catatan di dalam chat tanpa pernah terlihat oleh pelanggan.",
       },
       {
         title: "Manajemen Tiket",
-        description: "Setiap percakapan bisa diubah jadi tiket dengan status dan prioritas yang jelas.",
       },
       {
         title: "Analitik Performa",
-        description: "Pantau kecepatan respons dan beban kerja tiap agent secara real-time.",
       },
       {
         title: "Kontrol Akses Berbasis Peran",
-        description: "Atur siapa yang boleh melihat, membalas, atau mengelola percakapan tertentu.",
       },
     ],
     impact: [

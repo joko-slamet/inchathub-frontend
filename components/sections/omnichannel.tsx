@@ -18,7 +18,7 @@ import type { SiteContent } from "@/content/site-content";
 import { InboxMockup } from "@/components/sections/inbox-mockup";
 
 // Positional match with omnichannel.features in content/site-content.ts — keep order in sync.
-const featureIcons: IconType[] = [LuInbox, LuUsers, LuHistory, LuStickyNote, LuTicket, LuChartColumn, LuShieldCheck];
+const featureIcons: IconType[] = [LuInbox, LuUsers, LuHistory, LuTicket, LuChartColumn, LuShieldCheck];
 
 // Positional match with omnichannel.impact in content/site-content.ts — keep order in sync.
 const impactIcons: IconType[] = [LuZap, LuSparkles, LuTrendingUp, LuCheckCheck];
@@ -28,7 +28,11 @@ export function Omnichannel({ content }: { content: SiteContent["omnichannel"] }
     <Section
       id="produk"
       eyebrow={content.eyebrow}
-      title={content.title}
+      title={
+        <>
+          {content.titleMain} <span className="text-signal">{content.titleAccent}</span>
+        </>
+      }
       description={content.description}
     >
       <div className="mt-14 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
@@ -42,9 +46,6 @@ export function Omnichannel({ content }: { content: SiteContent["omnichannel"] }
                     <FeatureIcon className="size-5" />
                   </span>
                   <h3 className="mt-4 text-base font-semibold text-ink">{feature.title}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink/65">
-                    {feature.description}
-                  </p>
                 </div>
               </ScrollReveal>
             );

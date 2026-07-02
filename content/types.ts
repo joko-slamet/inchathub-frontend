@@ -41,9 +41,10 @@ export interface SiteContent {
   };
   omnichannel: {
     eyebrow: string;
-    title: string;
+    titleMain: string;
+    titleAccent: string;
     description: string;
-    features: { title: string; description: string }[];
+    features: { title: string }[];
     impact: { label: string }[];
     inboxMockup: {
       headerTitle: string;
