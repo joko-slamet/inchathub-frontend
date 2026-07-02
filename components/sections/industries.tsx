@@ -29,7 +29,13 @@ const industryIcons: LucideIcon[] = [
   Clapperboard,
 ];
 
-export function Industries({ content }: { content: SiteContent["industries"] }) {
+export function Industries({
+  content,
+  clients,
+}: {
+  content: SiteContent["industries"];
+  clients: string[];
+}) {
   return (
     <Section
       id="industri"
@@ -74,18 +80,21 @@ export function Industries({ content }: { content: SiteContent["industries"] }) 
         <p className="text-center font-mono text-xs tracking-widest text-ink/40 uppercase">
           {content.logoStripLabel}
         </p>
-        {/* TODO: replace this placeholder grid with official client logos once written permission is obtained from each institution/hospital/company. */}
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-8">
-          {Array.from({ length: content.logoPlaceholderCount }).map((_, index) => (
+        {/* TODO: replace these name tiles with official client logo artwork once written permission is obtained from each institution/hospital/company. */}
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+          {clients.map((clientName) => (
             <div
-              key={index}
-              className="flex h-16 items-center justify-center rounded-lg border border-dashed border-line bg-ink/[0.02]"
+              key={clientName}
+              className="flex h-20 items-center justify-center rounded-lg border border-dashed border-line bg-ink/[0.02] px-3 text-center"
             >
-              <span className="font-mono text-[0.6rem] tracking-wider text-ink/30 uppercase">
-                {content.logoPlaceholderText}
-              </span>
+              <span className="text-xs font-medium text-ink/50">{clientName}</span>
             </div>
           ))}
+          <div className="flex h-20 items-center justify-center rounded-lg border border-dashed border-line bg-ink/[0.02] px-3 text-center">
+            <span className="font-mono text-[0.65rem] tracking-wide text-ink/35 uppercase">
+              {content.clientsMoreLabel}
+            </span>
+          </div>
         </div>
       </ScrollReveal>
     </Section>

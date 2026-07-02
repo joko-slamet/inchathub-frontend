@@ -25,7 +25,7 @@ export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) 
         </div>
 
         <div className="mt-10">
-          <Button href="https://wa.me/6280000000000" variant="primary" size="lg">
+          <Button href="https://wa.me/6281510107070" variant="primary" size="lg">
             {content.cta}
           </Button>
         </div>

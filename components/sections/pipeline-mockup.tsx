@@ -7,7 +7,7 @@ export function PipelineMockup({ content }: { content: SiteContent["aiCrm"]["pip
         <p className="text-sm font-semibold text-ink">{content.title}</p>
         <p className="mt-0.5 font-mono text-[0.65rem] text-ink/40">{content.subtitle}</p>
       </div>
-      <div className="grid grid-cols-2 gap-3 px-4 py-4 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 px-4 py-4 sm:grid-cols-3 lg:grid-cols-5">
         {content.stages.map((stage) => (
           <div key={stage.name} className="min-w-0">
             <p className="mb-2 truncate font-mono text-[0.6rem] tracking-wider text-ink/45 uppercase">

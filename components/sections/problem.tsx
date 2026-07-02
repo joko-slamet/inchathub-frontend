@@ -118,6 +118,13 @@ export function Problem({
                 </div>
               </div>
             </div>
+
+            <div className="mt-8 flex justify-center">
+              <div className="flex items-center gap-2 rounded-full border border-line bg-paper px-4 py-2">
+                <MessageCircle className="size-3.5 text-signal" strokeWidth={1.75} />
+                <span className="text-sm font-medium text-ink/75">{content.flowTagline}</span>
+              </div>
+            </div>
           </div>
         </ScrollReveal>
       </div>

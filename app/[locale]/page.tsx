@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { isLocale, getSiteContent, channels } from "@/content/site-content";
+import { isLocale, getSiteContent, channels, clients } from "@/content/site-content";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
 import { Problem } from "@/components/sections/problem";
@@ -29,7 +29,7 @@ export default async function Home({
         <Omnichannel content={content.omnichannel} />
         <AiCrm content={content.aiCrm} />
         <Whatsapp content={content.whatsapp} />
-        <Industries content={content.industries} />
+        <Industries content={content.industries} clients={clients} />
         <ClosingCta content={content.closingCta} />
       </main>
       <Footer content={content.footer} nav={content.nav} locale={locale} />

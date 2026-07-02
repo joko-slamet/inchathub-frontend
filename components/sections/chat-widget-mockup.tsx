@@ -1,4 +1,4 @@
-import { Bot, Send } from "lucide-react";
+import { Bot, Send, ChevronRight } from "lucide-react";
 import type { SiteContent } from "@/content/site-content";
 
 export function ChatWidgetMockup({ content }: { content: SiteContent["aiCrm"]["chatWidget"] }) {
@@ -26,6 +26,18 @@ export function ChatWidgetMockup({ content }: { content: SiteContent["aiCrm"]["c
         </div>
         <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-ink/5 px-3.5 py-2.5 text-sm text-ink/80">
           {content.botReply}
+        </div>
+
+        <div className="space-y-1.5 pt-1">
+          {content.quickReplies.map((reply) => (
+            <div
+              key={reply}
+              className="flex items-center justify-between rounded-lg border border-line px-3.5 py-2 text-sm text-ink/75"
+            >
+              {reply}
+              <ChevronRight className="size-3.5 text-ink/35" strokeWidth={1.75} />
+            </div>
+          ))}
         </div>
       </div>
 

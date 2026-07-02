@@ -27,3 +27,21 @@ export const channels: Channel[] = [
   { name: "Threads", badge: "TH" },
   { name: "X", badge: "X" },
 ];
+
+// Client organization names as disclosed in ChatHub's own public company
+// profile — proper nouns, identical across locales. No logo artwork is
+// reproduced here; see the TODO in industries.tsx for swapping in official
+// logo assets once permission is granted per-client.
+export const clients: string[] = [
+  "RS UNHAS",
+  "Kemenkes RSPON Mahar Mardjono",
+  "RS Badan Pengusahaan Batam",
+  "BP Batam",
+  "PT BPR Sumber Dana Mas",
+  "BPR Surya Kencana",
+  "PT Rifan Financindo Berjangka",
+  "Equity World Futures",
+  "PT Solid Gold Berjangka",
+  "Kontak Perkasa Futures",
+  "PT Bestprofit Futures",
+];

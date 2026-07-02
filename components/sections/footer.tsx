@@ -69,6 +69,14 @@ export function Footer({
                   </span>
                 ))}
               </address>
+              <a
+                href={content.websiteHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block text-sm text-signal hover:underline"
+              >
+                {content.websiteLabel}
+              </a>
             </div>
           </div>
         </div>

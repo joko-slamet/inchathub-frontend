@@ -53,6 +53,7 @@ export interface SiteContent {
     flowChannelsLabel: string;
     flowHubLabel: string;
     flowTeamsLabel: string;
+    flowTagline: string;
     teams: { name: string }[];
   };
   omnichannel: {
@@ -92,6 +93,7 @@ export interface SiteContent {
       userMessage: string;
       botReply: string;
       inputPlaceholder: string;
+      quickReplies: string[];
     };
     pipeline: {
       title: string;
@@ -111,6 +113,7 @@ export interface SiteContent {
       contactName: string;
       statusLabel: string;
       messages: { from: "customer" | "business"; text: string; time: string }[];
+      quickReplies: string[];
     };
   };
   industries: {
@@ -119,9 +122,8 @@ export interface SiteContent {
     description: string;
     stats: { value: string; label: string }[];
     list: { name: string }[];
-    logoPlaceholderCount: number;
     logoStripLabel: string;
-    logoPlaceholderText: string;
+    clientsMoreLabel: string;
   };
   closingCta: {
     title: string;
@@ -136,6 +138,8 @@ export interface SiteContent {
     companyName: string;
     companyNote: string;
     address: string[];
+    websiteLabel: string;
+    websiteHref: string;
     navLabel: string;
     copyright: string;
   };
