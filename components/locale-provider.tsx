@@ -1,9 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { defaultLocale, isLocale, type Locale } from "@/content/site-content";
-
-const STORAGE_KEY = "chathub-locale";
+import { LOCALE_COOKIE, type Locale } from "@/content/site-content";
 
 interface LocaleContextValue {
   locale: Locale;
@@ -12,28 +10,17 @@ interface LocaleContextValue {
 
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
-export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(defaultLocale);
-
-  useEffect(() => {
-    // Reading localStorage during the initial render (or via a useState
-    // lazy initializer) would make the client's first paint diverge from
-    // the server-rendered HTML and trigger a hydration mismatch. Doing the
-    // lookup here, after mount, keeps first paint on defaultLocale and only
-    // swaps afterward — the same pattern libraries like next-themes use.
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (stored && isLocale(stored)) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- intentional post-mount hydration swap, see comment above
-      setLocaleState(stored);
-      return;
-    }
-
-    // No saved preference yet — take a best guess from the browser, but
-    // never persist it. Persisting only happens on an explicit choice.
-    if (navigator.language.toLowerCase().startsWith("en")) {
-      setLocaleState("en");
-    }
-  }, []);
+export function LocaleProvider({
+  children,
+  initialLocale,
+}: {
+  children: ReactNode;
+  // Resolved server-side (cookie, falling back to Accept-Language) in
+  // app/layout.tsx, so the client's first paint already matches the
+  // server-rendered HTML — no post-mount locale swap, no flash.
+  initialLocale: Locale;
+}) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
   useEffect(() => {
     document.documentElement.lang = locale;
@@ -41,7 +28,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
   const setLocale = (next: Locale) => {
     setLocaleState(next);
-    window.localStorage.setItem(STORAGE_KEY, next);
+    document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=31536000; SameSite=Lax`;
   };
 
   return <LocaleContext.Provider value={{ locale, setLocale }}>{children}</LocaleContext.Provider>;

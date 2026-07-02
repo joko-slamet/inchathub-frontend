@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { cookies, headers } from "next/headers";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
-import { getSiteContent, defaultLocale } from "@/content/site-content";
+import { getSiteContent, defaultLocale, isLocale, LOCALE_COOKIE, type Locale } from "@/content/site-content";
 import { LocaleProvider } from "@/components/locale-provider";
 import "./globals.css";
 
@@ -24,9 +25,10 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 const siteUrl = "https://chathub.co.id";
 
-// Metadata is always rendered server-side for crawlers, before any
-// localStorage-based locale preference is known — it reflects the default
-// locale only. See components/locale-provider.tsx for the client-side switch.
+// Metadata is static (evaluated at build/module-load time, not per-request)
+// so it always reflects the default locale — crawlers see Indonesian meta
+// tags regardless of a visitor's saved preference. The visible page content
+// itself is locale-correct on first paint; see the cookie resolution below.
 const { meta } = getSiteContent(defaultLocale);
 
 export const metadata: Metadata = {
@@ -59,18 +61,37 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+// Resolves the visitor's locale before the first byte is sent: saved cookie
+// wins, otherwise a one-time guess from the Accept-Language header (never
+// persisted). Because this runs server-side, the server-rendered HTML and
+// the client's first paint agree from the start — no flash of the wrong
+// locale, unlike the old localStorage-only approach.
+async function resolveInitialLocale(): Promise<Locale> {
+  const cookieStore = await cookies();
+  const stored = cookieStore.get(LOCALE_COOKIE)?.value;
+  if (stored && isLocale(stored)) return stored;
+
+  const headerList = await headers();
+  const acceptLanguage = headerList.get("accept-language") ?? "";
+  if (acceptLanguage.toLowerCase().startsWith("en")) return "en";
+
+  return defaultLocale;
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialLocale = await resolveInitialLocale();
+
   return (
     <html
-      lang={defaultLocale}
+      lang={initialLocale}
       className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
-        <LocaleProvider>{children}</LocaleProvider>
+        <LocaleProvider initialLocale={initialLocale}>{children}</LocaleProvider>
       </body>
     </html>
   );

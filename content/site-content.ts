@@ -6,7 +6,7 @@ import { id } from "@/content/locales/id";
 import { en } from "@/content/locales/en";
 
 export type { Channel, Locale, SiteContent } from "@/content/types";
-export { locales, defaultLocale, isLocale } from "@/content/types";
+export { locales, defaultLocale, isLocale, LOCALE_COOKIE } from "@/content/types";
 
 const content: Record<Locale, SiteContent> = { id, en };
 

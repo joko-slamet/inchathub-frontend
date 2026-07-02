@@ -3,6 +3,10 @@ export type Locale = "id" | "en";
 export const locales: Locale[] = ["id", "en"];
 export const defaultLocale: Locale = "id";
 
+// Cookie (not localStorage) so the server can resolve the visitor's saved
+// locale before the first paint — see app/layout.tsx and locale-provider.tsx.
+export const LOCALE_COOKIE = "chathub-locale";
+
 export function isLocale(value: string): value is Locale {
   return (locales as string[]).includes(value);
 }

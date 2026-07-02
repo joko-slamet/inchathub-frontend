@@ -3,8 +3,9 @@ import { getSiteContent, defaultLocale } from "@/content/site-content";
 
 const siteUrl = "https://chathub.co.id";
 
-// Same caveat as app/layout.tsx: this is server-rendered before any
-// localStorage locale preference is known, so it always reflects defaultLocale.
+// Metadata is static (build/module-load time), so it always reflects the
+// default locale for crawlers, unlike the page content itself, which is
+// locale-correct on first paint via a server-resolved cookie (app/layout.tsx).
 const { meta, productHero } = getSiteContent(defaultLocale);
 
 export const metadata: Metadata = {
