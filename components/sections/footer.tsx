@@ -1,10 +1,14 @@
-import { Camera, MessageCircle, type LucideIcon } from "lucide-react";
+import { SiInstagram, SiWhatsapp } from "react-icons/si";
+import type { IconType } from "react-icons";
 import { Logo } from "@/components/ui/logo";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import type { SiteContent } from "@/content/site-content";
 
 // Positional match with footer.social in content — keep order in sync.
-const socialIcons: LucideIcon[] = [Camera, MessageCircle];
+const socialIcons: { Icon: IconType; color: string }[] = [
+  { Icon: SiInstagram, color: "#E4405F" },
+  { Icon: SiWhatsapp, color: "#25D366" },
+];
 
 export function Footer({
   content,
@@ -24,7 +28,7 @@ export function Footer({
 
             <div className="mt-6 flex items-center gap-3">
               {content.social.map((item, index) => {
-                const SocialIcon = socialIcons[index];
+                const { Icon, color } = socialIcons[index];
                 return (
                   <a
                     key={item.label}
@@ -32,9 +36,9 @@ export function Footer({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
-                    className="flex size-9 items-center justify-center rounded-full border border-line text-ink/60 transition-colors hover:border-ink hover:text-ink"
+                    className="flex size-9 items-center justify-center rounded-full border border-line transition-colors hover:border-ink"
                   >
-                    <SocialIcon className="size-4" strokeWidth={1.75} />
+                    <Icon className="size-4" style={{ color }} />
                   </a>
                 );
               })}

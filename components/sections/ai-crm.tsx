@@ -1,18 +1,18 @@
 import {
-  Bot,
-  Filter,
-  HelpCircle,
-  Smartphone,
-  BookOpen,
-  UserCheck,
-  Users,
-  Route,
-  Workflow,
-  ListChecks,
-  Bell,
-  BarChart3,
-  type LucideIcon,
-} from "lucide-react";
+  LuBot,
+  LuFilter,
+  LuCircleHelp,
+  LuSmartphone,
+  LuBookOpen,
+  LuUserCheck,
+  LuUsers,
+  LuRoute,
+  LuWorkflow,
+  LuListChecks,
+  LuBell,
+  LuChartColumn,
+} from "react-icons/lu";
+import type { IconType } from "react-icons";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import type { SiteContent } from "@/content/site-content";
@@ -20,17 +20,17 @@ import { ChatWidgetMockup } from "@/components/sections/chat-widget-mockup";
 import { PipelineMockup } from "@/components/sections/pipeline-mockup";
 
 // Positional match with aiCrm.chatbot.points in content — keep order in sync.
-const chatbotIcons: LucideIcon[] = [Bot, Filter, HelpCircle, Smartphone, BookOpen, UserCheck];
+const chatbotIcons: IconType[] = [LuBot, LuFilter, LuCircleHelp, LuSmartphone, LuBookOpen, LuUserCheck];
 
 // Positional match with aiCrm.crm.points in content — keep order in sync.
-const crmIcons: LucideIcon[] = [Users, Route, Workflow, ListChecks, Bell, BarChart3];
+const crmIcons: IconType[] = [LuUsers, LuRoute, LuWorkflow, LuListChecks, LuBell, LuChartColumn];
 
 function PointList({
   points,
   icons,
 }: {
   points: SiteContent["aiCrm"]["chatbot"]["points"];
-  icons: LucideIcon[];
+  icons: IconType[];
 }) {
   return (
     <ul className="space-y-4">
@@ -39,7 +39,7 @@ function PointList({
         return (
           <li key={point.title} className="flex items-start gap-3.5">
             <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-signal-dim text-signal">
-              <PointIcon className="size-4" strokeWidth={1.75} />
+              <PointIcon className="size-4" />
             </span>
             <div>
               <p className="text-sm font-semibold text-ink">{point.title}</p>

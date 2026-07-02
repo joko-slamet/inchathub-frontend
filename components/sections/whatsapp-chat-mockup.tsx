@@ -1,4 +1,4 @@
-import { CheckCheck, ChevronRight } from "lucide-react";
+import { LuCheckCheck, LuChevronRight } from "react-icons/lu";
 import type { SiteContent } from "@/content/site-content";
 
 export function WhatsappChatMockup({ content }: { content: SiteContent["whatsapp"]["chatMockup"] }) {
@@ -35,7 +35,7 @@ export function WhatsappChatMockup({ content }: { content: SiteContent["whatsapp
             >
               {message.time}
               {message.from === "business" && (
-                <CheckCheck className="size-3.5" strokeWidth={2} />
+                <LuCheckCheck className="size-3.5" />
               )}
             </div>
           </div>
@@ -48,7 +48,7 @@ export function WhatsappChatMockup({ content }: { content: SiteContent["whatsapp
               className="flex max-w-[80%] items-center justify-between gap-3 rounded-lg border border-line bg-paper px-3.5 py-2 text-sm text-ink/75 shadow-sm"
             >
               {reply}
-              <ChevronRight className="size-3.5 shrink-0 text-ink/35" strokeWidth={1.75} />
+              <LuChevronRight className="size-3.5 shrink-0 text-ink/35" />
             </div>
           ))}
         </div>

@@ -1,40 +1,36 @@
+import { SiWhatsapp, SiInstagram, SiFacebook, SiTelegram, SiThreads, SiX } from "react-icons/si";
 import {
-  MessageCircle,
-  Camera,
-  MessageSquare,
-  Send,
-  Mail,
-  Globe,
-  Video,
-  AtSign,
-  Hash,
-  TrendingUp,
-  BarChart3,
-  Building2,
-  Bot,
-  Gauge,
-  type LucideIcon,
-} from "lucide-react";
+  LuMail,
+  LuGlobe,
+  LuVideo,
+  LuMessageCircle,
+  LuTrendingUp,
+  LuChartColumn,
+  LuBuilding2,
+  LuBot,
+  LuGauge,
+} from "react-icons/lu";
+import type { IconType } from "react-icons";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Logo } from "@/components/ui/logo";
 import type { Channel, SiteContent } from "@/content/site-content";
 
 // Keyed by Channel.badge — keep in sync with content/site-content.ts `channels`.
-const channelIcons: Record<string, LucideIcon> = {
-  WA: MessageCircle,
-  IG: Camera,
-  FB: MessageSquare,
-  TG: Send,
-  MAIL: Mail,
-  WEB: Globe,
-  TEAMS: Video,
-  TH: AtSign,
-  X: Hash,
+const channelIcons: Record<string, { Icon: IconType; color?: string }> = {
+  WA: { Icon: SiWhatsapp, color: "#25D366" },
+  IG: { Icon: SiInstagram, color: "#E4405F" },
+  FB: { Icon: SiFacebook, color: "#1877F2" },
+  TG: { Icon: SiTelegram, color: "#26A5E4" },
+  MAIL: { Icon: LuMail },
+  WEB: { Icon: LuGlobe },
+  TEAMS: { Icon: LuVideo },
+  TH: { Icon: SiThreads, color: "#000000" },
+  X: { Icon: SiX, color: "#000000" },
 };
 
 // Positional match with problem.teams in content/site-content.ts — keep order in sync.
-const teamIcons: LucideIcon[] = [MessageCircle, TrendingUp, BarChart3, Building2, Bot, Gauge];
+const teamIcons: IconType[] = [LuMessageCircle, LuTrendingUp, LuChartColumn, LuBuilding2, LuBot, LuGauge];
 
 export function Problem({
   content,
@@ -73,13 +69,16 @@ export function Problem({
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {channels.map((channel) => {
-                    const ChannelIcon = channelIcons[channel.badge] ?? MessageCircle;
+                    const { Icon, color } = channelIcons[channel.badge] ?? { Icon: LuGlobe };
                     return (
                       <span
                         key={channel.badge}
                         className="flex items-center gap-1.5 rounded-lg border border-line bg-paper px-2.5 py-1.5"
                       >
-                        <ChannelIcon className="size-3.5 text-ink/60" strokeWidth={1.75} />
+                        <Icon
+                          className={color ? "size-3.5" : "size-3.5 text-ink/60"}
+                          style={color ? { color } : undefined}
+                        />
                         <span className="font-mono text-[0.6rem] tracking-wider text-ink/50 uppercase">
                           {channel.badge}
                         </span>
@@ -110,7 +109,7 @@ export function Problem({
                         key={team.name}
                         className="flex items-center gap-2.5 rounded-lg border border-line bg-paper px-3 py-2 md:justify-end md:flex-row-reverse"
                       >
-                        <TeamIcon className="size-4 text-ink/60" strokeWidth={1.75} />
+                        <TeamIcon className="size-4 text-ink/60" />
                         <span className="text-sm text-ink/75">{team.name}</span>
                       </div>
                     );
@@ -121,7 +120,7 @@ export function Problem({
 
             <div className="mt-8 flex justify-center">
               <div className="flex items-center gap-2 rounded-full border border-line bg-paper px-4 py-2">
-                <MessageCircle className="size-3.5 text-signal" strokeWidth={1.75} />
+                <LuMessageCircle className="size-3.5 text-signal" />
                 <span className="text-sm font-medium text-ink/75">{content.flowTagline}</span>
               </div>
             </div>

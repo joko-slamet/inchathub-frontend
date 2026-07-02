@@ -1,28 +1,21 @@
-import {
-  MessageCircle,
-  Camera,
-  MessageSquare,
-  Send,
-  Mail,
-  Globe,
-  Video,
-  AtSign,
-  Hash,
-  type LucideIcon,
-} from "lucide-react";
+import { SiWhatsapp, SiInstagram, SiFacebook, SiTelegram, SiThreads, SiX } from "react-icons/si";
+import { LuMail, LuGlobe, LuVideo } from "react-icons/lu";
+import type { IconType } from "react-icons";
 import type { Channel } from "@/content/site-content";
 
 // Keyed by Channel.badge — keep in sync with content/site-content.ts `channels`.
-const channelIcons: Record<string, LucideIcon> = {
-  WA: MessageCircle,
-  IG: Camera,
-  FB: MessageSquare,
-  TG: Send,
-  MAIL: Mail,
-  WEB: Globe,
-  TEAMS: Video,
-  TH: AtSign,
-  X: Hash,
+// Real brand colors for actual social/chat platforms; generic channels (Email,
+// Web Chat, Teams — no authentic brand glyph available) stay neutral.
+const channelIcons: Record<string, { Icon: IconType; color?: string }> = {
+  WA: { Icon: SiWhatsapp, color: "#25D366" },
+  IG: { Icon: SiInstagram, color: "#E4405F" },
+  FB: { Icon: SiFacebook, color: "#1877F2" },
+  TG: { Icon: SiTelegram, color: "#26A5E4" },
+  MAIL: { Icon: LuMail },
+  WEB: { Icon: LuGlobe },
+  TEAMS: { Icon: LuVideo },
+  TH: { Icon: SiThreads, color: "#000000" },
+  X: { Icon: SiX, color: "#000000" },
 };
 
 export function ChannelBadge({
@@ -32,7 +25,7 @@ export function ChannelBadge({
   channel: Channel;
   size?: "sm" | "md";
 }) {
-  const ChannelIcon = channelIcons[channel.badge] ?? MessageCircle;
+  const { Icon, color } = channelIcons[channel.badge] ?? { Icon: LuGlobe };
 
   return (
     <div className="flex items-center gap-2">
@@ -41,7 +34,7 @@ export function ChannelBadge({
           size === "sm" ? "size-7" : "size-9"
         }`}
       >
-        <ChannelIcon className={size === "sm" ? "size-3.5" : "size-4"} strokeWidth={1.75} />
+        <Icon className={size === "sm" ? "size-3.5" : "size-4"} style={color ? { color } : undefined} />
       </span>
       <span className="font-mono text-[0.65rem] tracking-wider text-ink/50 uppercase">
         {channel.badge}

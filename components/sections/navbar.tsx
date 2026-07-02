@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { LuMenu, LuX } from "react-icons/lu";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
@@ -49,7 +49,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          {open ? <LuX className="size-5" /> : <LuMenu className="size-5" />}
         </button>
       </div>
 

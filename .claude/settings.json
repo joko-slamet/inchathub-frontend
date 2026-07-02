@@ -7,7 +7,8 @@
       "Bash(identify public/images/logo.png)",
       "Bash(python3 -)",
       "Bash(rm -rf \"app/[locale]\" proxy.ts && ls app/)",
-      "Bash(grep -rln \"params.locale\\\\|\\\\[locale\\\\]\\\\|proxy.ts\\\\|href={\\\\`/\\\\${locale}\\\\`}\\\\|locale: string\" --include=\"*.tsx\" --include=\"*.ts\" .)"
+      "Bash(grep -rln \"params.locale\\\\|\\\\[locale\\\\]\\\\|proxy.ts\\\\|href={\\\\`/\\\\${locale}\\\\`}\\\\|locale: string\" --include=\"*.tsx\" --include=\"*.ts\" .)",
+      "Bash(xargs -I{} echo {})"
     ],
     "additionalDirectories": [
       "/home/joko/projects/chathub/inchathub-frontend/app/[locale]"

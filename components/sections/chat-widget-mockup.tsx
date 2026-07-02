@@ -1,4 +1,4 @@
-import { Bot, Send, ChevronRight } from "lucide-react";
+import { LuBot, LuSend, LuChevronRight } from "react-icons/lu";
 import type { SiteContent } from "@/content/site-content";
 
 export function ChatWidgetMockup({ content }: { content: SiteContent["aiCrm"]["chatWidget"] }) {
@@ -6,7 +6,7 @@ export function ChatWidgetMockup({ content }: { content: SiteContent["aiCrm"]["c
     <div className="overflow-hidden rounded-2xl border border-line bg-paper shadow-[0_24px_64px_-32px_rgba(20,16,15,0.3)]">
       <div className="flex items-center gap-3 bg-ink px-5 py-4">
         <span className="flex size-9 items-center justify-center rounded-full bg-signal text-white">
-          <Bot className="size-4" strokeWidth={1.75} />
+          <LuBot className="size-4" />
         </span>
         <div>
           <p className="text-sm font-semibold text-paper">{content.botName}</p>
@@ -35,7 +35,7 @@ export function ChatWidgetMockup({ content }: { content: SiteContent["aiCrm"]["c
               className="flex items-center justify-between rounded-lg border border-line px-3.5 py-2 text-sm text-ink/75"
             >
               {reply}
-              <ChevronRight className="size-3.5 text-ink/35" strokeWidth={1.75} />
+              <LuChevronRight className="size-3.5 text-ink/35" />
             </div>
           ))}
         </div>
@@ -46,7 +46,7 @@ export function ChatWidgetMockup({ content }: { content: SiteContent["aiCrm"]["c
           {content.inputPlaceholder}
         </div>
         <span className="flex size-8 items-center justify-center rounded-full bg-ink/10 text-ink/50">
-          <Send className="size-3.5" strokeWidth={1.75} />
+          <LuSend className="size-3.5" />
         </span>
       </div>
     </div>

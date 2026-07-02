@@ -2,15 +2,16 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { MessageCircle, Camera, Send, Mail, MessageSquare, Globe } from "lucide-react";
+import { SiWhatsapp, SiInstagram, SiTelegram, SiFacebook } from "react-icons/si";
+import { LuMail, LuGlobe } from "react-icons/lu";
 
 const bubbleLayout = [
-  { badge: "WA", icon: MessageCircle, className: "top-[2%] left-[-2%]", travel: { x: 78, y: 30 }, delay: 0 },
-  { badge: "IG", icon: Camera, className: "top-[0%] left-[36%]", travel: { x: 46, y: 44 }, delay: 0.7 },
-  { badge: "TG", icon: Send, className: "top-[26%] left-[-6%]", travel: { x: 88, y: 8 }, delay: 1.4 },
-  { badge: "MAIL", icon: Mail, className: "top-[68%] left-[-4%]", travel: { x: 82, y: -22 }, delay: 2.1 },
-  { badge: "FB", icon: MessageSquare, className: "top-[92%] left-[28%]", travel: { x: 54, y: -50 }, delay: 2.8 },
-  { badge: "WEB", icon: Globe, className: "top-[46%] left-[4%]", travel: { x: 70, y: 0 }, delay: 3.5 },
+  { badge: "WA", icon: SiWhatsapp, color: "#25D366", className: "top-[2%] left-[-2%]", travel: { x: 78, y: 30 }, delay: 0 },
+  { badge: "IG", icon: SiInstagram, color: "#E4405F", className: "top-[0%] left-[36%]", travel: { x: 46, y: 44 }, delay: 0.7 },
+  { badge: "TG", icon: SiTelegram, color: "#26A5E4", className: "top-[26%] left-[-6%]", travel: { x: 88, y: 8 }, delay: 1.4 },
+  { badge: "MAIL", icon: LuMail, color: undefined, className: "top-[68%] left-[-4%]", travel: { x: 82, y: -22 }, delay: 2.1 },
+  { badge: "FB", icon: SiFacebook, color: "#1877F2", className: "top-[92%] left-[28%]", travel: { x: 54, y: -50 }, delay: 2.8 },
+  { badge: "WEB", icon: LuGlobe, color: undefined, className: "top-[46%] left-[4%]", travel: { x: 70, y: 0 }, delay: 3.5 },
 ];
 
 export function ConvergenceVisual() {
@@ -30,8 +31,8 @@ export function ConvergenceVisual() {
             transition={{ duration: 0.5, delay: index * 0.08 }}
             className="relative flex items-center gap-2 rounded-xl border border-line bg-paper/95 px-3 py-2 shadow-[0_8px_24px_-14px_rgba(20,16,15,0.3)]"
           >
-            <span className="flex size-7 items-center justify-center rounded-lg bg-ink text-paper">
-              <bubble.icon className="size-3.5" strokeWidth={1.75} />
+            <span className="flex size-7 items-center justify-center rounded-lg bg-ink/5 text-ink/70">
+              <bubble.icon className="size-3.5" style={bubble.color ? { color: bubble.color } : undefined} />
             </span>
             <span className="font-mono text-[0.65rem] tracking-wider text-ink/60 uppercase">
               {bubble.badge}

@@ -1,32 +1,32 @@
 import {
-  GraduationCap,
-  HeartPulse,
-  Hotel,
-  Factory,
-  ShoppingBag,
-  Landmark,
-  HandHeart,
-  Building2,
-  Truck,
-  Clapperboard,
-  type LucideIcon,
-} from "lucide-react";
+  LuGraduationCap,
+  LuHeartPulse,
+  LuHotel,
+  LuFactory,
+  LuShoppingBag,
+  LuLandmark,
+  LuHandHeart,
+  LuBuilding2,
+  LuTruck,
+  LuClapperboard,
+} from "react-icons/lu";
+import type { IconType } from "react-icons";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import type { SiteContent } from "@/content/site-content";
 
 // Positional match with industries.list in content — keep order in sync.
-const industryIcons: LucideIcon[] = [
-  GraduationCap,
-  HeartPulse,
-  Hotel,
-  Factory,
-  ShoppingBag,
-  Landmark,
-  HandHeart,
-  Building2,
-  Truck,
-  Clapperboard,
+const industryIcons: IconType[] = [
+  LuGraduationCap,
+  LuHeartPulse,
+  LuHotel,
+  LuFactory,
+  LuShoppingBag,
+  LuLandmark,
+  LuHandHeart,
+  LuBuilding2,
+  LuTruck,
+  LuClapperboard,
 ];
 
 export function Industries({
@@ -67,7 +67,7 @@ export function Industries({
                 className="flex flex-col items-center gap-3 rounded-xl border border-line px-4 py-6 text-center transition-colors hover:border-ink/20"
               >
                 <span className="flex size-10 items-center justify-center rounded-lg bg-signal-dim text-signal">
-                  <IndustryIcon className="size-5" strokeWidth={1.75} />
+                  <IndustryIcon className="size-5" />
                 </span>
                 <p className="text-xs font-medium text-ink/75 sm:text-sm">{industry.name}</p>
               </div>

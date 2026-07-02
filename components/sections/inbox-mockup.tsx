@@ -1,16 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { MessageCircle, Camera, Mail, Globe, Send, type LucideIcon } from "lucide-react";
+import { SiWhatsapp, SiInstagram, SiTelegram } from "react-icons/si";
+import { LuMail, LuGlobe, LuMessageCircle } from "react-icons/lu";
+import type { IconType } from "react-icons";
 import type { SiteContent } from "@/content/site-content";
 
 // Keyed by the `channel` badge used in omnichannel.inboxMockup.conversations.
-const channelIcons: Record<string, LucideIcon> = {
-  WA: MessageCircle,
-  IG: Camera,
-  MAIL: Mail,
-  WEB: Globe,
-  TG: Send,
+const channelIcons: Record<string, { Icon: IconType; color?: string }> = {
+  WA: { Icon: SiWhatsapp, color: "#25D366" },
+  IG: { Icon: SiInstagram, color: "#E4405F" },
+  MAIL: { Icon: LuMail },
+  WEB: { Icon: LuGlobe },
+  TG: { Icon: SiTelegram, color: "#26A5E4" },
 };
 
 export function InboxMockup({ content }: { content: SiteContent["omnichannel"]["inboxMockup"] }) {
@@ -27,7 +29,7 @@ export function InboxMockup({ content }: { content: SiteContent["omnichannel"]["
       </div>
       <ul className="divide-y divide-line">
         {conversations.map((conversation, index) => {
-          const ChannelIcon = channelIcons[conversation.channel] ?? MessageCircle;
+          const { Icon, color } = channelIcons[conversation.channel] ?? { Icon: LuMessageCircle };
           const active = index === activeIndex;
           return (
             <li key={conversation.name}>
@@ -39,7 +41,7 @@ export function InboxMockup({ content }: { content: SiteContent["omnichannel"]["
                 }`}
               >
                 <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-ink/5 text-ink/60">
-                  <ChannelIcon className="size-4" strokeWidth={1.75} />
+                  <Icon className="size-4" style={color ? { color } : undefined} />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
