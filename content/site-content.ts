@@ -45,3 +45,8 @@ export const clients: string[] = [
   "Kontak Perkasa Futures",
   "PT Bestprofit Futures",
 ];
+
+// Google Maps embed for the office address — a URL, not translated copy, so
+// it lives outside the locale files alongside the other shared constants.
+export const mapEmbedSrc =
+  "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4952.5138892206005!2d106.86673169999999!3d-6.2449432!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f38cfb1d42fd%3A0x7c4c5900d6315012!2sChat%20Hub%20Indonesia!5e1!3m2!1sen!2sid!4v1783014767833!5m2!1sen!2sid";

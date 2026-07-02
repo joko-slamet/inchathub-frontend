@@ -7,7 +7,7 @@ import type { IconType } from "react-icons";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Button } from "@/components/ui/button";
-import type { SiteContent } from "@/content/site-content";
+import { mapEmbedSrc, type SiteContent } from "@/content/site-content";
 
 // Positional match with contact.infoCards in content — keep order in sync.
 const cardIcons: { icon: IconType; color?: string }[] = [
@@ -37,7 +37,8 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
       eyebrow={content.eyebrow}
       title={
         <>
-          {content.titleMain} <span className="text-signal">{content.titleAccent}</span>
+          {content.titleMain}{" "}
+          <span className="text-signal">{content.titleAccent}</span>
         </>
       }
       description={content.description}
@@ -56,13 +57,18 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
                   className="flex items-start gap-4 rounded-2xl border border-line bg-paper p-5 shadow-[0_16px_40px_-28px_rgba(20,16,15,0.3)] transition-colors hover:border-ink/20"
                 >
                   <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-signal-dim">
-                    <Icon className="size-5" style={color ? { color } : undefined} />
+                    <Icon
+                      className="size-5"
+                      style={color ? { color } : undefined}
+                    />
                   </span>
                   <div className="min-w-0">
                     <p className="font-mono text-[0.65rem] tracking-widest text-ink/40 uppercase">
                       {card.label}
                     </p>
-                    <p className="mt-1 text-sm leading-relaxed text-ink/80">{card.value}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-ink/80">
+                      {card.value}
+                    </p>
                   </div>
                 </a>
               );
@@ -77,7 +83,9 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
           >
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="flex flex-col gap-1.5">
-                <span className="text-xs font-medium text-ink/60">{content.form.nameLabel}</span>
+                <span className="text-xs font-medium text-ink/60">
+                  {content.form.nameLabel}
+                </span>
                 <input
                   type="text"
                   name="name"
@@ -87,7 +95,9 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
                 />
               </label>
               <label className="flex flex-col gap-1.5">
-                <span className="text-xs font-medium text-ink/60">{content.form.emailLabel}</span>
+                <span className="text-xs font-medium text-ink/60">
+                  {content.form.emailLabel}
+                </span>
                 <input
                   type="email"
                   name="email"
@@ -99,7 +109,9 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
             </div>
 
             <label className="flex flex-col gap-1.5">
-              <span className="text-xs font-medium text-ink/60">{content.form.phoneLabel}</span>
+              <span className="text-xs font-medium text-ink/60">
+                {content.form.phoneLabel}
+              </span>
               <input
                 type="tel"
                 name="phone"
@@ -109,7 +121,9 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
             </label>
 
             <label className="flex flex-col gap-1.5">
-              <span className="text-xs font-medium text-ink/60">{content.form.messageLabel}</span>
+              <span className="text-xs font-medium text-ink/60">
+                {content.form.messageLabel}
+              </span>
               <textarea
                 name="message"
                 required
@@ -119,7 +133,12 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
               />
             </label>
 
-            <Button type="submit" variant="primary" size="lg" className="w-full">
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              className="w-full"
+            >
               {content.form.submitLabel}
               <LuSend className="size-4" />
             </Button>
@@ -130,6 +149,20 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
               </p>
             )}
           </form>
+        </ScrollReveal>
+        <ScrollReveal
+          delay={0.15}
+          className="overflow-hidden rounded-2xl border border-line shadow-[0_16px_40px_-28px_rgba(20,16,15,0.3)] lg:col-span-2"
+        >
+          <iframe
+            src={mapEmbedSrc}
+            title={content.mapTitle}
+            width="100%"
+            height="360"
+            style={{ border: 0, display: "block" }}
+            loading="lazy"
+            referrerPolicy="strict-origin-when-cross-origin"
+          />
         </ScrollReveal>
       </div>
     </Section>

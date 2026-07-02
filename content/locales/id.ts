@@ -162,14 +162,10 @@ export const id: SiteContent = {
     infoCards: [
       { label: "WhatsApp", value: "+62 815 1010 7070", href: "https://wa.me/6281510107070" },
       { label: "Instagram", value: "@in.ChatHub", href: "https://instagram.com/in.ChatHub" },
-      {
-        label: "Alamat Kantor",
-        value: "Signature Park Grande, Commercial Tower Retail R/UG/06, Jalan MT Haryono 20 Cawang, Jakarta Timur 13630",
-        href: "https://www.google.com/maps/search/?api=1&query=Signature+Park+Grande+Commercial+Tower+Retail+Jalan+MT+Haryono+20+Cawang+Jakarta+Timur",
-      },
       { label: "Email Support", value: "support@inchathub.com", href: "mailto:support@inchathub.com" },
       { label: "Email Sales", value: "sales@inchathub.com", href: "mailto:sales@inchathub.com" },
     ],
+    mapTitle: "Peta lokasi kantor ChatHub",
     form: {
       nameLabel: "Nama Lengkap",
       namePlaceholder: "Masukkan nama Anda",

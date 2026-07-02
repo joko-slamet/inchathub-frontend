@@ -103,6 +103,7 @@ export interface SiteContent {
     titleAccent: string;
     description: string;
     infoCards: { label: string; value: string; href: string }[];
+    mapTitle: string;
     form: {
       nameLabel: string;
       namePlaceholder: string;

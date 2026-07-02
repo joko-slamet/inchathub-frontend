@@ -161,14 +161,10 @@ export const en: SiteContent = {
     infoCards: [
       { label: "WhatsApp", value: "+62 815 1010 7070", href: "https://wa.me/6281510107070" },
       { label: "Instagram", value: "@in.ChatHub", href: "https://instagram.com/in.ChatHub" },
-      {
-        label: "Office Address",
-        value: "Signature Park Grande, Commercial Tower Retail R/UG/06, Jalan MT Haryono 20 Cawang, East Jakarta 13630, Indonesia",
-        href: "https://www.google.com/maps/search/?api=1&query=Signature+Park+Grande+Commercial+Tower+Retail+Jalan+MT+Haryono+20+Cawang+Jakarta+Timur",
-      },
       { label: "Support Email", value: "support@inchathub.com", href: "mailto:support@inchathub.com" },
       { label: "Sales Email", value: "sales@inchathub.com", href: "mailto:sales@inchathub.com" },
     ],
+    mapTitle: "Map of ChatHub's office location",
     form: {
       nameLabel: "Full Name",
       namePlaceholder: "Enter your name",
