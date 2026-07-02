@@ -163,6 +163,20 @@ export const id: SiteContent = {
     subheading: "Dari inbox terpadu, AI Chatbot, Smart CRM, sampai WhatsApp Business — semua fitur ChatHub dalam satu halaman.",
   },
 
+  visionMission: {
+    visionEyebrow: "VISI KAMI",
+    visionMain: "Menjadi Platform Komunikasi Berbasis AI",
+    visionAccent: "Paling Dipercaya di Asia Tenggara",
+    missionEyebrow: "MISI KAMI",
+    missionItems: [
+      { textMain: "Menyederhanakan komunikasi pelanggan lewat", textAccent: "satu platform terpadu." },
+      { textMain: "Memberdayakan bisnis dengan", textAccent: "engagement dan otomasi berbasis AI." },
+      { textMain: "Meningkatkan penjualan, kualitas layanan, dan", textAccent: "efisiensi operasional." },
+      { textMain: "Membangun", textAccent: "hubungan pelanggan yang bermakna dan scalable." },
+      { textMain: "Mempercepat transformasi digital", textAccent: "di berbagai industri." },
+    ],
+  },
+
   about: {
     paragraphs: [
       "PT Chat Hub Indonesia, yang berbasis di Jakarta, membangun generasi berikutnya dari komunikasi bisnis lewat pengalaman omnichannel yang terpadu. Kami menghubungkan setiap interaksi pelanggan ke dalam satu alur yang mulus — memastikan percakapan tetap konsisten, kontekstual, dan tanpa hambatan di semua channel.",

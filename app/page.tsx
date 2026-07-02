@@ -13,6 +13,7 @@ import { Industries } from "@/components/sections/industries";
 import { Faq } from "@/components/sections/faq";
 import { ClosingCta } from "@/components/sections/closing-cta";
 import { Footer } from "@/components/sections/footer";
+import { VisionMission } from "@/components/sections/vision-mission";
 
 export default function Home() {
   const { locale } = useLocale();
@@ -23,6 +24,7 @@ export default function Home() {
       <Navbar content={content.nav} />
       <main className="flex-1">
         <Hero content={content.hero} channels={channels} />
+        <VisionMission content={content.visionMission} />
         <Problem content={content.problem} />
         <Omnichannel content={content.omnichannel} />
         <AiCrm content={content.aiCrm} />

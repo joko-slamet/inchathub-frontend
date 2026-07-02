@@ -104,6 +104,13 @@ export interface SiteContent {
     heading: string;
     subheading: string;
   };
+  visionMission: {
+    visionEyebrow: string;
+    visionMain: string;
+    visionAccent: string;
+    missionEyebrow: string;
+    missionItems: { textMain: string; textAccent: string }[];
+  };
   about: {
     paragraphs: string[];
     countriesLabel: string;

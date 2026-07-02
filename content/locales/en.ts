@@ -162,6 +162,20 @@ export const en: SiteContent = {
     subheading: "From a unified inbox, AI Chatbot, and Smart CRM, to WhatsApp Business — every ChatHub feature in one place.",
   },
 
+  visionMission: {
+    visionEyebrow: "OUR VISION",
+    visionMain: "To Become Southeast Asia's Most Trusted",
+    visionAccent: "AI-Powered Communication Platform",
+    missionEyebrow: "OUR MISSION",
+    missionItems: [
+      { textMain: "Simplify customer communication through", textAccent: "one unified platform." },
+      { textMain: "Empower businesses with", textAccent: "AI-driven engagement and automation." },
+      { textMain: "Improve sales, service quality, and", textAccent: "operational efficiency." },
+      { textMain: "Enable meaningful and scalable", textAccent: "customer relationships." },
+      { textMain: "Accelerate digital transformation", textAccent: "across industries." },
+    ],
+  },
+
   about: {
     paragraphs: [
       "PT Chat Hub Indonesia, based in Jakarta, builds the next generation of business communication through a unified omnichannel experience. We connect every customer interaction into one seamless flow—ensuring conversations remain consistent, contextual, and effortless across all channels.",

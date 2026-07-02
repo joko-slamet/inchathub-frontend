@@ -10,6 +10,7 @@ import { WhyChatHub } from "@/components/sections/why-chathub";
 import { ClosingCta } from "@/components/sections/closing-cta";
 import { Footer } from "@/components/sections/footer";
 import { Faq } from "@/components/sections/faq";
+import { VisionMission } from "@/components/sections/vision-mission";
 
 export default function AboutUsPage() {
   const { locale } = useLocale();
@@ -21,6 +22,7 @@ export default function AboutUsPage() {
       <main className="flex-1">
         <PageHero icon={LuBuilding2} heading={content.aboutHero.heading} />
         <About content={content.about} />
+        <VisionMission content={content.visionMission} />
         <WhyChatHub content={content.whyChatHub} />
         <Faq content={content.faq} />
       </main>
