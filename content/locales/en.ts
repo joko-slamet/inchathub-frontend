@@ -20,6 +20,7 @@ export const en: SiteContent = {
       { label: "Contact Us", href: "/contact-us" },
       { label: "About Us", href: "/about-us" },
     ],
+    loginLabel: "Login",
     ctaPrimary: "Try for Free",
   },
 

@@ -26,6 +26,7 @@ export interface SiteContent {
   };
   nav: {
     links: { label: string; href: string }[];
+    loginLabel: string;
     ctaPrimary: string;
   };
   hero: {

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { LuMenu, LuX } from "react-icons/lu";
+import { LuMenu, LuX, LuLogIn } from "react-icons/lu";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
@@ -33,6 +33,13 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
         <div className="hidden items-center gap-5 md:flex">
           <LocaleSwitcher />
           <div className="flex items-center gap-3">
+            <Link
+              href="/login"
+              className="flex items-center gap-1.5 text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+            >
+              <LuLogIn className="size-4" />
+              {content.loginLabel}
+            </Link>
             <Button href="/#kontak" variant="primary" size="md">
               {content.ctaPrimary}
             </Button>
@@ -68,6 +75,14 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
             <LocaleSwitcher />
           </div>
           <div className="mt-4 flex flex-col gap-3">
+            <Link
+              href="/login"
+              onClick={() => setOpen(false)}
+              className="flex items-center justify-center gap-1.5 text-sm font-medium text-ink/70"
+            >
+              <LuLogIn className="size-4" />
+              {content.loginLabel}
+            </Link>
             <Button href="/#kontak" variant="primary" size="md" onClick={() => setOpen(false)}>
               {content.ctaPrimary}
             </Button>
