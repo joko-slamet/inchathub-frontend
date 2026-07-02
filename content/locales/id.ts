@@ -86,9 +86,8 @@ export const id: SiteContent = {
 
   aiCrm: {
     eyebrow: "AI CHATBOT & SMART CRM",
-    title: "Biar AI yang Menjaga Chat Masuk, Tim Anda Fokus Menutup Penjualan",
-    description:
-      "AI Chatbot menyambut dan menyaring setiap percakapan yang masuk selagi tim Anda tidur atau sedang menangani pelanggan lain. Begitu layak ditindaklanjuti, Smart CRM langsung merapikannya jadi lead yang bisa dikejar sampai deal.",
+    titleMain: "Ubah Percakapan",
+    titleAccent: "Jadi Pendapatan",
     chatbot: {
       title: "AI Chatbot",
       points: [
@@ -109,26 +108,6 @@ export const id: SiteContent = {
         { title: "Otomasi Tugas", description: "Tugas tindak lanjut otomatis dibuat begitu status percakapan berubah." },
         { title: "Monitoring Follow-Up", description: "Sistem mengingatkan tim sebelum sebuah lead kelamaan tidak dihubungi." },
         { title: "Analitik Performa", description: "Ukur konversi tiap tahap pipeline untuk tahu di mana penjualan sering mandek." },
-      ],
-    },
-    chatWidget: {
-      botName: "ChatHub AI",
-      statusLabel: "siap membantu",
-      botGreeting: "Halo! Ada yang bisa saya bantu terkait produk atau layanan kami hari ini?",
-      userMessage: "Halo kak, mau tanya-tanya",
-      botReply: "Tentu, boleh saya bantu cek dulu kebutuhannya? Tim kami akan lanjutkan begitu siap.",
-      inputPlaceholder: "Tulis pesan…",
-      quickReplies: ["Info Produk", "Cek Status Pesanan", "Bicara dengan Agent"],
-    },
-    pipeline: {
-      title: "Sales Pipeline",
-      subtitle: "contoh tampilan · data dummy",
-      stages: [
-        { name: "New Lead", deals: [{ name: "Toko Berkah Jaya", value: "Rp 4,2 jt" }, { name: "CV Mitra Abadi", value: "Rp 8,5 jt" }] },
-        { name: "Contacted", deals: [{ name: "Klinik Sehat Sentosa", value: "Rp 12 jt" }] },
-        { name: "Proposed", deals: [{ name: "Koperasi Sejahtera", value: "Rp 21 jt" }] },
-        { name: "Negotiation", deals: [{ name: "PT Nusantara Boga", value: "Rp 15 jt" }] },
-        { name: "Closed Won", deals: [{ name: "Sekolah Pelita Bangsa", value: "Rp 30 jt" }] },
       ],
     },
   },

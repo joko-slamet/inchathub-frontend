@@ -86,9 +86,8 @@ export const en: SiteContent = {
 
   aiCrm: {
     eyebrow: "AI CHATBOT & SMART CRM",
-    title: "Let AI Guard the Inbox While Your Team Focuses on Closing Deals",
-    description:
-      "The AI Chatbot greets and screens every incoming conversation while your team sleeps or handles other customers. The moment it's worth following up, Smart CRM turns it into a lead you can chase all the way to a deal.",
+    titleMain: "Turn Conversations",
+    titleAccent: "Into Revenue",
     chatbot: {
       title: "AI Chatbot",
       points: [
@@ -109,26 +108,6 @@ export const en: SiteContent = {
         { title: "Task Automation", description: "Follow-up tasks are created automatically the moment a conversation's status changes." },
         { title: "Follow-Up Monitoring", description: "The system reminds your team before a lead goes untouched for too long." },
         { title: "Performance Analytics", description: "Measure conversion at every pipeline stage to see exactly where deals stall." },
-      ],
-    },
-    chatWidget: {
-      botName: "ChatHub AI",
-      statusLabel: "ready to help",
-      botGreeting: "Hi! Is there anything I can help you with about our products or services today?",
-      userMessage: "Hi, I have a few questions",
-      botReply: "Of course — mind if I ask a bit about what you need first? Our team will pick it up from there.",
-      inputPlaceholder: "Type a message…",
-      quickReplies: ["Product Information", "Check Order Status", "Talk to Agent"],
-    },
-    pipeline: {
-      title: "Sales Pipeline",
-      subtitle: "sample view · dummy data",
-      stages: [
-        { name: "New Lead", deals: [{ name: "Berkah Jaya Store", value: "$280" }, { name: "Mitra Abadi Co.", value: "$570" }] },
-        { name: "Contacted", deals: [{ name: "Sehat Sentosa Clinic", value: "$800" }] },
-        { name: "Proposed", deals: [{ name: "Sejahtera Cooperative", value: "$1,400" }] },
-        { name: "Negotiation", deals: [{ name: "Nusantara Boga Ltd.", value: "$1,000" }] },
-        { name: "Closed Won", deals: [{ name: "Pelita Bangsa School", value: "$2,000" }] },
       ],
     },
   },

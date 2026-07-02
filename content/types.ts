@@ -60,8 +60,8 @@ export interface SiteContent {
   };
   aiCrm: {
     eyebrow: string;
-    title: string;
-    description: string;
+    titleMain: string;
+    titleAccent: string;
     chatbot: {
       title: string;
       points: { title: string; description: string }[];
@@ -69,23 +69,6 @@ export interface SiteContent {
     crm: {
       title: string;
       points: { title: string; description: string }[];
-    };
-    chatWidget: {
-      botName: string;
-      statusLabel: string;
-      botGreeting: string;
-      userMessage: string;
-      botReply: string;
-      inputPlaceholder: string;
-      quickReplies: string[];
-    };
-    pipeline: {
-      title: string;
-      subtitle: string;
-      stages: {
-        name: string;
-        deals: { name: string; value: string }[];
-      }[];
     };
   };
   whatsapp: {
