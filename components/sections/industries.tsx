@@ -41,22 +41,13 @@ export function Industries({
       id="industri"
       align="center"
       eyebrow={content.eyebrow}
-      title={content.title}
+      title={
+        <>
+          {content.titleMain} <span className="text-signal">{content.titleAccent}</span>
+        </>
+      }
       description={content.description}
     >
-      <ScrollReveal delay={0.1} className="mt-14">
-        <div className="grid grid-cols-1 gap-6 border-y border-line py-8 sm:grid-cols-3">
-          {content.stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="font-display text-3xl font-semibold tracking-tight text-signal sm:text-4xl">
-                {stat.value}
-              </p>
-              <p className="mt-1 text-sm text-ink/60">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </ScrollReveal>
-
       <ScrollReveal delay={0.15} className="mt-12">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
           {content.list.map((industry, index) => {

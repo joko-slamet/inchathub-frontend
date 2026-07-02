@@ -73,9 +73,9 @@ export interface SiteContent {
   };
   whatsapp: {
     eyebrow: string;
-    title: string;
+    titleMain: string;
+    titleAccent: string;
     description: string;
-    points: { title: string; description: string }[];
     chatMockup: {
       contactName: string;
       statusLabel: string;
@@ -83,9 +83,16 @@ export interface SiteContent {
       quickReplies: string[];
     };
   };
+  whyChatHub: {
+    eyebrow: string;
+    titleMain: string;
+    titleAccent: string;
+    points: { title: string; description: string }[];
+  };
   industries: {
     eyebrow: string;
-    title: string;
+    titleMain: string;
+    titleAccent: string;
     description: string;
     stats: { value: string; label: string }[];
     list: { name: string }[];

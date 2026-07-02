@@ -114,16 +114,10 @@ export const id: SiteContent = {
 
   whatsapp: {
     eyebrow: "WHATSAPP BUSINESS SOLUTIONS",
-    title: "WhatsApp Masih Jadi Pintu Depan Bisnis Anda di Indonesia",
+    titleMain: "Memperkuat Engagement Pelanggan",
+    titleAccent: "Lewat WhatsApp",
     description:
-      "Nyaris semua pelanggan Anda sudah punya WhatsApp terpasang, dan mereka berharap bisnis Anda ada di sana juga. Masalahnya, satu nomor WhatsApp yang dipegang bergantian oleh beberapa staf gampang berujung pada balasan yang tumpang tindih atau malah tidak terbalas sama sekali.",
-    points: [
-      { title: "Official API", description: "Terhubung resmi lewat WhatsApp Business API, bukan aplikasi multi-device tidak resmi yang berisiko diblokir." },
-      { title: "AI Chatbot Ready", description: "Bisa langsung dipasangi AI Chatbot untuk menyambut dan menyaring chat yang masuk." },
-      { title: "Integrasi CRM", description: "Setiap percakapan otomatis tercatat sebagai lead di Smart CRM, tanpa entri data manual." },
-      { title: "Terhubung Omnichannel", description: "Satu nomor WhatsApp bekerja berdampingan dengan channel lain dalam inbox yang sama." },
-      { title: "Dukungan Lokal", description: "Tim support berbahasa Indonesia yang paham cara kerja bisnis lokal, bukan tiket ke luar negeri." },
-    ],
+      "Cara paling terpercaya untuk terhubung, berinteraksi, dan mengembangkan bisnis Anda.",
     chatMockup: {
       contactName: "Toko Berkah Jaya",
       statusLabel: "WhatsApp Business",
@@ -137,9 +131,23 @@ export const id: SiteContent = {
     },
   },
 
+  whyChatHub: {
+    eyebrow: "Kenapa Mereka Memilih Kami",
+    titleMain: "Sistem dibangun untuk",
+    titleAccent: "tingkatkan penjualan.",
+    points: [
+      { title: "Smart Automation", description: "Balas, follow-up, dan reminder otomatis tanpa chat terlewat." },
+      { title: "Organized Customer", description: "Data pelanggan tersimpan rapi dengan histori, tag, dan pipeline jelas." },
+      { title: "Increase Growth", description: "Tingkatkan kapasitas layanan tanpa perlu tambah orang." },
+      { title: "Scalable System", description: "Satu sistem fleksibel yang mampu mengikuti skala bisnis Anda." },
+      { title: "Affordable Rate", description: "Tarif kompetitif dan transparan tanpa biaya tersembunyi." },
+    ],
+  },
+
   industries: {
     eyebrow: "DIPERCAYA LINTAS INDUSTRI",
-    title: "Dari Rumah Sakit sampai Instansi Pemerintah, Percakapan Tetap Terkelola",
+    titleMain: "Dari Rumah Sakit sampai Instansi Pemerintah,",
+    titleAccent: "Percakapan Tetap Terkelola",
     description:
       "ChatHub dipakai oleh organisasi dengan volume percakapan tinggi dan standar layanan yang ketat — mulai dari layanan kesehatan, instansi pemerintah, lembaga keuangan, sampai institusi pendidikan.",
     stats: [

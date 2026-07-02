@@ -17,7 +17,7 @@ export function Hero({
   return (
     <section
       id="beranda"
-      className="relative overflow-hidden border-b border-line px-6 pt-14 pb-20 sm:pt-20 md:px-10 md:pb-28 lg:px-16"
+      className="relative overflow-hidden border-line px-6 pt-14 pb-20 sm:pt-20 md:px-10 md:pb-28 lg:px-16"
       style={{
         backgroundColor: "var(--color-paper)",
         backgroundImage:

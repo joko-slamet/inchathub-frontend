@@ -12,16 +12,15 @@ export function Problem({ content }: { content: SiteContent["problem"] }) {
           {content.titleMain} <span className="text-signal">{content.titleAccent}</span>
         </>
       }
-      style={{ backgroundColor: "#ffffff" }}
     >
-      <div className="">
+      <div className="mt-4">
         <ScrollReveal delay={0.2}>
           <Image
-            src="/images/diagram-clean.png"
+            src="/images/diagram-white.png"
             alt="Diagram alur channel WhatsApp, Instagram, Facebook, Telegram, Email, Website Chat, Teams, Threads, dan X masuk ke platform ChatHub, lalu terdistribusi ke tim Customer Service, Sales, Marketing, Management, AI Assistant, dan Analytics"
             width={1365}
             height={768}
-            className="h-auto w-full rounded-2xl"
+            className="h-auto w-full rounded-2xl border border-dashed"
           />
         </ScrollReveal>
       </div>

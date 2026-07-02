@@ -114,16 +114,9 @@ export const en: SiteContent = {
 
   whatsapp: {
     eyebrow: "WHATSAPP BUSINESS SOLUTIONS",
-    title: "WhatsApp Is Still Your Customers' Front Door in Indonesia",
-    description:
-      "Nearly every customer you have already has WhatsApp installed, and they expect your business to be there too. The problem is, one WhatsApp number shared by several staff quickly turns into overlapping replies — or worse, no reply at all.",
-    points: [
-      { title: "Official API", description: "Connected officially through the WhatsApp Business API, not an unofficial multi-device app that risks getting blocked." },
-      { title: "AI Chatbot Ready", description: "Can be wired up with an AI Chatbot right away to greet and screen incoming chats." },
-      { title: "CRM Integration", description: "Every conversation is automatically logged as a lead in Smart CRM, no manual data entry." },
-      { title: "Connected Omnichannel", description: "One WhatsApp number works side by side with every other channel in the same inbox." },
-      { title: "Local Support", description: "A support team that understands how local business actually works, not a ticket sent overseas." },
-    ],
+    titleMain: "Powering Customer Engagement",
+    titleAccent: "Through WhatsApp",
+    description: "The most trusted way to connect, engage, and grow your business.",
     chatMockup: {
       contactName: "Berkah Jaya Store",
       statusLabel: "WhatsApp Business",
@@ -137,9 +130,23 @@ export const en: SiteContent = {
     },
   },
 
+  whyChatHub: {
+    eyebrow: "Why They Choose Us",
+    titleMain: "Systems built to",
+    titleAccent: "increase sales.",
+    points: [
+      { title: "Smart Automation", description: "Automatic replies, follow-ups, and reminders so no chat gets missed." },
+      { title: "Organized Customer", description: "Customer data neatly stored with history, tags, and a clear pipeline." },
+      { title: "Increase Growth", description: "Scale your service capacity without adding more headcount." },
+      { title: "Scalable System", description: "One flexible system that grows right along with your business." },
+      { title: "Affordable Rate", description: "Competitive, transparent pricing with no hidden fees." },
+    ],
+  },
+
   industries: {
     eyebrow: "TRUSTED ACROSS INDUSTRIES",
-    title: "From Hospitals to Government Agencies, Every Conversation Stays Under Control",
+    titleMain: "From Hospitals to Government Agencies,",
+    titleAccent: "Every Conversation Stays Under Control",
     description:
       "ChatHub is used by organizations with high conversation volume and strict service standards — from healthcare and government agencies to financial institutions and educational institutions.",
     stats: [
