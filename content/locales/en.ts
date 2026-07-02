@@ -308,6 +308,42 @@ export const en: SiteContent = {
     clientsMoreLabel: "+ more trusted partners",
   },
 
+  faq: {
+    eyebrow: "FAQ",
+    titleMain: "Frequently Asked",
+    titleAccent: "Questions",
+    items: [
+      {
+        question: "Can the chatbot really answer customers?",
+        answer: "Yes. The AI is trained on your own business data, so it gives relevant, accurate answers.",
+      },
+      {
+        question: "Does this system support WhatsApp?",
+        answer: "Yes. inChatHub supports WhatsApp along with other channels like Instagram, Telegram, Facebook, Live Chat, Email, and more.",
+      },
+      {
+        question: "I don't understand IT. Can I still use this?",
+        answer: "Absolutely. The platform is designed to be easy to use — no coding required!",
+      },
+      {
+        question: "Can I upgrade or change my plan later?",
+        answer: "Yes. You can adjust your plan as your business grows. Our team will help ensure a smooth transition.",
+      },
+      {
+        question: "Is ChatHub suitable for enterprise or personal needs?",
+        answer: "ChatHub is designed for both professional and personal use, supporting scalable and structured messaging workflows for organizations.",
+      },
+      {
+        question: "Which channels does ChatHub support?",
+        answer: "ChatHub supports WhatsApp, Instagram, Telegram, SMS, Email, and other channels — all in one unified inbox.",
+      },
+      {
+        question: "Do I need technical resources to get started?",
+        answer: "No. ChatHub is designed for business teams and can be set up without heavy technical involvement.",
+      },
+    ],
+  },
+
   closingCta: {
     title: "Ready to Change How Your Business Talks to Customers?",
     subheadline:

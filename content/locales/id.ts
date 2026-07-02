@@ -309,6 +309,42 @@ export const id: SiteContent = {
     clientsMoreLabel: "+ mitra lainnya",
   },
 
+  faq: {
+    eyebrow: "FAQ",
+    titleMain: "Pertanyaan yang",
+    titleAccent: "Sering Ditanyakan",
+    items: [
+      {
+        question: "Apakah chatbot bisa benar-benar menjawab customer?",
+        answer: "Ya. AI dilatih menggunakan data bisnis Anda sehingga dapat memberikan jawaban yang relevan.",
+      },
+      {
+        question: "Apakah sistem ini mendukung WhatsApp?",
+        answer: "Ya. inChatHub mendukung WhatsApp serta berbagai channel komunikasi lainnya seperti Instagram, Telegram, Facebook, Live Chat, Email, dan banyak lagi.",
+      },
+      {
+        question: "Saya tidak paham IT. Apakah saya bisa gunakan?",
+        answer: "Pasti bisa. Platform ini dirancang mudah digunakan tanpa coding!",
+      },
+      {
+        question: "Bisakah saya upgrade atau ganti paket nanti?",
+        answer: "Bisa. Anda dapat menyesuaikan paket seiring berkembangnya bisnis Anda. Tim kami akan membantu memastikan transisi berjalan lancar.",
+      },
+      {
+        question: "Apakah ChatHub cocok untuk kebutuhan enterprise atau personal?",
+        answer: "ChatHub dirancang untuk penggunaan profesional maupun personal, mendukung alur kerja perpesanan yang scalable dan terstruktur untuk organisasi.",
+      },
+      {
+        question: "Channel apa saja yang didukung ChatHub?",
+        answer: "ChatHub mendukung WhatsApp, Instagram, Telegram, SMS, Email, dan channel lainnya — semua dalam satu inbox terpadu.",
+      },
+      {
+        question: "Apakah saya butuh tim teknis untuk mulai menggunakannya?",
+        answer: "Tidak. ChatHub dirancang untuk tim bisnis dan bisa disiapkan tanpa perlu keterlibatan teknis yang berat.",
+      },
+    ],
+  },
+
   closingCta: {
     title: "Siap Mengubah Cara Bisnis Anda Berkomunikasi dengan Pelanggan?",
     subheadline:

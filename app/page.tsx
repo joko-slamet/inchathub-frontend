@@ -7,10 +7,10 @@ import { Hero } from "@/components/sections/hero";
 import { Problem } from "@/components/sections/problem";
 import { Omnichannel } from "@/components/sections/omnichannel";
 import { AiCrm } from "@/components/sections/ai-crm";
-import { Whatsapp } from "@/components/sections/whatsapp";
 import { WhyChatHub } from "@/components/sections/why-chathub";
 import { Pricing } from "@/components/sections/pricing";
 import { Industries } from "@/components/sections/industries";
+import { Faq } from "@/components/sections/faq";
 import { ClosingCta } from "@/components/sections/closing-cta";
 import { Footer } from "@/components/sections/footer";
 
@@ -29,6 +29,7 @@ export default function Home() {
         <WhyChatHub content={content.whyChatHub} />
         <Industries content={content.industries} clients={clients} />
         <Pricing content={content.pricing} />
+        <Faq content={content.faq} />
         <ClosingCta content={content.closingCta} />
       </main>
       <Footer content={content.footer} nav={content.nav} />

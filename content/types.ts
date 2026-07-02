@@ -115,6 +115,12 @@ export interface SiteContent {
     logoStripLabel: string;
     clientsMoreLabel: string;
   };
+  faq: {
+    eyebrow: string;
+    titleMain: string;
+    titleAccent: string;
+    items: { question: string; answer: string }[];
+  };
   closingCta: {
     title: string;
     subheadline: string;

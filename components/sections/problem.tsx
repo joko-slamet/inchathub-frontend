@@ -20,7 +20,7 @@ export function Problem({ content }: { content: SiteContent["problem"] }) {
             alt="Diagram alur channel WhatsApp, Instagram, Facebook, Telegram, Email, Website Chat, Teams, Threads, dan X masuk ke platform ChatHub, lalu terdistribusi ke tim Customer Service, Sales, Marketing, Management, AI Assistant, dan Analytics"
             width={1365}
             height={768}
-            className="h-auto w-full rounded-2xl border border-dashed"
+            className="h-auto w-full rounded-2xl border border-dashed shadow-[0_24px_64px_-32px_rgba(20,16,15,0.3)]"
           />
         </ScrollReveal>
       </div>
