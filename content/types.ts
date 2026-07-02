@@ -107,6 +107,26 @@ export interface SiteContent {
     heading: string;
     subheading: string;
   };
+  blogHero: {
+    heading: string;
+    subheading: string;
+  };
+  blog: {
+    eyebrow: string;
+    titleMain: string;
+    titleAccent: string;
+    description: string;
+    viewAllLabel: string;
+    posts: {
+      slug: string;
+      category: string;
+      title: string;
+      excerpt: string;
+      author: string;
+      date: string;
+      readTime: string;
+    }[];
+  };
   visionMission: {
     visionEyebrow: string;
     visionMain: string;

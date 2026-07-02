@@ -16,6 +16,7 @@ export const id: SiteContent = {
     links: [
       { label: "Produk", href: "/product" },
       { label: "Harga", href: "/pricing" },
+      { label: "Blog", href: "/blog" },
       { label: "Hubungi Kami", href: "/contact-us" },
       { label: "Tentang Kami", href: "/about-us" },
     ],
@@ -160,6 +161,81 @@ export const id: SiteContent = {
   productHero: {
     heading: "Satu Produk, Semua yang Bisnis Anda Butuhkan",
     subheading: "Dari inbox terpadu, AI Chatbot, Smart CRM, sampai WhatsApp Business — semua fitur ChatHub dalam satu halaman.",
+  },
+
+  blogHero: {
+    heading: "Blog & Insight ChatHub",
+    subheading: "Tips, studi kasus, dan tren seputar omnichannel, AI chatbot, dan CRM untuk bisnis Anda.",
+  },
+
+  blog: {
+    eyebrow: "Blog & Insight",
+    titleMain: "Wawasan untuk",
+    titleAccent: "Bisnis yang Terhubung",
+    description: "Tips praktis, studi kasus, dan tren layanan pelanggan dari tim ChatHub.",
+    viewAllLabel: "Lihat Semua Artikel",
+    posts: [
+      {
+        slug: "5-alasan-bisnis-butuh-omnichannel-inbox-2026",
+        category: "Omnichannel",
+        title: "5 Alasan Bisnis Anda Butuh Omnichannel Inbox di 2026",
+        excerpt:
+          "Pelanggan kini menghubungi bisnis lewat banyak kanal sekaligus. Berikut alasan mengapa inbox terpadu jadi kebutuhan, bukan lagi pilihan.",
+        author: "Tim ChatHub",
+        date: "28 Juni 2026",
+        readTime: "5 min baca",
+      },
+      {
+        slug: "cara-manfaatkan-whatsapp-business-api-tingkatkan-konversi",
+        category: "WhatsApp",
+        title: "Cara Memanfaatkan WhatsApp Business API untuk Tingkatkan Konversi",
+        excerpt:
+          "Dari quick reply sampai broadcast tersegmentasi, ini strategi praktis memaksimalkan WhatsApp Business API untuk penjualan.",
+        author: "Tim ChatHub",
+        date: "20 Juni 2026",
+        readTime: "6 min baca",
+      },
+      {
+        slug: "ai-chatbot-vs-live-agent-kapan-pakai-yang-mana",
+        category: "AI Chatbot",
+        title: "AI Chatbot vs Live Agent: Kapan Harus Pakai yang Mana?",
+        excerpt:
+          "AI chatbot cepat dan konsisten, agen manusia empatik dan fleksibel. Simak kapan sebaiknya masing-masing digunakan.",
+        author: "Tim ChatHub",
+        date: "12 Juni 2026",
+        readTime: "4 min baca",
+      },
+      {
+        slug: "studi-kasus-rumah-sakit-pangkas-waktu-respons-70-persen",
+        category: "Studi Kasus",
+        title: "Studi Kasus: Rumah Sakit yang Memangkas Waktu Respons 70% dengan ChatHub",
+        excerpt:
+          "Bagaimana sebuah rumah sakit mitra ChatHub menyatukan kanal komunikasi pasien dan mempercepat waktu tanggap tim CS.",
+        author: "Tim ChatHub",
+        date: "3 Juni 2026",
+        readTime: "7 min baca",
+      },
+      {
+        slug: "membangun-pipeline-penjualan-rapi-dengan-crm-terintegrasi",
+        category: "CRM",
+        title: "Membangun Pipeline Penjualan yang Rapi dengan CRM Terintegrasi",
+        excerpt:
+          "Pipeline yang berantakan bikin leads hilang begitu saja. Ini cara menyusun tahapan penjualan yang jelas dan terukur.",
+        author: "Tim ChatHub",
+        date: "25 Mei 2026",
+        readTime: "5 min baca",
+      },
+      {
+        slug: "tren-layanan-pelanggan-sektor-keuangan-tahun-ini",
+        category: "Industri",
+        title: "Tren Layanan Pelanggan di Sektor Keuangan Tahun Ini",
+        excerpt:
+          "Dari respons instan sampai kepatuhan data, berikut tren layanan pelanggan yang perlu diperhatikan pelaku industri keuangan.",
+        author: "Tim ChatHub",
+        date: "14 Mei 2026",
+        readTime: "6 min baca",
+      },
+    ],
   },
 
   visionMission: {

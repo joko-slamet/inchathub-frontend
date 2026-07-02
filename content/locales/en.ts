@@ -16,6 +16,7 @@ export const en: SiteContent = {
     links: [
       { label: "Product", href: "/product" },
       { label: "Pricing", href: "/pricing" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact Us", href: "/contact-us" },
       { label: "About Us", href: "/about-us" },
     ],
@@ -159,6 +160,81 @@ export const en: SiteContent = {
   productHero: {
     heading: "One Product, Everything Your Business Needs",
     subheading: "From a unified inbox, AI Chatbot, and Smart CRM, to WhatsApp Business — every ChatHub feature in one place.",
+  },
+
+  blogHero: {
+    heading: "ChatHub Blog & Insights",
+    subheading: "Tips, case studies, and trends on omnichannel, AI chatbots, and CRM for your business.",
+  },
+
+  blog: {
+    eyebrow: "Blog & Insights",
+    titleMain: "Insights for a",
+    titleAccent: "Connected Business",
+    description: "Practical tips, case studies, and customer service trends from the ChatHub team.",
+    viewAllLabel: "View All Articles",
+    posts: [
+      {
+        slug: "5-reasons-your-business-needs-omnichannel-inbox-2026",
+        category: "Omnichannel",
+        title: "5 Reasons Your Business Needs an Omnichannel Inbox in 2026",
+        excerpt:
+          "Customers now reach out through many channels at once. Here's why a unified inbox is a necessity, not a nice-to-have.",
+        author: "ChatHub Team",
+        date: "June 28, 2026",
+        readTime: "5 min read",
+      },
+      {
+        slug: "how-to-use-whatsapp-business-api-to-boost-conversions",
+        category: "WhatsApp",
+        title: "How to Use WhatsApp Business API to Boost Conversions",
+        excerpt:
+          "From quick replies to segmented broadcasts, here are practical strategies to get the most out of WhatsApp Business API.",
+        author: "ChatHub Team",
+        date: "June 20, 2026",
+        readTime: "6 min read",
+      },
+      {
+        slug: "ai-chatbot-vs-live-agent-when-to-use-which",
+        category: "AI Chatbot",
+        title: "AI Chatbot vs Live Agent: When to Use Which",
+        excerpt:
+          "AI chatbots are fast and consistent, human agents are empathetic and flexible. Here's when each one should take the lead.",
+        author: "ChatHub Team",
+        date: "June 12, 2026",
+        readTime: "4 min read",
+      },
+      {
+        slug: "case-study-hospital-cut-response-time-70-percent",
+        category: "Case Study",
+        title: "Case Study: A Hospital That Cut Response Time by 70% with ChatHub",
+        excerpt:
+          "How a ChatHub partner hospital unified its patient communication channels and sped up its customer service response time.",
+        author: "ChatHub Team",
+        date: "June 3, 2026",
+        readTime: "7 min read",
+      },
+      {
+        slug: "building-a-clean-sales-pipeline-with-integrated-crm",
+        category: "CRM",
+        title: "Building a Clean Sales Pipeline with an Integrated CRM",
+        excerpt:
+          "A messy pipeline lets leads slip through the cracks. Here's how to structure clear, measurable sales stages.",
+        author: "ChatHub Team",
+        date: "May 25, 2026",
+        readTime: "5 min read",
+      },
+      {
+        slug: "customer-service-trends-in-finance-sector-this-year",
+        category: "Industry",
+        title: "Customer Service Trends in the Finance Sector This Year",
+        excerpt:
+          "From instant responses to data compliance, here are the customer service trends finance businesses need to watch.",
+        author: "ChatHub Team",
+        date: "May 14, 2026",
+        readTime: "6 min read",
+      },
+    ],
   },
 
   visionMission: {
