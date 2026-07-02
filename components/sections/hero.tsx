@@ -15,7 +15,16 @@ export function Hero({
   channels: Channel[];
 }) {
   return (
-    <section id="beranda" className="relative overflow-hidden border-b border-line bg-paper px-6 pt-14 pb-20 sm:pt-20 md:px-10 md:pb-28 lg:px-16">
+    <section
+      id="beranda"
+      className="relative overflow-hidden border-b border-line px-6 pt-14 pb-20 sm:pt-20 md:px-10 md:pb-28 lg:px-16"
+      style={{
+        backgroundColor: "var(--color-paper)",
+        backgroundImage:
+          "radial-gradient(circle at 88% 12%, var(--color-signal-dim) 0%, transparent 45%), radial-gradient(var(--color-line) 1px, transparent 1px)",
+        backgroundSize: "auto, 28px 28px",
+      }}
+    >
       <div className="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1fr] lg:gap-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -23,11 +32,12 @@ export function Hero({
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <Eyebrow>{content.eyebrow}</Eyebrow>
-          <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl md:text-[3.25rem]">
-            {content.headline}
+          <h1 className="mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl md:text-[3.25rem]">
+            {content.headlineMain} <span className="text-signal">{content.headlineAccent}</span>
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-ink/70 sm:text-lg">
-            {content.subheadline}
+            <span className="font-semibold text-signal">{content.subheadlineAccent}</span>{" "}
+            {content.subheadlineMain}
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -51,7 +61,7 @@ export function Hero({
           </div>
         </motion.div>
 
-        <ConvergenceVisual inboxCard={content.inboxCard} />
+        <ConvergenceVisual />
       </div>
     </section>
   );

@@ -25,40 +25,13 @@ export const id: SiteContent = {
 
   hero: {
     eyebrow: "CHATBOT AI · OMNICHANNEL · CRM",
-    headline: "Pelanggan Chat dari Sembilan Arah. Tim Anda Cukup Buka Satu Layar.",
-    subheadline:
-      "ChatHub mengumpulkan WhatsApp, Instagram, Facebook, Telegram, Email, sampai Web Chat ke dalam satu inbox yang sama — lengkap dengan AI Chatbot yang membalas duluan dan Smart CRM yang merapikan setiap obrolan jadi transaksi.",
+    headlineMain: "Satu Platform untuk Mengelola",
+    headlineAccent: "Setiap Interaksi Pelanggan",
+    subheadlineAccent: "Chat Hub",
+    subheadlineMain: "menyatukan komunikasi, engagement, dan otomasi pelanggan dalam satu platform.",
     ctaPrimary: "Request Demo Gratis",
     ctaSecondary: "Lihat Cara Kerja",
     channelsLabel: "Terhubung dengan channel yang pelanggan Anda sudah pakai sehari-hari",
-    inboxCard: {
-      title: "Inbox Terpadu",
-      subtitle: "3 percakapan baru",
-      onlineLabel: "online",
-      messages: [
-        {
-          name: "Dedi Kurniawan",
-          channel: "WA",
-          preview: "Kak, produk yang kemarin masih ready ga ya?",
-          time: "09:41",
-          unread: true,
-        },
-        {
-          name: "Sarah Amelia",
-          channel: "IG",
-          preview: "Boleh minta info harga grosir min",
-          time: "09:38",
-          unread: true,
-        },
-        {
-          name: "RS Mitra Sehat",
-          channel: "MAIL",
-          preview: "Konfirmasi jadwal implementasi minggu depan",
-          time: "09:22",
-          unread: false,
-        },
-      ],
-    },
   },
 
   problem: {

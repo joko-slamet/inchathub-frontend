@@ -25,40 +25,13 @@ export const en: SiteContent = {
 
   hero: {
     eyebrow: "AI CHATBOT · OMNICHANNEL · CRM",
-    headline: "Customers Message You from Nine Directions. Your Team Only Needs One Screen.",
-    subheadline:
-      "ChatHub pulls WhatsApp, Instagram, Facebook, Telegram, Email, and Web Chat into a single shared inbox — with an AI Chatbot that replies first, and a Smart CRM that turns every conversation into a deal.",
+    headlineMain: "One Platform to Manage",
+    headlineAccent: "Every Customer Interaction",
+    subheadlineAccent: "Chat Hub",
+    subheadlineMain: "unifies customer communication, engagement, and automation in one platform.",
     ctaPrimary: "Request a Free Demo",
     ctaSecondary: "See How It Works",
     channelsLabel: "Connected to the channels your customers already use every day",
-    inboxCard: {
-      title: "Unified Inbox",
-      subtitle: "3 new conversations",
-      onlineLabel: "online",
-      messages: [
-        {
-          name: "Dedi Kurniawan",
-          channel: "WA",
-          preview: "Hi, is the product from yesterday still in stock?",
-          time: "09:41",
-          unread: true,
-        },
-        {
-          name: "Sarah Amelia",
-          channel: "IG",
-          preview: "Could I get your wholesale pricing?",
-          time: "09:38",
-          unread: true,
-        },
-        {
-          name: "Mitra Sehat Hospital",
-          channel: "MAIL",
-          preview: "Confirming the implementation schedule for next week",
-          time: "09:22",
-          unread: false,
-        },
-      ],
-    },
   },
 
   problem: {

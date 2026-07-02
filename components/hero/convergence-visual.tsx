@@ -1,9 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { MessageCircle, Camera, Send, Mail, MessageSquare, Globe } from "lucide-react";
-import type { SiteContent } from "@/content/site-content";
-import { InboxPreviewCard } from "@/components/hero/inbox-preview-card";
 
 const bubbleLayout = [
   { badge: "WA", icon: MessageCircle, className: "top-[2%] left-[-2%]", travel: { x: 78, y: 30 }, delay: 0 },
@@ -14,7 +13,7 @@ const bubbleLayout = [
   { badge: "WEB", icon: Globe, className: "top-[46%] left-[4%]", travel: { x: 70, y: 0 }, delay: 3.5 },
 ];
 
-export function ConvergenceVisual({ inboxCard }: { inboxCard: SiteContent["hero"]["inboxCard"] }) {
+export function ConvergenceVisual() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -60,8 +59,19 @@ export function ConvergenceVisual({ inboxCard }: { inboxCard: SiteContent["hero"
         </div>
       ))}
 
-      <div className="absolute inset-0 z-10 flex items-center justify-center lg:left-auto lg:right-0 lg:w-[360px] lg:justify-end">
-        <InboxPreviewCard content={inboxCard} />
+      <div className="absolute inset-0 z-10 flex items-end justify-center lg:left-auto lg:right-0 lg:w-[420px] lg:justify-end">
+        <Image
+          src="/images/woman-with-phone.png"
+          alt="Wanita profesional tersenyum sambil membalas chat pelanggan lewat ponsel"
+          width={928}
+          height={1152}
+          priority
+          className="h-full max-h-[380px] w-auto object-contain object-bottom sm:max-h-[440px] lg:max-h-[520px]"
+          style={{
+            maskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
+          }}
+        />
       </div>
     </div>
   );

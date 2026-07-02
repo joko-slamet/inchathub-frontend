@@ -27,23 +27,13 @@ export interface SiteContent {
   };
   hero: {
     eyebrow: string;
-    headline: string;
-    subheadline: string;
+    headlineMain: string;
+    headlineAccent: string;
+    subheadlineAccent: string;
+    subheadlineMain: string;
     ctaPrimary: string;
     ctaSecondary: string;
     channelsLabel: string;
-    inboxCard: {
-      title: string;
-      subtitle: string;
-      onlineLabel: string;
-      messages: {
-        name: string;
-        channel: string;
-        preview: string;
-        time: string;
-        unread: boolean;
-      }[];
-    };
   };
   problem: {
     eyebrow: string;
