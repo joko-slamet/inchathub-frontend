@@ -14,7 +14,7 @@ export const en: SiteContent = {
 
   nav: {
     links: [
-      { label: "Product", href: "/#produk" },
+      { label: "Product", href: "/product" },
       { label: "Pricing", href: "/pricing" },
       { label: "Contact Us", href: "/contact-us" },
       { label: "About Us", href: "/about-us" },
@@ -155,6 +155,11 @@ export const en: SiteContent = {
 
   aboutHero: {
     heading: "We Create the Future of Communication",
+  },
+
+  productHero: {
+    heading: "One Product, Everything Your Business Needs",
+    subheading: "From a unified inbox, AI Chatbot, and Smart CRM, to WhatsApp Business — every ChatHub feature in one place.",
   },
 
   about: {

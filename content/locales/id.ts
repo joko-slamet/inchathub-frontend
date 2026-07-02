@@ -14,7 +14,7 @@ export const id: SiteContent = {
 
   nav: {
     links: [
-      { label: "Produk", href: "/#produk" },
+      { label: "Produk", href: "/product" },
       { label: "Harga", href: "/pricing" },
       { label: "Hubungi Kami", href: "/contact-us" },
       { label: "Tentang Kami", href: "/about-us" },
@@ -156,6 +156,11 @@ export const id: SiteContent = {
 
   aboutHero: {
     heading: "Kami Menciptakan Masa Depan Komunikasi",
+  },
+
+  productHero: {
+    heading: "Satu Produk, Semua yang Bisnis Anda Butuhkan",
+    subheading: "Dari inbox terpadu, AI Chatbot, Smart CRM, sampai WhatsApp Business — semua fitur ChatHub dalam satu halaman.",
   },
 
   about: {

@@ -100,6 +100,10 @@ export interface SiteContent {
   aboutHero: {
     heading: string;
   };
+  productHero: {
+    heading: string;
+    subheading: string;
+  };
   about: {
     paragraphs: string[];
     countriesLabel: string;
