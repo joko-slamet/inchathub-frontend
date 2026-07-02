@@ -67,12 +67,12 @@ export function Industries({
         </div>
       </ScrollReveal>
 
-      <ScrollReveal delay={0.2} className="mt-16">
+      {/* <ScrollReveal delay={0.2} className="mt-16">
         <p className="text-center font-mono text-xs tracking-widest text-ink/40 uppercase">
           {content.logoStripLabel}
-        </p>
+        </p> */}
         {/* TODO: replace these name tiles with official client logo artwork once written permission is obtained from each institution/hospital/company. */}
-        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+        {/* <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
           {clients.map((clientName) => (
             <div
               key={clientName}
@@ -87,7 +87,7 @@ export function Industries({
             </span>
           </div>
         </div>
-      </ScrollReveal>
+      </ScrollReveal> */}
     </Section>
   );
 }
