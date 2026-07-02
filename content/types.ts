@@ -97,6 +97,15 @@ export interface SiteContent {
     heading: string;
     subheading: string;
   };
+  aboutHero: {
+    heading: string;
+  };
+  about: {
+    paragraphs: string[];
+    countriesLabel: string;
+    countries: string[];
+    countriesMoreLabel: string;
+  };
   contact: {
     eyebrow: string;
     titleMain: string;

@@ -10,7 +10,7 @@ export function PageHero({
 }: {
   icon: IconType;
   heading: string;
-  subheading: string;
+  subheading?: string;
 }) {
   return (
     <section
@@ -40,14 +40,16 @@ export function PageHero({
           {heading}
         </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 text-base leading-relaxed text-ink/65 sm:text-lg"
-        >
-          {subheading}
-        </motion.p>
+        {subheading && (
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-4 text-base leading-relaxed text-ink/65 sm:text-lg"
+          >
+            {subheading}
+          </motion.p>
+        )}
       </div>
     </section>
   );

@@ -17,6 +17,7 @@ export const en: SiteContent = {
       { label: "Product", href: "/#produk" },
       { label: "Pricing", href: "/pricing" },
       { label: "Contact Us", href: "/contact-us" },
+      { label: "About Us", href: "/about-us" },
     ],
     ctaSecondary: "Try for Free",
     ctaPrimary: "Request Demo",
@@ -150,6 +151,22 @@ export const en: SiteContent = {
   contactHero: {
     heading: "Have a Question? Our Team Is Ready to Help.",
     subheading: "Reach us on WhatsApp, Instagram, or fill out the form below — our team will get back to you as soon as possible.",
+  },
+
+  aboutHero: {
+    heading: "We Create the Future of Communication",
+  },
+
+  about: {
+    paragraphs: [
+      "PT Chat Hub Indonesia, based in Jakarta, builds the next generation of business communication through a unified omnichannel experience. We connect every customer interaction into one seamless flow—ensuring conversations remain consistent, contextual, and effortless across all channels.",
+      "Our platform is fully engineered in-house, giving us complete control to customize and evolve each solution to fit real client needs. This enables faster adaptation, deeper personalization, and a level of flexibility that off-the-shelf platforms simply can't match.",
+      "Powered by AI-driven channels and intelligent chatbots, our technology understands intent, responds instantly, and works 24/7 as a natural extension of your team—driving efficiency, engagement, and measurable business impact.",
+      "With global aggregator partnerships across Singapore, China, India, Dubai, the United States, and beyond, we make cross-border communication and local market entry faster and easier. This is where conversations become a true competitive advantage.",
+    ],
+    countriesLabel: "Global Partnerships",
+    countries: ["Singapore", "China", "India", "Dubai", "United States"],
+    countriesMoreLabel: "+ and beyond",
   },
 
   contact: {

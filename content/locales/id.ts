@@ -17,6 +17,7 @@ export const id: SiteContent = {
       { label: "Produk", href: "/#produk" },
       { label: "Harga", href: "/pricing" },
       { label: "Hubungi Kami", href: "/contact-us" },
+      { label: "Tentang Kami", href: "/about-us" },
     ],
     ctaSecondary: "Coba Gratis",
     ctaPrimary: "Request Demo",
@@ -151,6 +152,22 @@ export const id: SiteContent = {
   contactHero: {
     heading: "Ada Pertanyaan? Tim Kami Siap Membantu.",
     subheading: "Hubungi kami lewat WhatsApp, Instagram, atau isi form di bawah — tim kami akan merespons secepat mungkin.",
+  },
+
+  aboutHero: {
+    heading: "Kami Menciptakan Masa Depan Komunikasi",
+  },
+
+  about: {
+    paragraphs: [
+      "PT Chat Hub Indonesia, yang berbasis di Jakarta, membangun generasi berikutnya dari komunikasi bisnis lewat pengalaman omnichannel yang terpadu. Kami menghubungkan setiap interaksi pelanggan ke dalam satu alur yang mulus — memastikan percakapan tetap konsisten, kontekstual, dan tanpa hambatan di semua channel.",
+      "Platform kami dibangun sepenuhnya secara in-house, memberi kami kendali penuh untuk menyesuaikan dan mengembangkan setiap solusi sesuai kebutuhan nyata klien. Ini memungkinkan adaptasi yang lebih cepat, personalisasi yang lebih dalam, dan fleksibilitas yang tidak bisa ditandingi platform siap pakai.",
+      "Didukung channel berbasis AI dan chatbot cerdas, teknologi kami memahami maksud pelanggan, merespons secara instan, dan bekerja 24/7 layaknya perpanjangan tangan alami dari tim Anda — mendorong efisiensi, engagement, dan dampak bisnis yang terukur.",
+      "Dengan kemitraan aggregator global di Singapura, China, India, Dubai, Amerika Serikat, dan lainnya, kami membuat komunikasi lintas negara dan ekspansi ke pasar lokal jadi lebih cepat dan mudah. Di sinilah percakapan berubah menjadi keunggulan kompetitif yang nyata.",
+    ],
+    countriesLabel: "Kemitraan Global",
+    countries: ["Singapura", "China", "India", "Dubai", "Amerika Serikat"],
+    countriesMoreLabel: "+ lainnya",
   },
 
   contact: {
