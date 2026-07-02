@@ -14,11 +14,11 @@ export const id: SiteContent = {
 
   nav: {
     links: [
-      { label: "Produk", href: "#produk" },
-      { label: "Solusi", href: "#solusi" },
-      { label: "Industri", href: "#industri" },
-      { label: "Harga", href: "#harga" },
-      { label: "Kontak", href: "#kontak" },
+      { label: "Produk", href: "/#produk" },
+      { label: "Solusi", href: "/#solusi" },
+      { label: "Industri", href: "/#industri" },
+      { label: "Harga", href: "/pricing" },
+      { label: "Kontak", href: "/#kontak" },
     ],
     ctaSecondary: "Coba Gratis",
     ctaPrimary: "Request Demo",
@@ -143,6 +143,11 @@ export const id: SiteContent = {
       { title: "Scalable System", description: "Satu sistem fleksibel yang mampu mengikuti skala bisnis Anda." },
       { title: "Affordable Rate", description: "Tarif kompetitif dan transparan tanpa biaya tersembunyi." },
     ],
+  },
+
+  pricingHero: {
+    heading: "Biaya fleksibel untuk AI Chatbot, Omnichannel, CRM, dan Chat Center — siap pakai dalam hitungan menit, tanpa ribet.",
+    subheading: "Mulai dari skala kecil hingga enterprise dengan Broadcast & Data Scraper — biaya efisien, performa maksimal.",
   },
 
   pricing: {

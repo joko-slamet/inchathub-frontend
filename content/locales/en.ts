@@ -14,11 +14,11 @@ export const en: SiteContent = {
 
   nav: {
     links: [
-      { label: "Product", href: "#produk" },
-      { label: "Solutions", href: "#solusi" },
-      { label: "Industries", href: "#industri" },
-      { label: "Pricing", href: "#harga" },
-      { label: "Contact", href: "#kontak" },
+      { label: "Product", href: "/#produk" },
+      { label: "Solutions", href: "/#solusi" },
+      { label: "Industries", href: "/#industri" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Contact", href: "/#kontak" },
     ],
     ctaSecondary: "Try for Free",
     ctaPrimary: "Request Demo",
@@ -142,6 +142,11 @@ export const en: SiteContent = {
       { title: "Scalable System", description: "One flexible system that grows right along with your business." },
       { title: "Affordable Rate", description: "Competitive, transparent pricing with no hidden fees." },
     ],
+  },
+
+  pricingHero: {
+    heading: "Flexible pricing for AI Chatbot, Omnichannel, CRM, and Chat Center — ready to use within minutes, no hassle.",
+    subheading: "From small scale to enterprise, with Broadcast & Data Scraper — efficient cost, maximum performance.",
   },
 
   pricing: {

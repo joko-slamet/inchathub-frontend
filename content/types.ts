@@ -89,6 +89,10 @@ export interface SiteContent {
     titleAccent: string;
     points: { title: string; description: string }[];
   };
+  pricingHero: {
+    heading: string;
+    subheading: string;
+  };
   pricing: {
     eyebrow: string;
     titleMain: string;
