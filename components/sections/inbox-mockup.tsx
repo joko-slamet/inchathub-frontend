@@ -1,15 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { channels } from "@/content/site-content";
-import { Icon } from "@/components/ui/icon-map";
+import { MessageCircle, Camera, Mail, Globe, Send, type LucideIcon } from "lucide-react";
 import type { omnichannel } from "@/content/site-content";
 
 type Conversation = (typeof omnichannel)["inboxMockup"]["conversations"][number];
 
-function findChannel(badge: string) {
-  return channels.find((c) => c.badge === badge) ?? channels[0];
-}
+// Keyed by the `channel` badge used in omnichannel.inboxMockup.conversations.
+const channelIcons: Record<string, LucideIcon> = {
+  WA: MessageCircle,
+  IG: Camera,
+  MAIL: Mail,
+  WEB: Globe,
+  TG: Send,
+};
 
 export function InboxMockup({ conversations }: { conversations: Conversation[] }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -24,7 +28,7 @@ export function InboxMockup({ conversations }: { conversations: Conversation[] }
       </div>
       <ul className="divide-y divide-line">
         {conversations.map((conversation, index) => {
-          const channel = findChannel(conversation.channel);
+          const ChannelIcon = channelIcons[conversation.channel] ?? MessageCircle;
           const active = index === activeIndex;
           return (
             <li key={conversation.name}>
@@ -36,7 +40,7 @@ export function InboxMockup({ conversations }: { conversations: Conversation[] }
                 }`}
               >
                 <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-ink/5 text-ink/60">
-                  <Icon name={channel.icon} className="size-4" />
+                  <ChannelIcon className="size-4" strokeWidth={1.75} />
                 </span>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">

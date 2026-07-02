@@ -1,8 +1,40 @@
+import {
+  MessageCircle,
+  Camera,
+  MessageSquare,
+  Send,
+  Mail,
+  Globe,
+  Video,
+  AtSign,
+  Hash,
+  TrendingUp,
+  BarChart3,
+  Building2,
+  Bot,
+  Gauge,
+  type LucideIcon,
+} from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { Icon } from "@/components/ui/icon-map";
 import { Logo } from "@/components/ui/logo";
 import { problem, channels } from "@/content/site-content";
+
+// Keyed by Channel.badge — keep in sync with content/site-content.ts `channels`.
+const channelIcons: Record<string, LucideIcon> = {
+  WA: MessageCircle,
+  IG: Camera,
+  FB: MessageSquare,
+  TG: Send,
+  MAIL: Mail,
+  WEB: Globe,
+  TEAMS: Video,
+  TH: AtSign,
+  X: Hash,
+};
+
+// Positional match with problem.teams in content/site-content.ts — keep order in sync.
+const teamIcons: LucideIcon[] = [MessageCircle, TrendingUp, BarChart3, Building2, Bot, Gauge];
 
 export function Problem() {
   return (
@@ -34,17 +66,20 @@ export function Problem() {
                   {problem.flowChannelsLabel}
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {channels.map((channel) => (
-                    <span
-                      key={channel.badge}
-                      className="flex items-center gap-1.5 rounded-lg border border-line bg-paper px-2.5 py-1.5"
-                    >
-                      <Icon name={channel.icon} className="size-3.5 text-ink/60" />
-                      <span className="font-mono text-[0.6rem] tracking-wider text-ink/50 uppercase">
-                        {channel.badge}
+                  {channels.map((channel) => {
+                    const ChannelIcon = channelIcons[channel.badge] ?? MessageCircle;
+                    return (
+                      <span
+                        key={channel.badge}
+                        className="flex items-center gap-1.5 rounded-lg border border-line bg-paper px-2.5 py-1.5"
+                      >
+                        <ChannelIcon className="size-3.5 text-ink/60" strokeWidth={1.75} />
+                        <span className="font-mono text-[0.6rem] tracking-wider text-ink/50 uppercase">
+                          {channel.badge}
+                        </span>
                       </span>
-                    </span>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
@@ -62,15 +97,18 @@ export function Problem() {
                   {problem.flowTeamsLabel}
                 </p>
                 <div className="mt-3 flex flex-col gap-2">
-                  {problem.teams.map((team) => (
-                    <div
-                      key={team.name}
-                      className="flex items-center gap-2.5 rounded-lg border border-line bg-paper px-3 py-2 md:justify-end md:flex-row-reverse"
-                    >
-                      <Icon name={team.icon} className="size-4 text-ink/60" />
-                      <span className="text-sm text-ink/75">{team.name}</span>
-                    </div>
-                  ))}
+                  {problem.teams.map((team, index) => {
+                    const TeamIcon = teamIcons[index];
+                    return (
+                      <div
+                        key={team.name}
+                        className="flex items-center gap-2.5 rounded-lg border border-line bg-paper px-3 py-2 md:justify-end md:flex-row-reverse"
+                      >
+                        <TeamIcon className="size-4 text-ink/60" strokeWidth={1.75} />
+                        <span className="text-sm text-ink/75">{team.name}</span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

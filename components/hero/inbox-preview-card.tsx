@@ -1,12 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { channels, hero } from "@/content/site-content";
-import { Icon } from "@/components/ui/icon-map";
+import {
+  MessageCircle,
+  Camera,
+  Mail,
+  type LucideIcon,
+} from "lucide-react";
+import { hero } from "@/content/site-content";
 
-function findChannel(badge: string) {
-  return channels.find((c) => c.badge === badge) ?? channels[0];
-}
+// Keyed by the `channel` badge used in hero.inboxCard.messages.
+const channelIcons: Record<string, LucideIcon> = {
+  WA: MessageCircle,
+  IG: Camera,
+  MAIL: Mail,
+};
 
 export function InboxPreviewCard() {
   return (
@@ -31,7 +39,7 @@ export function InboxPreviewCard() {
 
       <ul className="divide-y divide-line">
         {hero.inboxCard.messages.map((message, index) => {
-          const channel = findChannel(message.channel);
+          const ChannelIcon = channelIcons[message.channel] ?? MessageCircle;
           return (
             <motion.li
               key={message.name}
@@ -41,7 +49,7 @@ export function InboxPreviewCard() {
               className="flex items-start gap-3 px-5 py-3.5"
             >
               <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-signal-dim text-signal">
-                <Icon name={channel.icon} className="size-4" />
+                <ChannelIcon className="size-4" strokeWidth={1.75} />
               </span>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center justify-between gap-2">

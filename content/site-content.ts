@@ -1,67 +1,23 @@
 // Single source of truth for all landing page copy.
 // Edit here to change any text on the page — components only render this data.
-
-export type IconKey =
-  | "message-circle"
-  | "camera"
-  | "message-square"
-  | "send"
-  | "mail"
-  | "globe"
-  | "video"
-  | "at-sign"
-  | "hash"
-  | "inbox"
-  | "users"
-  | "history"
-  | "sticky-note"
-  | "ticket"
-  | "bar-chart-3"
-  | "shield-check"
-  | "bot"
-  | "filter"
-  | "help-circle"
-  | "user-check"
-  | "book-open"
-  | "workflow"
-  | "route"
-  | "list-checks"
-  | "bell"
-  | "trending-up"
-  | "zap"
-  | "check-check"
-  | "clock"
-  | "sparkles"
-  | "graduation-cap"
-  | "heart-pulse"
-  | "hotel"
-  | "factory"
-  | "shopping-bag"
-  | "landmark"
-  | "hand-heart"
-  | "building-2"
-  | "truck"
-  | "clapperboard"
-  | "smartphone"
-  | "gauge"
-  | "arrow-right";
+// Icons are intentionally not stored here: each component imports the lucide-react
+// icons it needs directly, keeping this file plain text/data.
 
 export interface Channel {
   name: string;
   badge: string;
-  icon: IconKey;
 }
 
 export const channels: Channel[] = [
-  { name: "WhatsApp", badge: "WA", icon: "message-circle" },
-  { name: "Instagram", badge: "IG", icon: "camera" },
-  { name: "Facebook", badge: "FB", icon: "message-square" },
-  { name: "Telegram", badge: "TG", icon: "send" },
-  { name: "Email", badge: "MAIL", icon: "mail" },
-  { name: "Web Chat", badge: "WEB", icon: "globe" },
-  { name: "Teams", badge: "TEAMS", icon: "video" },
-  { name: "Threads", badge: "TH", icon: "at-sign" },
-  { name: "X", badge: "X", icon: "hash" },
+  { name: "WhatsApp", badge: "WA" },
+  { name: "Instagram", badge: "IG" },
+  { name: "Facebook", badge: "FB" },
+  { name: "Telegram", badge: "TG" },
+  { name: "Email", badge: "MAIL" },
+  { name: "Web Chat", badge: "WEB" },
+  { name: "Teams", badge: "TEAMS" },
+  { name: "Threads", badge: "TH" },
+  { name: "X", badge: "X" },
 ];
 
 export const nav = {
@@ -128,12 +84,12 @@ export const problem = {
   flowHubLabel: "ChatHub",
   flowTeamsLabel: "Terdistribusi rapi ke tim yang tepat",
   teams: [
-    { name: "Customer Service", icon: "message-circle" as IconKey },
-    { name: "Sales", icon: "trending-up" as IconKey },
-    { name: "Marketing", icon: "bar-chart-3" as IconKey },
-    { name: "Management", icon: "building-2" as IconKey },
-    { name: "AI Assistant", icon: "bot" as IconKey },
-    { name: "Analytics", icon: "gauge" as IconKey },
+    { name: "Customer Service" },
+    { name: "Sales" },
+    { name: "Marketing" },
+    { name: "Management" },
+    { name: "AI Assistant" },
+    { name: "Analytics" },
   ],
 };
 
@@ -144,46 +100,39 @@ export const omnichannel = {
     "Setiap pesan yang masuk otomatis tersusun dalam satu tampilan yang bisa dikerjakan bersama tim, tanpa perlu berpindah-pindah aplikasi atau login banyak akun berbeda.",
   features: [
     {
-      icon: "inbox" as IconKey,
       title: "Unified Inbox",
       description: "Semua chat dari WhatsApp, Instagram, Email, dan channel lain masuk ke satu tampilan yang sama.",
     },
     {
-      icon: "users" as IconKey,
       title: "Kolaborasi Multi-Agent",
       description: "Beberapa agent bisa menangani satu inbox bersama tanpa saling tabrak balasan.",
     },
     {
-      icon: "history" as IconKey,
       title: "Riwayat Pelanggan",
       description: "Histori percakapan lengkap tersimpan otomatis, siapa pun agent yang membalas duluan.",
     },
     {
-      icon: "sticky-note" as IconKey,
       title: "Catatan Internal",
       description: "Tim bisa meninggalkan catatan di dalam chat tanpa pernah terlihat oleh pelanggan.",
     },
     {
-      icon: "ticket" as IconKey,
       title: "Manajemen Tiket",
       description: "Setiap percakapan bisa diubah jadi tiket dengan status dan prioritas yang jelas.",
     },
     {
-      icon: "bar-chart-3" as IconKey,
       title: "Analitik Performa",
       description: "Pantau kecepatan respons dan beban kerja tiap agent secara real-time.",
     },
     {
-      icon: "shield-check" as IconKey,
       title: "Kontrol Akses Berbasis Peran",
       description: "Atur siapa yang boleh melihat, membalas, atau mengelola percakapan tertentu.",
     },
   ],
   impact: [
-    { label: "Respon Lebih Cepat", icon: "zap" as IconKey },
-    { label: "Pengalaman Pelanggan Lebih Baik", icon: "sparkles" as IconKey },
-    { label: "Produktivitas Tim Meningkat", icon: "trending-up" as IconKey },
-    { label: "Kepuasan Pelanggan Lebih Tinggi", icon: "check-check" as IconKey },
+    { label: "Respon Lebih Cepat" },
+    { label: "Pengalaman Pelanggan Lebih Baik" },
+    { label: "Produktivitas Tim Meningkat" },
+    { label: "Kepuasan Pelanggan Lebih Tinggi" },
   ],
   inboxMockup: {
     conversations: [
@@ -204,23 +153,23 @@ export const aiCrm = {
   chatbot: {
     title: "AI Chatbot",
     points: [
-      { icon: "bot" as IconKey, title: "Respon Otomatis", description: "Membalas pesan masuk dalam hitungan detik, kapan pun pelanggan menghubungi." },
-      { icon: "filter" as IconKey, title: "Kualifikasi Lead", description: "Menyaring pertanyaan sekadar iseng dari calon pembeli yang benar-benar serius." },
-      { icon: "help-circle" as IconKey, title: "Otomasi FAQ", description: "Pertanyaan yang berulang-ulang setiap hari dijawab otomatis tanpa melibatkan agent." },
-      { icon: "smartphone" as IconKey, title: "Swalayan Pelanggan", description: "Pelanggan bisa cek status pesanan atau info produk sendiri, tanpa menunggu balasan." },
-      { icon: "book-open" as IconKey, title: "Basis Pengetahuan AI", description: "AI belajar dari materi dan katalog bisnis Anda sendiri, bukan jawaban generik." },
-      { icon: "user-check" as IconKey, title: "Eskalasi ke Manusia", description: "Percakapan yang butuh sentuhan personal otomatis dialihkan ke agent yang tepat." },
+      { title: "Respon Otomatis", description: "Membalas pesan masuk dalam hitungan detik, kapan pun pelanggan menghubungi." },
+      { title: "Kualifikasi Lead", description: "Menyaring pertanyaan sekadar iseng dari calon pembeli yang benar-benar serius." },
+      { title: "Otomasi FAQ", description: "Pertanyaan yang berulang-ulang setiap hari dijawab otomatis tanpa melibatkan agent." },
+      { title: "Swalayan Pelanggan", description: "Pelanggan bisa cek status pesanan atau info produk sendiri, tanpa menunggu balasan." },
+      { title: "Basis Pengetahuan AI", description: "AI belajar dari materi dan katalog bisnis Anda sendiri, bukan jawaban generik." },
+      { title: "Eskalasi ke Manusia", description: "Percakapan yang butuh sentuhan personal otomatis dialihkan ke agent yang tepat." },
     ],
   },
   crm: {
     title: "Smart CRM",
     points: [
-      { icon: "users" as IconKey, title: "Manajemen Lead", description: "Semua calon pelanggan tercatat rapi lengkap dengan sumber dan riwayat kontaknya." },
-      { icon: "route" as IconKey, title: "Sales Pipeline", description: "Pantau setiap peluang penjualan dari kontak pertama sampai closing dalam satu papan." },
-      { icon: "workflow" as IconKey, title: "Pelacakan Customer Journey", description: "Lihat seluruh perjalanan pelanggan lintas channel, bukan cuma potongan chat terakhir." },
-      { icon: "list-checks" as IconKey, title: "Otomasi Tugas", description: "Tugas tindak lanjut otomatis dibuat begitu status percakapan berubah." },
-      { icon: "bell" as IconKey, title: "Monitoring Follow-Up", description: "Sistem mengingatkan tim sebelum sebuah lead kelamaan tidak dihubungi." },
-      { icon: "bar-chart-3" as IconKey, title: "Analitik Performa", description: "Ukur konversi tiap tahap pipeline untuk tahu di mana penjualan sering mandek." },
+      { title: "Manajemen Lead", description: "Semua calon pelanggan tercatat rapi lengkap dengan sumber dan riwayat kontaknya." },
+      { title: "Sales Pipeline", description: "Pantau setiap peluang penjualan dari kontak pertama sampai closing dalam satu papan." },
+      { title: "Pelacakan Customer Journey", description: "Lihat seluruh perjalanan pelanggan lintas channel, bukan cuma potongan chat terakhir." },
+      { title: "Otomasi Tugas", description: "Tugas tindak lanjut otomatis dibuat begitu status percakapan berubah." },
+      { title: "Monitoring Follow-Up", description: "Sistem mengingatkan tim sebelum sebuah lead kelamaan tidak dihubungi." },
+      { title: "Analitik Performa", description: "Ukur konversi tiap tahap pipeline untuk tahu di mana penjualan sering mandek." },
     ],
   },
   pipeline: {
@@ -239,11 +188,11 @@ export const whatsapp = {
   description:
     "Nyaris semua pelanggan Anda sudah punya WhatsApp terpasang, dan mereka berharap bisnis Anda ada di sana juga. Masalahnya, satu nomor WhatsApp yang dipegang bergantian oleh beberapa staf gampang berujung pada balasan yang tumpang tindih atau malah tidak terbalas sama sekali.",
   points: [
-    { icon: "shield-check" as IconKey, title: "Official API", description: "Terhubung resmi lewat WhatsApp Business API, bukan aplikasi multi-device tidak resmi yang berisiko diblokir." },
-    { icon: "bot" as IconKey, title: "AI Chatbot Ready", description: "Bisa langsung dipasangi AI Chatbot untuk menyambut dan menyaring chat yang masuk." },
-    { icon: "workflow" as IconKey, title: "Integrasi CRM", description: "Setiap percakapan otomatis tercatat sebagai lead di Smart CRM, tanpa entri data manual." },
-    { icon: "inbox" as IconKey, title: "Terhubung Omnichannel", description: "Satu nomor WhatsApp bekerja berdampingan dengan channel lain dalam inbox yang sama." },
-    { icon: "hand-heart" as IconKey, title: "Dukungan Lokal", description: "Tim support berbahasa Indonesia yang paham cara kerja bisnis lokal, bukan tiket ke luar negeri." },
+    { title: "Official API", description: "Terhubung resmi lewat WhatsApp Business API, bukan aplikasi multi-device tidak resmi yang berisiko diblokir." },
+    { title: "AI Chatbot Ready", description: "Bisa langsung dipasangi AI Chatbot untuk menyambut dan menyaring chat yang masuk." },
+    { title: "Integrasi CRM", description: "Setiap percakapan otomatis tercatat sebagai lead di Smart CRM, tanpa entri data manual." },
+    { title: "Terhubung Omnichannel", description: "Satu nomor WhatsApp bekerja berdampingan dengan channel lain dalam inbox yang sama." },
+    { title: "Dukungan Lokal", description: "Tim support berbahasa Indonesia yang paham cara kerja bisnis lokal, bukan tiket ke luar negeri." },
   ],
   chatMockup: {
     contactName: "Toko Berkah Jaya",
@@ -267,16 +216,16 @@ export const industries = {
     { value: "Pemerintah & Kesehatan", label: "Sektor yang Mempercayai Kami" },
   ],
   list: [
-    { name: "Pendidikan", icon: "graduation-cap" as IconKey },
-    { name: "Kesehatan", icon: "heart-pulse" as IconKey },
-    { name: "Hospitality", icon: "hotel" as IconKey },
-    { name: "Manufaktur", icon: "factory" as IconKey },
-    { name: "Retail & E-commerce", icon: "shopping-bag" as IconKey },
-    { name: "Perbankan & Keuangan", icon: "landmark" as IconKey },
-    { name: "NGO / Non-Profit", icon: "hand-heart" as IconKey },
-    { name: "Pemerintahan", icon: "building-2" as IconKey },
-    { name: "Logistik & Transportasi", icon: "truck" as IconKey },
-    { name: "Media & Hiburan", icon: "clapperboard" as IconKey },
+    { name: "Pendidikan" },
+    { name: "Kesehatan" },
+    { name: "Hospitality" },
+    { name: "Manufaktur" },
+    { name: "Retail & E-commerce" },
+    { name: "Perbankan & Keuangan" },
+    { name: "NGO / Non-Profit" },
+    { name: "Pemerintahan" },
+    { name: "Logistik & Transportasi" },
+    { name: "Media & Hiburan" },
   ],
   logoPlaceholderCount: 8,
 };
@@ -293,8 +242,8 @@ export const footer = {
   tagline: "Connecting Conversations. Accelerating Growth.",
   taglineSecondary: "Turning Conversations into Conversions.",
   social: [
-    { label: "Instagram", href: "https://instagram.com/chathub.id", icon: "camera" as IconKey },
-    { label: "WhatsApp", href: "https://wa.me/6280000000000", icon: "message-circle" as IconKey },
+    { label: "Instagram", href: "https://instagram.com/chathub.id" },
+    { label: "WhatsApp", href: "https://wa.me/6280000000000" },
   ],
   companyName: "PT Chat Hub Indonesia",
   companyNote: "Member of PT Oval Indonesia",

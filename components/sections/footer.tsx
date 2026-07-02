@@ -1,6 +1,9 @@
+import { Camera, MessageCircle, type LucideIcon } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
-import { Icon } from "@/components/ui/icon-map";
 import { footer, nav } from "@/content/site-content";
+
+// Positional match with footer.social in content/site-content.ts — keep order in sync.
+const socialIcons: LucideIcon[] = [Camera, MessageCircle];
 
 export function Footer() {
   return (
@@ -13,18 +16,21 @@ export function Footer() {
             <p className="text-sm leading-relaxed text-ink/60">{footer.taglineSecondary}</p>
 
             <div className="mt-6 flex items-center gap-3">
-              {footer.social.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={item.label}
-                  className="flex size-9 items-center justify-center rounded-full border border-line text-ink/60 transition-colors hover:border-ink hover:text-ink"
-                >
-                  <Icon name={item.icon} className="size-4" />
-                </a>
-              ))}
+              {footer.social.map((item, index) => {
+                const SocialIcon = socialIcons[index];
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={item.label}
+                    className="flex size-9 items-center justify-center rounded-full border border-line text-ink/60 transition-colors hover:border-ink hover:text-ink"
+                  >
+                    <SocialIcon className="size-4" strokeWidth={1.75} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
