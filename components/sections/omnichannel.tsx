@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { omnichannel } from "@/content/site-content";
+import type { SiteContent } from "@/content/site-content";
 import { InboxMockup } from "@/components/sections/inbox-mockup";
 
 // Positional match with omnichannel.features in content/site-content.ts — keep order in sync.
@@ -23,17 +23,17 @@ const featureIcons: LucideIcon[] = [Inbox, Users, History, StickyNote, Ticket, B
 // Positional match with omnichannel.impact in content/site-content.ts — keep order in sync.
 const impactIcons: LucideIcon[] = [Zap, Sparkles, TrendingUp, CheckCheck];
 
-export function Omnichannel() {
+export function Omnichannel({ content }: { content: SiteContent["omnichannel"] }) {
   return (
     <Section
       id="produk"
-      eyebrow={omnichannel.eyebrow}
-      title={omnichannel.title}
-      description={omnichannel.description}
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
     >
       <div className="mt-14 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <div className="grid gap-4 sm:grid-cols-2">
-          {omnichannel.features.map((feature, index) => {
+          {content.features.map((feature, index) => {
             const FeatureIcon = featureIcons[index];
             return (
               <ScrollReveal key={feature.title} delay={index * 0.05}>
@@ -52,13 +52,13 @@ export function Omnichannel() {
         </div>
 
         <ScrollReveal delay={0.15} className="lg:sticky lg:top-24">
-          <InboxMockup conversations={omnichannel.inboxMockup.conversations} />
+          <InboxMockup content={content.inboxMockup} />
         </ScrollReveal>
       </div>
 
       <ScrollReveal delay={0.1} className="mt-16 border-t border-line pt-10">
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
-          {omnichannel.impact.map((item, index) => {
+          {content.impact.map((item, index) => {
             const ImpactIcon = impactIcons[index];
             return (
               <div key={item.label} className="flex flex-col items-start gap-3">

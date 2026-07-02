@@ -1,24 +1,24 @@
 import { CheckCheck } from "lucide-react";
-import { whatsapp } from "@/content/site-content";
+import type { SiteContent } from "@/content/site-content";
 
-export function WhatsappChatMockup() {
+export function WhatsappChatMockup({ content }: { content: SiteContent["whatsapp"]["chatMockup"] }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-line bg-paper shadow-[0_24px_64px_-32px_rgba(20,16,15,0.3)]">
       <div className="flex items-center gap-3 bg-ink px-5 py-4">
         <span className="flex size-9 items-center justify-center rounded-full bg-paper/10 font-display text-sm font-semibold text-paper">
-          {whatsapp.chatMockup.contactName.charAt(0)}
+          {content.contactName.charAt(0)}
         </span>
         <div>
-          <p className="text-sm font-semibold text-paper">{whatsapp.chatMockup.contactName}</p>
+          <p className="text-sm font-semibold text-paper">{content.contactName}</p>
           <span className="flex items-center gap-1.5 font-mono text-[0.65rem] text-paper/50">
             <span className="size-1.5 rounded-full bg-ok" />
-            WhatsApp Business
+            {content.statusLabel}
           </span>
         </div>
       </div>
 
       <div className="space-y-3 bg-[repeating-linear-gradient(135deg,var(--color-line)_0px,var(--color-line)_1px,transparent_1px,transparent_18px)] bg-ink/[0.015] px-5 py-6">
-        {whatsapp.chatMockup.messages.map((message, index) => (
+        {content.messages.map((message, index) => (
           <div
             key={index}
             className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm shadow-sm ${

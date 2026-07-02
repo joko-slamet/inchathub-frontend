@@ -4,7 +4,8 @@
       "Bash(grep -iE \"^\\(framer-motion|lucide-react|motion\\)$\")",
       "Bash(grep -iE \"^\\(message-circle|instagram|facebook|send|mail|globe|users|hash|inbox|history|sticky-note|ticket|bar-chart-3|shield-check|bot|filter|help-circle|user-check|book-open|arrow-up-right|workflow|git-branch|route|list-checks|bell|trending-up|zap|heart|award|graduation-cap|heart-pulse|hotel|factory|shopping-bag|landmark|hand-heart|building-2|truck|clapperboard|check-check|clock|sparkles|message-square|at-sign|video|layers|target|repeat|calendar-check|user-plus|network|share-2|square-check-big\\)\\\\.js$\")",
       "Bash(python3 -c ' *)",
-      "Bash(identify public/images/logo.png)"
+      "Bash(identify public/images/logo.png)",
+      "Bash(python3 -)"
     ]
   }
 }

@@ -4,20 +4,21 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
-import { nav } from "@/content/site-content";
+import { LocaleSwitcher } from "@/components/ui/locale-switcher";
+import type { Locale, SiteContent } from "@/content/site-content";
 
-export function Navbar() {
+export function Navbar({ content, locale }: { content: SiteContent["nav"]; locale: Locale }) {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10 lg:px-16">
-        <a href="#" className="flex items-center" aria-label="ChatHub — kembali ke beranda">
+        <a href={`/${locale}`} className="flex items-center" aria-label="ChatHub">
           <Logo />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Navigasi utama">
-          {nav.links.map((link) => (
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+          {content.links.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -28,20 +29,23 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
-          <Button href="#kontak" variant="outline" size="md">
-            {nav.ctaSecondary}
-          </Button>
-          <Button href="#kontak" variant="primary" size="md">
-            {nav.ctaPrimary}
-          </Button>
+        <div className="hidden items-center gap-5 md:flex">
+          <LocaleSwitcher locale={locale} />
+          <div className="flex items-center gap-3">
+            <Button href="#kontak" variant="outline" size="md">
+              {content.ctaSecondary}
+            </Button>
+            <Button href="#kontak" variant="primary" size="md">
+              {content.ctaPrimary}
+            </Button>
+          </div>
         </div>
 
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
           className="flex size-10 items-center justify-center rounded-full border border-line md:hidden"
-          aria-label={open ? "Tutup menu" : "Buka menu"}
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -50,8 +54,8 @@ export function Navbar() {
 
       {open && (
         <div className="border-t border-line bg-paper px-6 py-6 md:hidden">
-          <nav className="flex flex-col gap-4" aria-label="Navigasi mobile">
-            {nav.links.map((link) => (
+          <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
+            {content.links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -62,12 +66,15 @@ export function Navbar() {
               </a>
             ))}
           </nav>
-          <div className="mt-6 flex flex-col gap-3">
+          <div className="mt-6 flex items-center justify-between">
+            <LocaleSwitcher locale={locale} />
+          </div>
+          <div className="mt-4 flex flex-col gap-3">
             <Button href="#kontak" variant="outline" size="md" onClick={() => setOpen(false)}>
-              {nav.ctaSecondary}
+              {content.ctaSecondary}
             </Button>
             <Button href="#kontak" variant="primary" size="md" onClick={() => setOpen(false)}>
-              {nav.ctaPrimary}
+              {content.ctaPrimary}
             </Button>
           </div>
         </div>

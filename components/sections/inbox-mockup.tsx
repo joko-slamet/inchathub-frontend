@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import { MessageCircle, Camera, Mail, Globe, Send, type LucideIcon } from "lucide-react";
-import type { omnichannel } from "@/content/site-content";
-
-type Conversation = (typeof omnichannel)["inboxMockup"]["conversations"][number];
+import type { SiteContent } from "@/content/site-content";
 
 // Keyed by the `channel` badge used in omnichannel.inboxMockup.conversations.
 const channelIcons: Record<string, LucideIcon> = {
@@ -15,15 +13,16 @@ const channelIcons: Record<string, LucideIcon> = {
   TG: Send,
 };
 
-export function InboxMockup({ conversations }: { conversations: Conversation[] }) {
+export function InboxMockup({ content }: { content: SiteContent["omnichannel"]["inboxMockup"] }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { conversations } = content;
 
   return (
     <div className="overflow-hidden rounded-2xl border border-line bg-paper shadow-[0_24px_64px_-32px_rgba(20,16,15,0.3)]">
       <div className="flex items-center justify-between border-b border-line px-5 py-3.5">
-        <span className="text-sm font-semibold text-ink">Unified Inbox</span>
+        <span className="text-sm font-semibold text-ink">{content.headerTitle}</span>
         <span className="font-mono text-[0.65rem] text-ink/40 uppercase">
-          {conversations.filter((c) => c.unread).length} belum dibaca
+          {conversations.filter((c) => c.unread).length} {content.unreadSuffix}
         </span>
       </div>
       <ul className="divide-y divide-line">

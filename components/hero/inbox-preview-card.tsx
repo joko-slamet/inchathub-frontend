@@ -7,7 +7,7 @@ import {
   Mail,
   type LucideIcon,
 } from "lucide-react";
-import { hero } from "@/content/site-content";
+import type { SiteContent } from "@/content/site-content";
 
 // Keyed by the `channel` badge used in hero.inboxCard.messages.
 const channelIcons: Record<string, LucideIcon> = {
@@ -16,7 +16,7 @@ const channelIcons: Record<string, LucideIcon> = {
   MAIL: Mail,
 };
 
-export function InboxPreviewCard() {
+export function InboxPreviewCard({ content }: { content: SiteContent["hero"]["inboxCard"] }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.94, y: 12 }}
@@ -26,19 +26,19 @@ export function InboxPreviewCard() {
     >
       <div className="flex items-center justify-between border-b border-line px-5 py-4">
         <div>
-          <p className="text-sm font-semibold text-ink">{hero.inboxCard.title}</p>
+          <p className="text-sm font-semibold text-ink">{content.title}</p>
           <p className="mt-0.5 font-mono text-[0.7rem] text-ink/50">
-            {hero.inboxCard.subtitle}
+            {content.subtitle}
           </p>
         </div>
         <span className="flex items-center gap-1.5 rounded-full bg-ok/10 px-2.5 py-1 font-mono text-[0.65rem] text-ok">
           <span className="size-1.5 rounded-full bg-ok" />
-          online
+          {content.onlineLabel}
         </span>
       </div>
 
       <ul className="divide-y divide-line">
-        {hero.inboxCard.messages.map((message, index) => {
+        {content.messages.map((message, index) => {
           const ChannelIcon = channelIcons[message.channel] ?? MessageCircle;
           return (
             <motion.li

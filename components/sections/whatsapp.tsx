@@ -1,24 +1,24 @@
 import { ShieldCheck, Bot, Workflow, Inbox, HandHeart, type LucideIcon } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { whatsapp } from "@/content/site-content";
+import type { SiteContent } from "@/content/site-content";
 import { WhatsappChatMockup } from "@/components/sections/whatsapp-chat-mockup";
 
-// Positional match with whatsapp.points in content/site-content.ts — keep order in sync.
+// Positional match with whatsapp.points in content — keep order in sync.
 const pointIcons: LucideIcon[] = [ShieldCheck, Bot, Workflow, Inbox, HandHeart];
 
-export function Whatsapp() {
+export function Whatsapp({ content }: { content: SiteContent["whatsapp"] }) {
   return (
     <Section
       id="whatsapp"
-      eyebrow={whatsapp.eyebrow}
-      title={whatsapp.title}
-      description={whatsapp.description}
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
     >
       <div className="mt-14 grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
         <ScrollReveal>
           <ul className="space-y-5">
-            {whatsapp.points.map((point, index) => {
+            {content.points.map((point, index) => {
               const PointIcon = pointIcons[index];
               return (
                 <li key={point.title} className="flex items-start gap-3.5">
@@ -36,7 +36,7 @@ export function Whatsapp() {
         </ScrollReveal>
 
         <ScrollReveal delay={0.15}>
-          <WhatsappChatMockup />
+          <WhatsappChatMockup content={content.chatMockup} />
         </ScrollReveal>
       </div>
     </Section>

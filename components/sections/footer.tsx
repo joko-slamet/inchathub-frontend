@@ -1,22 +1,31 @@
 import { Camera, MessageCircle, type LucideIcon } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
-import { footer, nav } from "@/content/site-content";
+import { LocaleSwitcher } from "@/components/ui/locale-switcher";
+import type { Locale, SiteContent } from "@/content/site-content";
 
-// Positional match with footer.social in content/site-content.ts — keep order in sync.
+// Positional match with footer.social in content — keep order in sync.
 const socialIcons: LucideIcon[] = [Camera, MessageCircle];
 
-export function Footer() {
+export function Footer({
+  content,
+  nav,
+  locale,
+}: {
+  content: SiteContent["footer"];
+  nav: SiteContent["nav"];
+  locale: Locale;
+}) {
   return (
     <footer className="border-t border-line bg-paper px-6 py-14 md:px-10 lg:px-16">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col justify-between gap-10 md:flex-row">
           <div className="max-w-sm">
             <Logo />
-            <p className="mt-4 text-sm leading-relaxed text-ink/60">{footer.tagline}</p>
-            <p className="text-sm leading-relaxed text-ink/60">{footer.taglineSecondary}</p>
+            <p className="mt-4 text-sm leading-relaxed text-ink/60">{content.tagline}</p>
+            <p className="text-sm leading-relaxed text-ink/60">{content.taglineSecondary}</p>
 
             <div className="mt-6 flex items-center gap-3">
-              {footer.social.map((item, index) => {
+              {content.social.map((item, index) => {
                 const SocialIcon = socialIcons[index];
                 return (
                   <a
@@ -36,7 +45,7 @@ export function Footer() {
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
             <div>
-              <p className="font-mono text-xs tracking-widest text-ink/40 uppercase">Navigasi</p>
+              <p className="font-mono text-xs tracking-widest text-ink/40 uppercase">{content.navLabel}</p>
               <ul className="mt-4 space-y-2.5">
                 {nav.links.map((link) => (
                   <li key={link.href}>
@@ -50,11 +59,11 @@ export function Footer() {
 
             <div className="col-span-2 sm:col-span-1">
               <p className="font-mono text-xs tracking-widest text-ink/40 uppercase">
-                {footer.companyName}
+                {content.companyName}
               </p>
-              <p className="mt-4 text-sm text-ink/55">{footer.companyNote}</p>
+              <p className="mt-4 text-sm text-ink/55">{content.companyNote}</p>
               <address className="mt-3 text-sm leading-relaxed text-ink/55 not-italic">
-                {footer.address.map((line) => (
+                {content.address.map((line) => (
                   <span key={line} className="block">
                     {line}
                   </span>
@@ -64,8 +73,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-line pt-6">
-          <p className="text-xs text-ink/45">{footer.copyright}</p>
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-line pt-6 sm:flex-row sm:items-center">
+          <p className="text-xs text-ink/45">{content.copyright}</p>
+          <LocaleSwitcher locale={locale} />
         </div>
       </div>
     </footer>

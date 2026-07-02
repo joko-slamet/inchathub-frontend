@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { MessageCircle, Camera, Send, Mail, MessageSquare, Globe } from "lucide-react";
+import type { SiteContent } from "@/content/site-content";
 import { InboxPreviewCard } from "@/components/hero/inbox-preview-card";
 
 const bubbleLayout = [
@@ -13,7 +14,7 @@ const bubbleLayout = [
   { badge: "WEB", icon: Globe, className: "top-[46%] left-[4%]", travel: { x: 70, y: 0 }, delay: 3.5 },
 ];
 
-export function ConvergenceVisual() {
+export function ConvergenceVisual({ inboxCard }: { inboxCard: SiteContent["hero"]["inboxCard"] }) {
   const shouldReduceMotion = useReducedMotion();
 
   return (
@@ -60,7 +61,7 @@ export function ConvergenceVisual() {
       ))}
 
       <div className="absolute inset-0 z-10 flex items-center justify-center lg:left-auto lg:right-0 lg:w-[360px] lg:justify-end">
-        <InboxPreviewCard />
+        <InboxPreviewCard content={inboxCard} />
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ import {
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Logo } from "@/components/ui/logo";
-import { problem, channels } from "@/content/site-content";
+import type { Channel, SiteContent } from "@/content/site-content";
 
 // Keyed by Channel.badge — keep in sync with content/site-content.ts `channels`.
 const channelIcons: Record<string, LucideIcon> = {
@@ -36,18 +36,24 @@ const channelIcons: Record<string, LucideIcon> = {
 // Positional match with problem.teams in content/site-content.ts — keep order in sync.
 const teamIcons: LucideIcon[] = [MessageCircle, TrendingUp, BarChart3, Building2, Bot, Gauge];
 
-export function Problem() {
+export function Problem({
+  content,
+  channels,
+}: {
+  content: SiteContent["problem"];
+  channels: Channel[];
+}) {
   return (
     <Section
       id="masalah"
-      eyebrow={problem.eyebrow}
-      title={problem.title}
-      description={problem.description}
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
     >
       <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)] lg:gap-16">
         <ScrollReveal delay={0.1}>
           <ul className="space-y-4">
-            {problem.painPoints.map((point) => (
+            {content.painPoints.map((point) => (
               <li key={point} className="flex items-start gap-3 border-b border-line pb-4">
                 <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-signal" />
                 <span className="text-sm leading-relaxed text-ink/75 sm:text-base">
@@ -63,7 +69,7 @@ export function Problem() {
             <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_auto_1fr]">
               <div>
                 <p className="font-mono text-[0.65rem] tracking-widest text-ink/40 uppercase">
-                  {problem.flowChannelsLabel}
+                  {content.flowChannelsLabel}
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {channels.map((channel) => {
@@ -87,17 +93,17 @@ export function Problem() {
                 <div className="flex flex-col items-center gap-2 rounded-2xl border border-signal/40 bg-signal/10 px-6 py-5">
                   <Logo className="h-6 w-auto" />
                   <span className="font-mono text-[0.6rem] tracking-widest text-ink/50 uppercase">
-                    {problem.flowHubLabel}
+                    {content.flowHubLabel}
                   </span>
                 </div>
               </div>
 
               <div>
                 <p className="font-mono text-[0.65rem] tracking-widest text-ink/40 uppercase md:text-right">
-                  {problem.flowTeamsLabel}
+                  {content.flowTeamsLabel}
                 </p>
                 <div className="mt-3 flex flex-col gap-2">
-                  {problem.teams.map((team, index) => {
+                  {content.teams.map((team, index) => {
                     const TeamIcon = teamIcons[index];
                     return (
                       <div

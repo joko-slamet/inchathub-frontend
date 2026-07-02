@@ -13,9 +13,9 @@ import {
 } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { industries } from "@/content/site-content";
+import type { SiteContent } from "@/content/site-content";
 
-// Positional match with industries.list in content/site-content.ts — keep order in sync.
+// Positional match with industries.list in content — keep order in sync.
 const industryIcons: LucideIcon[] = [
   GraduationCap,
   HeartPulse,
@@ -29,18 +29,18 @@ const industryIcons: LucideIcon[] = [
   Clapperboard,
 ];
 
-export function Industries() {
+export function Industries({ content }: { content: SiteContent["industries"] }) {
   return (
     <Section
       id="industri"
       align="center"
-      eyebrow={industries.eyebrow}
-      title={industries.title}
-      description={industries.description}
+      eyebrow={content.eyebrow}
+      title={content.title}
+      description={content.description}
     >
       <ScrollReveal delay={0.1} className="mt-14">
         <div className="grid grid-cols-1 gap-6 border-y border-line py-8 sm:grid-cols-3">
-          {industries.stats.map((stat) => (
+          {content.stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="font-display text-3xl font-semibold tracking-tight text-signal sm:text-4xl">
                 {stat.value}
@@ -53,7 +53,7 @@ export function Industries() {
 
       <ScrollReveal delay={0.15} className="mt-12">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
-          {industries.list.map((industry, index) => {
+          {content.list.map((industry, index) => {
             const IndustryIcon = industryIcons[index];
             return (
               <div
@@ -72,17 +72,17 @@ export function Industries() {
 
       <ScrollReveal delay={0.2} className="mt-16">
         <p className="text-center font-mono text-xs tracking-widest text-ink/40 uppercase">
-          Dipercaya organisasi berikut
+          {content.logoStripLabel}
         </p>
-        {/* TODO: ganti grid placeholder ini dengan logo resmi klien setelah mendapat izin tertulis dari masing-masing instansi/rumah sakit/perusahaan. */}
+        {/* TODO: replace this placeholder grid with official client logos once written permission is obtained from each institution/hospital/company. */}
         <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-8">
-          {Array.from({ length: industries.logoPlaceholderCount }).map((_, index) => (
+          {Array.from({ length: content.logoPlaceholderCount }).map((_, index) => (
             <div
               key={index}
               className="flex h-16 items-center justify-center rounded-lg border border-dashed border-line bg-ink/[0.02]"
             >
               <span className="font-mono text-[0.6rem] tracking-wider text-ink/30 uppercase">
-                Logo Klien
+                {content.logoPlaceholderText}
               </span>
             </div>
           ))}
