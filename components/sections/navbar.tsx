@@ -1,0 +1,77 @@
+"use client";
+
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { Logo } from "@/components/ui/logo";
+import { Button } from "@/components/ui/button";
+import { nav } from "@/content/site-content";
+
+export function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur-sm">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10 lg:px-16">
+        <a href="#" className="flex items-center" aria-label="ChatHub — kembali ke beranda">
+          <Logo />
+        </a>
+
+        <nav className="hidden items-center gap-8 md:flex" aria-label="Navigasi utama">
+          {nav.links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <div className="hidden items-center gap-3 md:flex">
+          <Button href="#kontak" variant="outline" size="md">
+            {nav.ctaSecondary}
+          </Button>
+          <Button href="#kontak" variant="primary" size="md">
+            {nav.ctaPrimary}
+          </Button>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="flex size-10 items-center justify-center rounded-full border border-line md:hidden"
+          aria-label={open ? "Tutup menu" : "Buka menu"}
+          aria-expanded={open}
+        >
+          {open ? <X className="size-5" /> : <Menu className="size-5" />}
+        </button>
+      </div>
+
+      {open && (
+        <div className="border-t border-line bg-paper px-6 py-6 md:hidden">
+          <nav className="flex flex-col gap-4" aria-label="Navigasi mobile">
+            {nav.links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="text-base font-medium text-ink/80"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+          <div className="mt-6 flex flex-col gap-3">
+            <Button href="#kontak" variant="outline" size="md" onClick={() => setOpen(false)}>
+              {nav.ctaSecondary}
+            </Button>
+            <Button href="#kontak" variant="primary" size="md" onClick={() => setOpen(false)}>
+              {nav.ctaPrimary}
+            </Button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
