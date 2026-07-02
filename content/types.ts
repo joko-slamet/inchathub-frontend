@@ -89,6 +89,22 @@ export interface SiteContent {
     titleAccent: string;
     points: { title: string; description: string }[];
   };
+  pricing: {
+    eyebrow: string;
+    titleMain: string;
+    titleAccent: string;
+    billingSuffix: string;
+    popularLabel: string;
+    ctaLabel: string;
+    plans: {
+      name: string;
+      tagline: string;
+      popular: boolean;
+      originalPrice: string;
+      price: string;
+      features: { label: string; value?: string; included: boolean }[];
+    }[];
+  };
   industries: {
     eyebrow: string;
     titleMain: string;
