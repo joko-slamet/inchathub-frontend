@@ -1,7 +1,7 @@
 import { Camera, MessageCircle, type LucideIcon } from "lucide-react";
 import { Logo } from "@/components/ui/logo";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
-import type { Locale, SiteContent } from "@/content/site-content";
+import type { SiteContent } from "@/content/site-content";
 
 // Positional match with footer.social in content — keep order in sync.
 const socialIcons: LucideIcon[] = [Camera, MessageCircle];
@@ -9,11 +9,9 @@ const socialIcons: LucideIcon[] = [Camera, MessageCircle];
 export function Footer({
   content,
   nav,
-  locale,
 }: {
   content: SiteContent["footer"];
   nav: SiteContent["nav"];
-  locale: Locale;
 }) {
   return (
     <footer className="border-t border-line bg-paper px-6 py-14 md:px-10 lg:px-16">
@@ -83,7 +81,7 @@ export function Footer({
 
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-line pt-6 sm:flex-row sm:items-center">
           <p className="text-xs text-ink/45">{content.copyright}</p>
-          <LocaleSwitcher locale={locale} />
+          <LocaleSwitcher />
         </div>
       </div>
     </footer>
