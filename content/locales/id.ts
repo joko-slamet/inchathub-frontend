@@ -35,28 +35,8 @@ export const id: SiteContent = {
   },
 
   problem: {
-    eyebrow: "MASALAH YANG SERING TERJADI",
-    title: "Every Channel. One Inbox. Zero Missed Conversations.",
-    description:
-      "Notifikasi WhatsApp menyala di HP admin, DM Instagram menumpuk di akun marketing, email customer service baru dibalas dua hari kemudian — dan tidak ada satu orang pun yang tahu riwayat lengkap percakapan seorang pelanggan. Saat itu terjadi, closing melambat dan pelanggan pindah ke kompetitor yang membalas lebih dulu.",
-    painPoints: [
-      "Chat tercecer di banyak aplikasi dan banyak HP tim",
-      "Respons lambat karena harus bolak-balik buka aplikasi satu per satu",
-      "Tidak ada histori percakapan yang tersimpan rapi",
-      "Serah terima antar tim jadi ribet dan rawan info yang salah",
-    ],
-    flowChannelsLabel: "Semua channel masuk",
-    flowHubLabel: "ChatHub",
-    flowTeamsLabel: "Terdistribusi rapi ke tim yang tepat",
-    flowTagline: "Every Conversation. Connected.",
-    teams: [
-      { name: "Customer Service" },
-      { name: "Sales Team" },
-      { name: "Marketing Team" },
-      { name: "Management" },
-      { name: "AI Assistant" },
-      { name: "Analytics" },
-    ],
+    titleMain: "Semua Channel. Satu Inbox.",
+    titleAccent: "Tanpa Chat yang Terlewat.",
   },
 
   omnichannel: {

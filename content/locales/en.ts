@@ -35,28 +35,8 @@ export const en: SiteContent = {
   },
 
   problem: {
-    eyebrow: "A PROBLEM YOU KNOW WELL",
-    title: "Every Channel. One Inbox. Zero Missed Conversations.",
-    description:
-      "WhatsApp notifications light up on the admin's phone, Instagram DMs pile up on the marketing account, customer service emails don't get answered for two days — and no one has the full conversation history for a single customer. By the time it's sorted out, closing slows down and the customer has already moved to whichever competitor replied first.",
-    painPoints: [
-      "Chats scattered across many apps and many team phones",
-      "Slow responses from having to open one app after another",
-      "No conversation history saved anywhere in one place",
-      "Handovers between teams are messy and error-prone",
-    ],
-    flowChannelsLabel: "Every channel comes in",
-    flowHubLabel: "ChatHub",
-    flowTeamsLabel: "Routed cleanly to the right team",
-    flowTagline: "Every Conversation. Connected.",
-    teams: [
-      { name: "Customer Service" },
-      { name: "Sales Team" },
-      { name: "Marketing Team" },
-      { name: "Management" },
-      { name: "AI Assistant" },
-      { name: "Analytics" },
-    ],
+    titleMain: "Every Channel. One Inbox.",
+    titleAccent: "Zero Missed Conversations.",
   },
 
   omnichannel: {

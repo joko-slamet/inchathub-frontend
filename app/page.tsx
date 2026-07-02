@@ -21,7 +21,7 @@ export default function Home() {
       <Navbar content={content.nav} />
       <main className="flex-1">
         <Hero content={content.hero} channels={channels} />
-        <Problem content={content.problem} channels={channels} />
+        <Problem content={content.problem} />
         <Omnichannel content={content.omnichannel} />
         <AiCrm content={content.aiCrm} />
         <Whatsapp content={content.whatsapp} />

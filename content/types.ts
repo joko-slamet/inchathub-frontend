@@ -36,15 +36,8 @@ export interface SiteContent {
     channelsLabel: string;
   };
   problem: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    painPoints: string[];
-    flowChannelsLabel: string;
-    flowHubLabel: string;
-    flowTeamsLabel: string;
-    flowTagline: string;
-    teams: { name: string }[];
+    titleMain: string;
+    titleAccent: string;
   };
   omnichannel: {
     eyebrow: string;
