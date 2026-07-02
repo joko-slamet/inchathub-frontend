@@ -33,9 +33,6 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
         <div className="hidden items-center gap-5 md:flex">
           <LocaleSwitcher />
           <div className="flex items-center gap-3">
-            <Button href="/#kontak" variant="outline" size="md">
-              {content.ctaSecondary}
-            </Button>
             <Button href="/#kontak" variant="primary" size="md">
               {content.ctaPrimary}
             </Button>
@@ -71,9 +68,6 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
             <LocaleSwitcher />
           </div>
           <div className="mt-4 flex flex-col gap-3">
-            <Button href="/#kontak" variant="outline" size="md" onClick={() => setOpen(false)}>
-              {content.ctaSecondary}
-            </Button>
             <Button href="/#kontak" variant="primary" size="md" onClick={() => setOpen(false)}>
               {content.ctaPrimary}
             </Button>

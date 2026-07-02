@@ -19,8 +19,7 @@ export const en: SiteContent = {
       { label: "Contact Us", href: "/contact-us" },
       { label: "About Us", href: "/about-us" },
     ],
-    ctaSecondary: "Try for Free",
-    ctaPrimary: "Request Demo",
+    ctaPrimary: "Try for Free",
   },
 
   hero: {

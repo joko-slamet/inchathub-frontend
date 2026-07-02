@@ -22,7 +22,6 @@ export interface SiteContent {
   };
   nav: {
     links: { label: string; href: string }[];
-    ctaSecondary: string;
     ctaPrimary: string;
   };
   hero: {

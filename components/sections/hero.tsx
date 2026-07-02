@@ -44,7 +44,7 @@ export function Hero({
             <Button href="#kontak" variant="primary" size="lg">
               {content.ctaPrimary}
             </Button>
-            <Button href="#produk" variant="outline" size="lg">
+            <Button href="#problem" variant="outline" size="lg">
               {content.ctaSecondary}
             </Button>
           </div>

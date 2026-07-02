@@ -6,7 +6,7 @@ import type { SiteContent } from "@/content/site-content";
 export function Problem({ content }: { content: SiteContent["problem"] }) {
   return (
     <Section
-      id="masalah"
+      id="problem"
       title={
         <>
           {content.titleMain} <span className="text-signal">{content.titleAccent}</span>

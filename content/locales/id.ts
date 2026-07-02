@@ -19,8 +19,7 @@ export const id: SiteContent = {
       { label: "Hubungi Kami", href: "/contact-us" },
       { label: "Tentang Kami", href: "/about-us" },
     ],
-    ctaSecondary: "Coba Gratis",
-    ctaPrimary: "Request Demo",
+    ctaPrimary: "Coba Gratis",
   },
 
   hero: {
