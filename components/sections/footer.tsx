@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SiInstagram, SiWhatsapp } from "react-icons/si";
 import type { IconType } from "react-icons";
 import { Logo } from "@/components/ui/logo";
@@ -71,14 +72,28 @@ export function Footer({
                   </span>
                 ))}
               </address>
+              <div className="mt-3 space-y-1">
+                {content.emails.map((email) => (
+                  <a
+                    key={email.value}
+                    href={`mailto:${email.value}`}
+                    className="block text-sm text-ink/55 hover:text-ink"
+                  >
+                    {email.label}: {email.value}
+                  </a>
+                ))}
+              </div>
               <a
                 href={content.websiteHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-block text-sm text-signal hover:underline"
+                className="mt-3 block text-sm text-signal hover:underline"
               >
                 {content.websiteLabel}
               </a>
+              <Link href="/contact-us" className="mt-1.5 block text-sm text-signal hover:underline">
+                {content.contactLabel}
+              </Link>
             </div>
           </div>
         </div>

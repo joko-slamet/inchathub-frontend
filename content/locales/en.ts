@@ -15,10 +15,8 @@ export const en: SiteContent = {
   nav: {
     links: [
       { label: "Product", href: "/#produk" },
-      { label: "Solutions", href: "/#solusi" },
-      { label: "Industries", href: "/#industri" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Contact", href: "/#kontak" },
+      { label: "Contact Us", href: "/contact-us" },
     ],
     ctaSecondary: "Try for Free",
     ctaPrimary: "Request Demo",
@@ -147,6 +145,42 @@ export const en: SiteContent = {
   pricingHero: {
     heading: "Flexible pricing for AI Chatbot, Omnichannel, CRM, and Chat Center — ready to use within minutes, no hassle.",
     subheading: "From small scale to enterprise, with Broadcast & Data Scraper — efficient cost, maximum performance.",
+  },
+
+  contactHero: {
+    heading: "Have a Question? Our Team Is Ready to Help.",
+    subheading: "Reach us on WhatsApp, Instagram, or fill out the form below — our team will get back to you as soon as possible.",
+  },
+
+  contact: {
+    eyebrow: "GET IN TOUCH",
+    titleMain: "Let's Talk About",
+    titleAccent: "Your Business Needs",
+    description:
+      "Have questions about features, pricing, or want a live demo? Our team is ready to help, whenever you need us.",
+    infoCards: [
+      { label: "WhatsApp", value: "+62 815 1010 7070", href: "https://wa.me/6281510107070" },
+      { label: "Instagram", value: "@in.ChatHub", href: "https://instagram.com/in.ChatHub" },
+      {
+        label: "Office Address",
+        value: "Signature Park Grande, Commercial Tower Retail R/UG/06, Jalan MT Haryono 20 Cawang, East Jakarta 13630, Indonesia",
+        href: "https://www.google.com/maps/search/?api=1&query=Signature+Park+Grande+Commercial+Tower+Retail+Jalan+MT+Haryono+20+Cawang+Jakarta+Timur",
+      },
+      { label: "Support Email", value: "support@inchathub.com", href: "mailto:support@inchathub.com" },
+      { label: "Sales Email", value: "sales@inchathub.com", href: "mailto:sales@inchathub.com" },
+    ],
+    form: {
+      nameLabel: "Full Name",
+      namePlaceholder: "Enter your name",
+      emailLabel: "Email",
+      emailPlaceholder: "name@company.com",
+      phoneLabel: "WhatsApp Number",
+      phonePlaceholder: "+62 8xx-xxxx-xxxx",
+      messageLabel: "Message",
+      messagePlaceholder: "Tell us about your business needs...",
+      submitLabel: "Send Message",
+      successMessage: "Thank you! Your message has been sent — our team will reach out shortly.",
+    },
   },
 
   pricing: {
@@ -370,8 +404,13 @@ export const en: SiteContent = {
       "Signature Park Grande, Commercial Tower Retail R/UG/06",
       "Jalan MT Haryono 20 Cawang, Jakarta Timur 13630, Indonesia",
     ],
+    emails: [
+      { label: "Support", value: "support@inchathub.com" },
+      { label: "Sales", value: "sales@inchathub.com" },
+    ],
     websiteLabel: "www.inChatHub.com",
     websiteHref: "https://www.inchathub.com",
+    contactLabel: "Contact Us →",
     navLabel: "Navigation",
     copyright: `© ${new Date().getFullYear()} PT Chat Hub Indonesia. All rights reserved.`,
   },

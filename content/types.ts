@@ -93,6 +93,29 @@ export interface SiteContent {
     heading: string;
     subheading: string;
   };
+  contactHero: {
+    heading: string;
+    subheading: string;
+  };
+  contact: {
+    eyebrow: string;
+    titleMain: string;
+    titleAccent: string;
+    description: string;
+    infoCards: { label: string; value: string; href: string }[];
+    form: {
+      nameLabel: string;
+      namePlaceholder: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      phoneLabel: string;
+      phonePlaceholder: string;
+      messageLabel: string;
+      messagePlaceholder: string;
+      submitLabel: string;
+      successMessage: string;
+    };
+  };
   pricing: {
     eyebrow: string;
     titleMain: string;
@@ -138,8 +161,10 @@ export interface SiteContent {
     companyName: string;
     companyNote: string;
     address: string[];
+    emails: { label: string; value: string }[];
     websiteLabel: string;
     websiteHref: string;
+    contactLabel: string;
     navLabel: string;
     copyright: string;
   };

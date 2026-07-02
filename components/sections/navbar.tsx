@@ -13,7 +13,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-10 lg:px-16">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 lg:px-16">
         <Link href="/" className="flex items-center" aria-label="ChatHub">
           <Logo />
         </Link>

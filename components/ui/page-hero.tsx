@@ -1,10 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LuRocket } from "react-icons/lu";
-import type { SiteContent } from "@/content/site-content";
+import type { IconType } from "react-icons";
 
-export function PricingHero({ content }: { content: SiteContent["pricingHero"] }) {
+export function PageHero({
+  icon: Icon,
+  heading,
+  subheading,
+}: {
+  icon: IconType;
+  heading: string;
+  subheading: string;
+}) {
   return (
     <section
       className="relative overflow-hidden border-b border-line px-6 pt-16 pb-12 text-center md:px-10 md:pt-20 md:pb-14 lg:px-16"
@@ -21,7 +28,7 @@ export function PricingHero({ content }: { content: SiteContent["pricingHero"] }
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6 inline-flex size-11 items-center justify-center rounded-full border border-signal/30 bg-signal-dim text-signal"
         >
-          <LuRocket className="size-5" />
+          <Icon className="size-5" />
         </motion.span>
 
         <motion.p
@@ -30,7 +37,7 @@ export function PricingHero({ content }: { content: SiteContent["pricingHero"] }
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-2xl leading-snug font-semibold tracking-tight text-ink sm:text-3xl"
         >
-          {content.heading}
+          {heading}
         </motion.p>
 
         <motion.p
@@ -39,7 +46,7 @@ export function PricingHero({ content }: { content: SiteContent["pricingHero"] }
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mt-4 text-base leading-relaxed text-ink/65 sm:text-lg"
         >
-          {content.subheading}
+          {subheading}
         </motion.p>
       </div>
     </section>
