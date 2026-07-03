@@ -169,6 +169,10 @@ export interface SiteContent {
     popularLabel: string;
     ctaLabel: string;
     plans: {
+      // Only set for plans loaded live from the backend (see toPublicPlans in
+      // lib/pricing-format.ts) — absent on the static locale fallback, so the
+      // buy CTA can tell a real purchasable plan from placeholder copy.
+      key?: string;
       name: string;
       tagline: string;
       popular: boolean;

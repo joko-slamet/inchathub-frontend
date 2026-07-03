@@ -72,7 +72,7 @@ export function Pricing({ content }: { content: SiteContent["pricing"] }) {
 
               <div className="p-6 pt-8">
                 <Button
-                  href="/#kontak"
+                  href={plan.key ? `/checkout?plan=${plan.key}` : "/#kontak"}
                   variant={plan.popular ? "primary" : "outline"}
                   size="md"
                   className="w-full"

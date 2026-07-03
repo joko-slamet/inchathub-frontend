@@ -21,6 +21,7 @@ export function toPublicPlans(
         plan.translations.find((t) => t.locale === locale) ?? plan.translations[0];
 
       return {
+        key: plan.key,
         name: translation?.name ?? plan.key,
         tagline: translation?.tagline ?? "",
         popular: plan.popular,
