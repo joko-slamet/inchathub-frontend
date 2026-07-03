@@ -48,7 +48,7 @@ export default async function CheckoutPage({
         className="blob pointer-events-none absolute -bottom-32 -left-24 size-72 bg-slate-dim blur-xl"
       />
 
-      <div className="relative mx-auto max-w-4xl">
+      <div className="relative mx-auto max-w-6xl">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center" aria-label="ChatHub">
             <Logo />

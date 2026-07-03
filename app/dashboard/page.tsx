@@ -1,5 +1,5 @@
 import { cookies } from "next/headers";
-import { LuUser, LuMail, LuPhone, LuReceipt } from "react-icons/lu";
+import { LuUser, LuMail, LuPhone, LuReceipt, LuLogOut } from "react-icons/lu";
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,7 @@ import { requireUser } from "@/lib/dal";
 import { SESSION_COOKIE } from "@/lib/session";
 import { formatRupiah } from "@/lib/pricing-format";
 import { getSiteContent, defaultLocale } from "@/content/site-content";
+import { logout } from "@/app/actions/auth";
 import type { OrderDTO, OrderStatus } from "@/lib/order-types";
 import type { PricingTranslation } from "@/lib/pricing-types";
 
@@ -169,6 +170,16 @@ export default async function DashboardPage() {
                     </div>
                   )}
                 </div>
+
+                <form action={logout} className="mt-4 border-t border-line pt-4">
+                  <button
+                    type="submit"
+                    className="flex w-full items-center justify-center gap-1.5 text-sm font-medium text-ink/60 hover:text-signal"
+                  >
+                    <LuLogOut className="size-4" />
+                    Keluar
+                  </button>
+                </form>
               </div>
             </div>
           </div>

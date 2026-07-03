@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { formatRupiah } from "@/lib/pricing-format";
 import type { PaymentMethodDTO } from "@/lib/order-types";
 import type { CurrentUser } from "@/lib/dal";
+import { categorizePaymentMethod, groupByPaymentCategory } from "@/lib/payment-method-category";
 import {
   checkoutAsLoggedInUser,
   registerAndCheckout,
@@ -84,6 +85,50 @@ function PasswordField({
   );
 }
 
+function PaymentMethodRow({
+  method,
+  isSelected,
+  onSelect,
+}: {
+  method: PaymentMethodDTO;
+  isSelected: boolean;
+  onSelect: () => void;
+}) {
+  const fee = Number(method.totalFee);
+  return (
+    <label
+      className={`flex cursor-pointer items-center justify-between gap-3 rounded-xl border-2 px-3.5 py-2.5 transition-all duration-200 ${
+        isSelected
+          ? "border-signal bg-signal-dim shadow-[0_10px_24px_-16px_rgba(190,30,45,0.4)]"
+          : "border-line hover:border-ink/20"
+      }`}
+    >
+      <span className="flex min-w-0 items-center gap-2.5">
+        <input
+          type="radio"
+          checked={isSelected}
+          onChange={onSelect}
+          className="shrink-0 accent-signal"
+        />
+        {method.paymentImage && (
+          // eslint-disable-next-line @next/next/no-img-element -- logo host is
+          // determined by Duitku at runtime, not known ahead of time for next/image.
+          <img
+            src={method.paymentImage}
+            alt=""
+            className="h-6 w-10 shrink-0 object-contain"
+            onError={(e) => {
+              e.currentTarget.style.display = "none";
+            }}
+          />
+        )}
+        <span className="truncate text-sm font-medium text-ink">{method.paymentName}</span>
+      </span>
+      {fee > 0 && <span className="shrink-0 text-xs text-ink/45">+Rp{fee.toLocaleString("id-ID")}</span>}
+    </label>
+  );
+}
+
 function PaymentMethodPicker({
   methods,
   selected,
@@ -93,6 +138,11 @@ function PaymentMethodPicker({
   selected: string;
   onSelect: (method: string) => void;
 }) {
+  const groups = groupByPaymentCategory(methods);
+  const [activeCategory, setActiveCategory] = useState(
+    () => categorizePaymentMethod(methods.find((m) => m.paymentMethod === selected)?.paymentName ?? methods[0]?.paymentName ?? ""),
+  );
+
   if (methods.length === 0) {
     return (
       <p className="rounded-lg border border-line bg-slate-dim px-3.5 py-2.5 text-sm text-ink/60">
@@ -101,49 +151,40 @@ function PaymentMethodPicker({
     );
   }
 
+  const activeGroup = groups.find((g) => g.category === activeCategory) ?? groups[0];
+
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="flex min-w-0 flex-col gap-1.5">
       <span className="text-xs font-medium text-ink/60">Metode pembayaran</span>
-      <div className="flex max-h-72 flex-col gap-2 overflow-y-auto p-0.5">
-        {methods.map((method) => {
-          const fee = Number(method.totalFee);
-          const isSelected = selected === method.paymentMethod;
-          return (
-            <label
-              key={method.paymentMethod}
-              className={`flex cursor-pointer items-center justify-between gap-3 rounded-xl border-2 px-3.5 py-2.5 transition-all duration-200 ${
-                isSelected
-                  ? "border-signal bg-signal-dim shadow-[0_10px_24px_-16px_rgba(190,30,45,0.4)]"
-                  : "border-line hover:border-ink/20"
+
+      {groups.length > 1 && (
+        <div className="no-scrollbar -mx-0.5 flex snap-x snap-mandatory gap-2 overflow-x-auto scroll-smooth px-0.5 pb-1">
+          {groups.map((group) => (
+            <button
+              key={group.category}
+              type="button"
+              onClick={() => setActiveCategory(group.category)}
+              className={`shrink-0 snap-start rounded-full border-2 px-3.5 py-1.5 text-xs font-semibold whitespace-nowrap transition-colors ${
+                activeGroup.category === group.category
+                  ? "border-signal bg-signal-dim text-signal"
+                  : "border-line text-ink/60 hover:border-ink/20"
               }`}
             >
-              <span className="flex min-w-0 items-center gap-2.5">
-                <input
-                  type="radio"
-                  checked={isSelected}
-                  onChange={() => onSelect(method.paymentMethod)}
-                  className="shrink-0 accent-signal"
-                />
-                {method.paymentImage && (
-                  // eslint-disable-next-line @next/next/no-img-element -- logo host is
-                  // determined by Duitku at runtime, not known ahead of time for next/image.
-                  <img
-                    src={method.paymentImage}
-                    alt=""
-                    className="h-6 w-10 shrink-0 object-contain"
-                    onError={(e) => {
-                      e.currentTarget.style.display = "none";
-                    }}
-                  />
-                )}
-                <span className="truncate text-sm font-medium text-ink">{method.paymentName}</span>
-              </span>
-              {fee > 0 && (
-                <span className="shrink-0 text-xs text-ink/45">+Rp{fee.toLocaleString("id-ID")}</span>
-              )}
-            </label>
-          );
-        })}
+              {group.category} <span className="text-ink/40">({group.methods.length})</span>
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className="flex max-h-72 flex-col gap-2 overflow-y-auto p-0.5">
+        {activeGroup.methods.map((method) => (
+          <PaymentMethodRow
+            key={method.paymentMethod}
+            method={method}
+            isSelected={selected === method.paymentMethod}
+            onSelect={() => onSelect(method.paymentMethod)}
+          />
+        ))}
       </div>
     </div>
   );
@@ -278,7 +319,7 @@ export function CheckoutForm({
 
   if (user) {
     formPanel = (
-      <form id={FORM_ID} action={loggedInAction} className="flex flex-col gap-5">
+      <form id={FORM_ID} action={loggedInAction} className="flex min-w-0 flex-col gap-5">
         <input type="hidden" name="planId" value={planId} />
         <input type="hidden" name="paymentMethod" value={paymentMethod} />
         <BuyerInfoSummary user={user} />
@@ -290,10 +331,9 @@ export function CheckoutForm({
     pending = loggedInPending;
   } else if (mode === "register") {
     formPanel = (
-      <form id={FORM_ID} action={registerAction} className="flex flex-col gap-5">
+      <form id={FORM_ID} action={registerAction} className="flex min-w-0 flex-col gap-5">
         <input type="hidden" name="planId" value={planId} />
         <input type="hidden" name="paymentMethod" value={paymentMethod} />
-        {picker}
 
         <div className="flex flex-col gap-4">
           <span className="text-xs font-medium text-ink/60">Data diri pembeli</span>
@@ -313,6 +353,8 @@ export function CheckoutForm({
           <PasswordField label="Password" autoComplete="new-password" />
         </div>
 
+        {picker}
+
         <FieldError error={registerState?.error} />
 
         <button
@@ -328,7 +370,7 @@ export function CheckoutForm({
     pending = registerPending;
   } else {
     formPanel = (
-      <form id={FORM_ID} action={loginAction} className="flex flex-col gap-5">
+      <form id={FORM_ID} action={loginAction} className="flex min-w-0 flex-col gap-5">
         <input type="hidden" name="planId" value={planId} />
         <input type="hidden" name="paymentMethod" value={paymentMethod} />
         {picker}
@@ -363,7 +405,7 @@ export function CheckoutForm({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_360px] lg:items-start lg:gap-8">
-      <div className="rounded-[1.75rem] border-2 border-line bg-paper p-6 shadow-[0_20px_60px_-32px_rgba(26,22,24,0.3)] sm:p-8">
+      <div className="min-w-0 rounded-[1.75rem] border-2 border-line bg-paper p-6 shadow-[0_20px_60px_-32px_rgba(26,22,24,0.3)] sm:p-8">
         {formPanel}
       </div>
 
