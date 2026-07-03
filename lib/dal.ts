@@ -3,6 +3,13 @@ import { cache } from "react";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { getSession, SESSION_COOKIE, type Role } from "./session";
+import type { PricingTranslation } from "./pricing-types";
+
+export type ActivePlanSummary = {
+  id: string;
+  key: string;
+  translations: PricingTranslation[];
+};
 
 export type CurrentUser = {
   id: string;
@@ -10,6 +17,8 @@ export type CurrentUser = {
   email: string;
   phone: string | null;
   role: Role;
+  planExpiresAt: string | null;
+  activePlan: ActivePlanSummary | null;
   createdAt: string;
   updatedAt: string;
 };

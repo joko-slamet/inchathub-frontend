@@ -23,3 +23,9 @@ export type OrderDTO = {
   createdAt: string;
   updatedAt: string;
 };
+
+// Same shape as OrderDTO plus the buyer, only returned by the admin-only
+// list endpoint (GET /api/orders).
+export type AdminOrderDTO = OrderDTO & {
+  user: { id: string; name: string; email: string };
+};
