@@ -5,6 +5,7 @@ import { getSiteContent, defaultLocale, isLocale, LOCALE_COOKIE, type Locale } f
 import { LocaleProvider } from "@/components/locale-provider";
 import { AuthProvider } from "@/components/auth-provider";
 import { getSession } from "@/lib/session";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -96,6 +97,7 @@ export default async function RootLayout({
       className={`${plusJakartaSans.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <AuthProvider user={session ? { role: session.role } : null}>
           <LocaleProvider initialLocale={initialLocale}>{children}</LocaleProvider>
         </AuthProvider>
