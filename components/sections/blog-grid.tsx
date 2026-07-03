@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LuNewspaper, LuCalendar, LuClock } from "react-icons/lu";
 import type { SiteContent } from "@/content/site-content";
 
@@ -5,8 +6,9 @@ export function BlogGrid({ posts }: { posts: SiteContent["blog"]["posts"] }) {
   return (
     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
-        <article
+        <Link
           key={post.slug}
+          href={`/blog/${post.slug}`}
           className="group flex flex-col overflow-hidden rounded-[1.75rem] border-2 border-line transition-all duration-300 hover:-translate-y-1.5 hover:border-signal/30 hover:shadow-[0_24px_48px_-24px_rgba(190,30,45,0.3)]"
         >
           <div className="relative flex h-40 items-center justify-center bg-signal-dim">
@@ -32,7 +34,7 @@ export function BlogGrid({ posts }: { posts: SiteContent["blog"]["posts"] }) {
               </span>
             </div>
           </div>
-        </article>
+        </Link>
       ))}
     </div>
   );

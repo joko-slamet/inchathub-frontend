@@ -182,6 +182,11 @@ export const id: SiteContent = {
         title: "5 Alasan Bisnis Anda Butuh Omnichannel Inbox di 2026",
         excerpt:
           "Pelanggan kini menghubungi bisnis lewat banyak kanal sekaligus. Berikut alasan mengapa inbox terpadu jadi kebutuhan, bukan lagi pilihan.",
+        content: [
+          "Pelanggan hari ini tidak lagi setia pada satu kanal. Seseorang bisa bertanya lewat WhatsApp di pagi hari, lanjut DM Instagram siang harinya, lalu menelepon kalau butuh jawaban cepat di sore hari. Kalau tim Anda mengelola setiap kanal secara terpisah, riwayat percakapan jadi tercecer dan pelanggan harus mengulang cerita yang sama berkali-kali.",
+          "Inbox omnichannel menyatukan semua kanal itu ke satu tampilan, sehingga agen bisa melihat riwayat lengkap pelanggan tanpa harus berpindah aplikasi. Efeknya langsung terasa: waktu respons lebih cepat, tidak ada pesan yang terlewat, dan pelanggan merasa dikenali meski berpindah kanal.",
+          "Di 2026, ekspektasi pelanggan soal kecepatan respons makin tinggi, sementara jumlah kanal komunikasi terus bertambah. Bisnis yang masih mengandalkan banyak aplikasi terpisah akan kesulitan bersaing dengan yang sudah punya satu inbox terpadu — bukan lagi soal efisiensi semata, tapi soal bertahan di tengah ekspektasi pelanggan yang terus naik.",
+        ],
         author: "Tim ChatHub",
         date: "28 Juni 2026",
         readTime: "5 min baca",
@@ -192,6 +197,11 @@ export const id: SiteContent = {
         title: "Cara Memanfaatkan WhatsApp Business API untuk Tingkatkan Konversi",
         excerpt:
           "Dari quick reply sampai broadcast tersegmentasi, ini strategi praktis memaksimalkan WhatsApp Business API untuk penjualan.",
+        content: [
+          "WhatsApp Business API bukan sekadar versi resmi dari WhatsApp biasa — API ini membuka kemampuan yang tidak ada di aplikasi personal, seperti template pesan resmi, integrasi ke CRM, dan otomasi balasan dalam skala besar. Sayangnya, banyak bisnis hanya memakainya sebagai pengganti nomor WhatsApp lama tanpa memanfaatkan fitur-fitur ini.",
+          "Salah satu cara paling praktis meningkatkan konversi adalah memakai quick reply dan template pesan untuk pertanyaan yang berulang, sehingga pelanggan dapat jawaban instan tanpa menunggu agen. Broadcast tersegmentasi berdasarkan riwayat pembelian atau minat juga terbukti jauh lebih efektif dibanding broadcast massal ke seluruh kontak.",
+          "Yang tidak kalah penting adalah waktu respons. Studi internal kami menunjukkan bahwa pelanggan yang mendapat balasan dalam lima menit pertama, punya kemungkinan konversi jauh lebih tinggi dibanding yang menunggu lebih lama. Kombinasi otomasi untuk pertanyaan awal dan eskalasi cepat ke agen manusia untuk kasus kompleks adalah formula yang paling banyak berhasil di lapangan.",
+        ],
         author: "Tim ChatHub",
         date: "20 Juni 2026",
         readTime: "6 min baca",
@@ -202,6 +212,11 @@ export const id: SiteContent = {
         title: "AI Chatbot vs Live Agent: Kapan Harus Pakai yang Mana?",
         excerpt:
           "AI chatbot cepat dan konsisten, agen manusia empatik dan fleksibel. Simak kapan sebaiknya masing-masing digunakan.",
+        content: [
+          "Pertanyaan \"chatbot atau agen manusia\" sebenarnya keliru sejak awal — keduanya bukan pilihan yang saling meniadakan, melainkan dua alat dengan kekuatan berbeda. AI chatbot unggul dalam kecepatan, konsistensi jawaban, dan ketersediaan 24/7 tanpa lelah. Agen manusia unggul dalam empati, penanganan kasus rumit, dan situasi yang butuh keputusan di luar aturan baku.",
+          "Chatbot paling efektif menangani pertanyaan berulang: jam operasional, status pesanan, cara pakai produk, atau FAQ umum lainnya. Di sinilah chatbot bisa menyaring 60-80% percakapan masuk sebelum sampai ke agen, sehingga tim manusia bisa fokus ke kasus yang benar-benar butuh sentuhan personal.",
+          "Kuncinya adalah eskalasi yang mulus: begitu chatbot mendeteksi pertanyaan di luar kemampuannya, atau pelanggan terdengar frustrasi, percakapan harus langsung diteruskan ke agen manusia lengkap dengan riwayat chat sebelumnya — bukan mengulang dari nol. Kombinasi inilah yang membuat layanan terasa cepat sekaligus tetap manusiawi.",
+        ],
         author: "Tim ChatHub",
         date: "12 Juni 2026",
         readTime: "4 min baca",
@@ -212,6 +227,11 @@ export const id: SiteContent = {
         title: "Studi Kasus: Rumah Sakit yang Memangkas Waktu Respons 70% dengan ChatHub",
         excerpt:
           "Bagaimana sebuah rumah sakit mitra ChatHub menyatukan kanal komunikasi pasien dan mempercepat waktu tanggap tim CS.",
+        content: [
+          "Sebelum menggunakan ChatHub, tim customer service rumah sakit ini mengelola pertanyaan pasien lewat WhatsApp, telepon, dan formulir website secara terpisah — masing-masing dipegang tim berbeda tanpa visibilitas satu sama lain. Akibatnya, pasien yang sudah bertanya lewat satu kanal sering harus mengulang pertanyaan yang sama saat berpindah ke kanal lain.",
+          "Setelah menyatukan seluruh kanal ke satu inbox ChatHub, tim CS bisa melihat riwayat lengkap tiap pasien dalam satu layar, lengkap dengan status janji temu dan riwayat komunikasi sebelumnya. Chatbot juga diaktifkan untuk menjawab pertanyaan umum seperti jadwal dokter dan lokasi poli, sehingga tim manusia bisa fokus menangani pertanyaan medis yang lebih sensitif.",
+          "Hasilnya terlihat dalam waktu kurang dari tiga bulan: waktu respons rata-rata turun 70%, dan tingkat kepuasan pasien terhadap layanan komunikasi meningkat signifikan berdasarkan survei internal rumah sakit. Studi kasus ini menunjukkan bahwa penyatuan kanal berdampak paling besar justru di sektor yang menangani informasi sensitif dan butuh respons cepat, seperti layanan kesehatan.",
+        ],
         author: "Tim ChatHub",
         date: "3 Juni 2026",
         readTime: "7 min baca",
@@ -222,6 +242,11 @@ export const id: SiteContent = {
         title: "Membangun Pipeline Penjualan yang Rapi dengan CRM Terintegrasi",
         excerpt:
           "Pipeline yang berantakan bikin leads hilang begitu saja. Ini cara menyusun tahapan penjualan yang jelas dan terukur.",
+        content: [
+          "Banyak tim sales kehilangan leads bukan karena kurang prospek, tapi karena tidak ada sistem yang jelas untuk melacak di tahap mana setiap leads berada. Leads yang masuk lewat chat, kemudian didiskusikan lewat grup internal, lalu dilupakan begitu saja — ini pola yang sangat umum terjadi tanpa CRM yang terintegrasi.",
+          "Pipeline yang sehat dimulai dari tahapan yang jelas: leads masuk, kualifikasi, penawaran, negosiasi, hingga closing — dengan kriteria eksplisit kapan sebuah leads boleh naik ke tahap berikutnya. Yang membuat pipeline ini benar-benar berguna adalah ketika setiap percakapan dari WhatsApp, email, atau kanal lain otomatis tercatat di leads yang sama, bukan tersebar di banyak tempat.",
+          "Dengan CRM yang terintegrasi langsung ke inbox omnichannel, tim sales bisa melihat status setiap leads sekaligus riwayat percakapannya dalam satu tampilan, dan manajemen bisa memantau tahapan mana yang paling sering jadi titik macet. Dari situ, perbaikan proses penjualan jadi berbasis data, bukan sekadar perasaan siapa yang “kelihatannya sibuk”.",
+        ],
         author: "Tim ChatHub",
         date: "25 Mei 2026",
         readTime: "5 min baca",
@@ -232,6 +257,11 @@ export const id: SiteContent = {
         title: "Tren Layanan Pelanggan di Sektor Keuangan Tahun Ini",
         excerpt:
           "Dari respons instan sampai kepatuhan data, berikut tren layanan pelanggan yang perlu diperhatikan pelaku industri keuangan.",
+        content: [
+          "Sektor keuangan menghadapi tekanan ganda: nasabah mengharapkan respons secepat layanan e-commerce, sementara regulator menuntut kepatuhan data dan audit trail yang ketat. Ini membuat layanan pelanggan di industri keuangan tidak bisa sekadar meniru pendekatan bisnis konsumer biasa tanpa penyesuaian.",
+          "Salah satu tren yang makin terlihat adalah penggunaan chatbot untuk pertanyaan transaksional sederhana — cek saldo, status pengajuan, atau simulasi cicilan — sementara pertanyaan yang menyentuh data sensitif tetap dialihkan ke agen berlisensi dengan protokol verifikasi identitas yang jelas. Pemisahan ini penting untuk menjaga kepatuhan tanpa mengorbankan kecepatan layanan.",
+          "Tren lain yang terus menguat adalah audit trail percakapan yang lengkap dan tersimpan rapi — setiap interaksi harus bisa ditelusuri kembali untuk kebutuhan kepatuhan maupun penyelesaian sengketa. Platform yang mampu menyatukan kecepatan respons dengan pencatatan yang rapi akan menjadi standar baru layanan pelanggan di sektor keuangan.",
+        ],
         author: "Tim ChatHub",
         date: "14 Mei 2026",
         readTime: "6 min baca",

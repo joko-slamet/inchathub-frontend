@@ -42,7 +42,7 @@ export default function AdminBlogPage() {
       ...b,
       posts: [
         ...b.posts,
-        { slug: "", category: "", title: "", excerpt: "", author: "", date: "", readTime: "" },
+        { slug: "", category: "", title: "", excerpt: "", content: [], author: "", date: "", readTime: "" },
       ],
     }));
   }

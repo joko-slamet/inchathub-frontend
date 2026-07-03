@@ -181,6 +181,11 @@ export const en: SiteContent = {
         title: "5 Reasons Your Business Needs an Omnichannel Inbox in 2026",
         excerpt:
           "Customers now reach out through many channels at once. Here's why a unified inbox is a necessity, not a nice-to-have.",
+        content: [
+          "Customers today aren't loyal to a single channel. Someone might message on WhatsApp in the morning, follow up on Instagram DM by noon, then call when they need a fast answer in the afternoon. If your team handles each channel separately, conversation history gets scattered and customers end up repeating themselves.",
+          "An omnichannel inbox brings all of that into one view, so agents can see a customer's full history without switching apps. The effect is immediate: faster response times, no missed messages, and customers who feel recognized even when they switch channels.",
+          "In 2026, customer expectations around response speed keep rising while the number of communication channels keeps growing. Businesses still juggling separate apps for each channel will struggle to keep up with those who've already unified their inbox — it's no longer just about efficiency, it's about keeping pace with rising customer expectations.",
+        ],
         author: "ChatHub Team",
         date: "June 28, 2026",
         readTime: "5 min read",
@@ -191,6 +196,11 @@ export const en: SiteContent = {
         title: "How to Use WhatsApp Business API to Boost Conversions",
         excerpt:
           "From quick replies to segmented broadcasts, here are practical strategies to get the most out of WhatsApp Business API.",
+        content: [
+          "WhatsApp Business API is more than just an official version of regular WhatsApp — it unlocks capabilities that don't exist in the personal app, like approved message templates, CRM integration, and automation at scale. Yet many businesses only use it as a drop-in replacement for their old number, without tapping into any of that.",
+          "One of the most practical ways to lift conversions is using quick replies and templates for recurring questions, so customers get instant answers without waiting on an agent. Segmented broadcasts based on purchase history or interest also consistently outperform mass broadcasts sent to every contact.",
+          "Response time matters just as much. Our internal data shows customers who get a reply within the first five minutes convert at a noticeably higher rate than those who wait longer. Pairing automation for first-touch questions with fast escalation to a human agent for complex cases is the formula that works best in practice.",
+        ],
         author: "ChatHub Team",
         date: "June 20, 2026",
         readTime: "6 min read",
@@ -201,6 +211,11 @@ export const en: SiteContent = {
         title: "AI Chatbot vs Live Agent: When to Use Which",
         excerpt:
           "AI chatbots are fast and consistent, human agents are empathetic and flexible. Here's when each one should take the lead.",
+        content: [
+          "The question of \"chatbot or human agent\" is framed wrong from the start — they aren't mutually exclusive options, but two tools with different strengths. AI chatbots excel at speed, consistency, and round-the-clock availability without fatigue. Human agents excel at empathy, handling complex cases, and situations that need judgment calls outside a fixed script.",
+          "Chatbots are most effective on repetitive questions: business hours, order status, how to use a product, or common FAQs. This is where a chatbot can filter out 60-80% of incoming conversations before they ever reach an agent, freeing up your human team to focus on cases that genuinely need a personal touch.",
+          "The key is a seamless handoff: the moment a chatbot detects a question beyond its scope, or senses a frustrated customer, the conversation should move to a human agent complete with prior chat history — not starting from zero. That combination is what makes service feel both fast and genuinely human.",
+        ],
         author: "ChatHub Team",
         date: "June 12, 2026",
         readTime: "4 min read",
@@ -211,6 +226,11 @@ export const en: SiteContent = {
         title: "Case Study: A Hospital That Cut Response Time by 70% with ChatHub",
         excerpt:
           "How a ChatHub partner hospital unified its patient communication channels and sped up its customer service response time.",
+        content: [
+          "Before adopting ChatHub, this hospital's customer service team handled patient questions across WhatsApp, phone calls, and website forms separately — each owned by a different team with no shared visibility. As a result, patients who had already asked a question on one channel often had to repeat themselves when they switched to another.",
+          "After consolidating every channel into a single ChatHub inbox, the team could see each patient's full history on one screen, including appointment status and prior communication. A chatbot was also enabled to answer common questions like doctor schedules and clinic locations, freeing the human team to focus on more sensitive medical questions.",
+          "The results showed up in under three months: average response time dropped by 70%, and patient satisfaction with communication improved significantly according to the hospital's internal survey. This case shows that unifying channels has the biggest impact precisely in sectors handling sensitive information that demand fast responses, like healthcare.",
+        ],
         author: "ChatHub Team",
         date: "June 3, 2026",
         readTime: "7 min read",
@@ -221,6 +241,11 @@ export const en: SiteContent = {
         title: "Building a Clean Sales Pipeline with an Integrated CRM",
         excerpt:
           "A messy pipeline lets leads slip through the cracks. Here's how to structure clear, measurable sales stages.",
+        content: [
+          "Sales teams rarely lose leads because of a shortage of prospects — they lose them because there's no clear system for tracking which stage each lead is in. A lead comes in through chat, gets discussed in an internal group chat, then quietly falls through the cracks. It's an extremely common pattern without an integrated CRM.",
+          "A healthy pipeline starts with clear stages: lead in, qualification, proposal, negotiation, and closing — with explicit criteria for when a lead is allowed to move to the next stage. What makes a pipeline genuinely useful is when every conversation from WhatsApp, email, or any other channel is automatically logged against the same lead, instead of scattered across different tools.",
+          "With a CRM integrated directly into your omnichannel inbox, sales reps can see a lead's status alongside its full conversation history in one place, and management can spot exactly which stage leads get stuck at most often. From there, improving your sales process becomes a data-driven decision, not a guess based on who \"looks busy.\"",
+        ],
         author: "ChatHub Team",
         date: "May 25, 2026",
         readTime: "5 min read",
@@ -231,6 +256,11 @@ export const en: SiteContent = {
         title: "Customer Service Trends in the Finance Sector This Year",
         excerpt:
           "From instant responses to data compliance, here are the customer service trends finance businesses need to watch.",
+        content: [
+          "Finance businesses face a double pressure: customers expect e-commerce-level response speed, while regulators demand strict data compliance and clear audit trails. That means customer service in finance can't simply copy a typical consumer business playbook without adjustments.",
+          "One growing trend is using chatbots for simple transactional questions — balance checks, application status, or loan simulations — while anything touching sensitive data gets routed to a licensed agent under a clear identity-verification protocol. That separation matters for staying compliant without sacrificing speed.",
+          "Another trend gaining ground is keeping a complete, well-organized conversation audit trail — every interaction needs to be traceable for compliance or dispute resolution. Platforms that can combine fast response times with tidy record-keeping are becoming the new standard for customer service in the finance sector.",
+        ],
         author: "ChatHub Team",
         date: "May 14, 2026",
         readTime: "6 min read",

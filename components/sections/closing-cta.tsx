@@ -6,15 +6,15 @@ export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) 
   return (
     <section
       id="kontak"
-      className="relative scroll-mt-20 overflow-hidden bg-ink px-6 py-24 text-paper sm:py-28 md:px-10 lg:px-16"
+      className="relative scroll-mt-20 overflow-hidden bg-signal px-6 py-24 text-paper sm:py-28 md:px-10 lg:px-16"
     >
       <div
         aria-hidden="true"
-        className="blob pointer-events-none absolute -top-16 -left-16 size-72 bg-signal/20 blur-2xl"
+        className="blob pointer-events-none absolute -top-16 -left-16 size-72 bg-paper/15 blur-2xl"
       />
       <div
         aria-hidden="true"
-        className="blob animate-float pointer-events-none absolute -right-20 -bottom-24 size-96 bg-signal/15 blur-2xl"
+        className="blob animate-float pointer-events-none absolute -right-20 -bottom-24 size-96 bg-ink/15 blur-2xl"
       />
 
       <ScrollReveal className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
@@ -35,7 +35,7 @@ export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) 
         </div>
 
         <div className="mt-10">
-          <Button href="https://wa.me/6281510107070" variant="primary" size="lg">
+          <Button href="https://wa.me/6281510107070" variant="inverse" size="lg">
             {content.cta}
           </Button>
         </div>

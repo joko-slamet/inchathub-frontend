@@ -1,6 +1,6 @@
 import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
 
-type Variant = "primary" | "outline" | "outline-inverse" | "ghost";
+type Variant = "primary" | "outline" | "outline-inverse" | "inverse" | "ghost";
 type Size = "md" | "lg";
 
 const base =
@@ -13,6 +13,8 @@ const variants: Record<Variant, string> = {
     "border-2 border-ink/15 text-ink hover:-translate-y-1 hover:border-signal hover:text-signal",
   "outline-inverse":
     "border-2 border-paper/30 text-paper hover:-translate-y-1 hover:border-paper",
+  inverse:
+    "bg-paper text-signal shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:bg-ink hover:text-paper hover:rotate-[-1deg]",
   ghost: "text-ink hover:text-signal",
 };
 
