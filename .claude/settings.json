@@ -16,7 +16,11 @@
       "Bash(sed -i 's#href: \"/admin#href: \"/panel#g; s#href=\"/admin\"#href=\"/panel\"#g' components/admin/admin-shell.tsx)",
       "Bash(sed -i 's#href: \"/admin/pricing\"#href: \"/panel/pricing\"#' app/panel/page.tsx)",
       "Bash(sed -i 's#router.push\\(\"/admin\"\\)#router.push\\(\"/panel\"\\)#' app/login/page.tsx)",
-      "Bash(node -e \"const i = require\\('react-icons/lu'\\); console.log\\('LuBuilding2' in i\\)\")"
+      "Bash(node -e \"const i = require\\('react-icons/lu'\\); console.log\\('LuBuilding2' in i\\)\")",
+      "Bash(npm -v)",
+      "Bash(pg_isready)",
+      "Bash(systemctl is-active *)",
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(48\\).toString\\('hex'\\)\\)\")"
     ],
     "additionalDirectories": [
       "/home/joko/projects/chathub/inchathub-frontend/app/[locale]"

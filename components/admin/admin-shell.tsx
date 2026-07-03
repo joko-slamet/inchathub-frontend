@@ -16,6 +16,7 @@ import {
 } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { Logo } from "@/components/ui/logo";
+import { logout } from "@/app/actions/auth";
 
 interface NavItem {
   label: string;
@@ -68,19 +69,27 @@ function SidebarContent({ pathname, onNavigate }: { pathname: string; onNavigate
           <LuExternalLink className="size-4.5" />
           Lihat Situs
         </a>
-        <Link
-          href="/login"
-          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-ink"
-        >
-          <LuLogOut className="size-4.5" />
-          Keluar
-        </Link>
+        <form action={logout}>
+          <button
+            type="submit"
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-ink/70 hover:bg-ink/5 hover:text-ink"
+          >
+            <LuLogOut className="size-4.5" />
+            Keluar
+          </button>
+        </form>
       </div>
     </>
   );
 }
 
-export function AdminShell({ children }: { children: ReactNode }) {
+export function AdminShell({
+  children,
+  user,
+}: {
+  children: ReactNode;
+  user: { name: string };
+}) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const activeItem = navItems.find((item) => item.href === pathname);
@@ -124,9 +133,9 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
           <div className="flex items-center gap-2.5">
             <span className="flex size-9 items-center justify-center rounded-full bg-signal-dim font-mono text-xs font-semibold text-signal">
-              A
+              {user.name.charAt(0).toUpperCase()}
             </span>
-            <span className="hidden text-sm font-medium text-ink/80 sm:inline">Admin ChatHub</span>
+            <span className="hidden text-sm font-medium text-ink/80 sm:inline">{user.name}</span>
           </div>
         </header>
 

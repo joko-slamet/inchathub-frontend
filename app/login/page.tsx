@@ -1,26 +1,15 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useActionState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { LuMail, LuLock, LuEye, LuEyeOff, LuLoaderCircle, LuArrowLeft } from "react-icons/lu";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
+import { login } from "@/app/actions/auth";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
-
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
-    // No backend yet — placeholder submit handler for future auth wiring.
-    console.log("Login submitted:", payload);
-    setLoading(true);
-    window.setTimeout(() => router.push("/panel"), 800);
-  }
+  const [state, formAction, pending] = useActionState(login, undefined);
 
   return (
     <main
@@ -38,7 +27,13 @@ export default function LoginPage() {
         <p className="font-display text-xl font-semibold tracking-tight text-ink">Masuk</p>
         <p className="mt-1.5 text-sm text-ink/60">Masuk ke akun ChatHub Anda untuk melanjutkan.</p>
 
-        <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-4">
+        <form action={formAction} className="mt-6 flex flex-col gap-4">
+          {state?.error && (
+            <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600">
+              {state.error}
+            </p>
+          )}
+
           <label className="flex flex-col gap-1.5">
             <span className="text-xs font-medium text-ink/60">Email</span>
             <div className="flex items-center gap-2.5 rounded-lg border border-line px-3.5 py-2.5 focus-within:border-ink/40">
@@ -78,8 +73,8 @@ export default function LoginPage() {
             </div>
           </label>
 
-          <Button type="submit" variant="primary" size="lg" className="w-full" disabled={loading}>
-            {loading ? (
+          <Button type="submit" variant="primary" size="lg" className="w-full" disabled={pending}>
+            {pending ? (
               <>
                 <LuLoaderCircle className="size-4 animate-spin" />
                 Memproses...

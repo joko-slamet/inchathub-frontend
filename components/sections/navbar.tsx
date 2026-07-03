@@ -2,14 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { LuMenu, LuX, LuLogIn } from "react-icons/lu";
+import { LuMenu, LuX, LuLogIn, LuLayoutDashboard } from "react-icons/lu";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
+import { useAuth } from "@/components/auth-provider";
 import type { SiteContent } from "@/content/site-content";
 
 export function Navbar({ content }: { content: SiteContent["nav"] }) {
   const [open, setOpen] = useState(false);
+  const user = useAuth();
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur-sm">
@@ -33,13 +35,23 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
         <div className="hidden items-center gap-5 md:flex">
           <LocaleSwitcher />
           <div className="flex items-center gap-3">
-            <Link
-              href="/login"
-              className="flex items-center gap-1.5 text-sm font-medium text-ink/70 transition-colors hover:text-ink"
-            >
-              <LuLogIn className="size-4" />
-              {content.loginLabel}
-            </Link>
+            {user ? (
+              <Link
+                href="/panel"
+                className="flex items-center gap-1.5 text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+              >
+                <LuLayoutDashboard className="size-4" />
+                Panel Admin
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="flex items-center gap-1.5 text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+              >
+                <LuLogIn className="size-4" />
+                {content.loginLabel}
+              </Link>
+            )}
             <Button href="/#kontak" variant="primary" size="md">
               {content.ctaPrimary}
             </Button>
@@ -75,14 +87,25 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
             <LocaleSwitcher />
           </div>
           <div className="mt-4 flex flex-col gap-3">
-            <Link
-              href="/login"
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-1.5 text-sm font-medium text-ink/70"
-            >
-              <LuLogIn className="size-4" />
-              {content.loginLabel}
-            </Link>
+            {user ? (
+              <Link
+                href="/panel"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-center gap-1.5 text-sm font-medium text-ink/70"
+              >
+                <LuLayoutDashboard className="size-4" />
+                Panel Admin
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-center gap-1.5 text-sm font-medium text-ink/70"
+              >
+                <LuLogIn className="size-4" />
+                {content.loginLabel}
+              </Link>
+            )}
             <Button href="/#kontak" variant="primary" size="md" onClick={() => setOpen(false)}>
               {content.ctaPrimary}
             </Button>

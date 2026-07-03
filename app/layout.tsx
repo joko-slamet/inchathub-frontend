@@ -3,6 +3,8 @@ import { cookies, headers } from "next/headers";
 import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
 import { getSiteContent, defaultLocale, isLocale, LOCALE_COOKIE, type Locale } from "@/content/site-content";
 import { LocaleProvider } from "@/components/locale-provider";
+import { AuthProvider } from "@/components/auth-provider";
+import { getSession } from "@/lib/session";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -83,7 +85,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialLocale = await resolveInitialLocale();
+  const [initialLocale, session] = await Promise.all([resolveInitialLocale(), getSession()]);
 
   return (
     <html
@@ -91,7 +93,9 @@ export default async function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
-        <LocaleProvider initialLocale={initialLocale}>{children}</LocaleProvider>
+        <AuthProvider user={session ? { role: session.role } : null}>
+          <LocaleProvider initialLocale={initialLocale}>{children}</LocaleProvider>
+        </AuthProvider>
       </body>
     </html>
   );
