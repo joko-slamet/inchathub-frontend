@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { LuMail, LuLock, LuEye, LuEyeOff, LuLoaderCircle, LuArrowLeft } from "react-icons/lu";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
@@ -9,6 +10,7 @@ import { Button } from "@/components/ui/button";
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -17,7 +19,7 @@ export default function LoginPage() {
     // No backend yet — placeholder submit handler for future auth wiring.
     console.log("Login submitted:", payload);
     setLoading(true);
-    window.setTimeout(() => setLoading(false), 800);
+    window.setTimeout(() => router.push("/panel"), 800);
   }
 
   return (

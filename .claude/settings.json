@@ -11,7 +11,12 @@
       "Bash(xargs -I{} echo {})",
       "Bash(node -e \"const i = require\\('react-icons/lu'\\); console.log\\(['LuNewspaper','LuCalendar','LuClock','LuArrowRight','LuTag','LuImage'].map\\(n => n+': '+\\(n in i\\)\\).join\\('\\\\n'\\)\\)\")",
       "Bash(node -e \"const i = require\\('react-icons/lu'\\); console.log\\(['LuMail','LuLock','LuEye','LuEyeOff','LuLoaderCircle','LuArrowLeft'].map\\(n => n+': '+\\(n in i\\)\\).join\\('\\\\n'\\)\\)\")",
-      "Bash(node -e \"const i = require\\('react-icons/lu'\\); console.log\\('LuLogIn' in i\\)\")"
+      "Bash(node -e \"const i = require\\('react-icons/lu'\\); console.log\\('LuLogIn' in i\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(sed -i 's#href: \"/admin#href: \"/panel#g; s#href=\"/admin\"#href=\"/panel\"#g' components/admin/admin-shell.tsx)",
+      "Bash(sed -i 's#href: \"/admin/pricing\"#href: \"/panel/pricing\"#' app/panel/page.tsx)",
+      "Bash(sed -i 's#router.push\\(\"/admin\"\\)#router.push\\(\"/panel\"\\)#' app/login/page.tsx)",
+      "Bash(node -e \"const i = require\\('react-icons/lu'\\); console.log\\('LuBuilding2' in i\\)\")"
     ],
     "additionalDirectories": [
       "/home/joko/projects/chathub/inchathub-frontend/app/[locale]"
