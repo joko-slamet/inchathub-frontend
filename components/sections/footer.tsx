@@ -37,7 +37,7 @@ export function Footer({
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={item.label}
-                    className="flex size-9 items-center justify-center rounded-full border border-line transition-colors hover:border-ink"
+                    className="flex size-9 items-center justify-center rounded-full border border-line transition-all duration-200 hover:-translate-y-0.5 hover:border-signal hover:shadow-[0_8px_16px_-8px_rgba(190,30,45,0.4)]"
                   >
                     <Icon className="size-4" style={{ color }} />
                   </a>
@@ -48,7 +48,7 @@ export function Footer({
 
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
             <div>
-              <p className="font-mono text-xs tracking-widest text-ink/40 uppercase">{content.navLabel}</p>
+              <p className="text-xs font-semibold tracking-wide text-slate uppercase">{content.navLabel}</p>
               <ul className="mt-4 space-y-2.5">
                 {nav.links.map((link) => (
                   <li key={link.href}>
@@ -61,7 +61,7 @@ export function Footer({
             </div>
 
             <div className="col-span-2 sm:col-span-1">
-              <p className="font-mono text-xs tracking-widest text-ink/40 uppercase">
+              <p className="text-xs font-semibold tracking-wide text-slate uppercase">
                 {content.companyName}
               </p>
               <p className="mt-4 text-sm text-ink/55">{content.companyNote}</p>
@@ -99,7 +99,7 @@ export function Footer({
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-line pt-6 sm:flex-row sm:items-center">
-          <p className="text-xs text-ink/45">{content.copyright}</p>
+          <p className="text-xs text-slate">{content.copyright}</p>
           <LocaleSwitcher />
         </div>
       </div>

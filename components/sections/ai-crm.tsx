@@ -36,7 +36,7 @@ function PointList({
         const PointIcon = icons[index];
         return (
           <li key={point.title} className="flex items-start gap-3.5">
-            <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-signal-dim text-signal">
+            <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-signal-dim text-signal">
               <PointIcon className="size-4" />
             </span>
             <div>
@@ -63,7 +63,7 @@ export function AiCrm({ content }: { content: SiteContent["aiCrm"] }) {
     >
       <div className="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-12">
         <ScrollReveal className="h-full">
-          <div className="flex h-full flex-col gap-8 rounded-2xl border border-line bg-paper p-6 shadow-[0_20px_60px_-32px_rgba(20,16,15,0.25)] sm:p-8">
+          <div className="tilt-hover flex h-full flex-col gap-8 rounded-[1.75rem] border-2 border-line bg-paper p-6 shadow-[0_20px_60px_-32px_rgba(26,22,24,0.25)] sm:p-8">
             <div>
               <h3 className="font-display text-xl font-semibold text-ink">{content.chatbot.title}</h3>
               <div className="mt-6">
@@ -74,7 +74,7 @@ export function AiCrm({ content }: { content: SiteContent["aiCrm"] }) {
         </ScrollReveal>
 
         <ScrollReveal delay={0.1} className="h-full">
-          <div className="flex h-full flex-col gap-8 rounded-2xl border border-line bg-paper p-6 shadow-[0_20px_60px_-32px_rgba(20,16,15,0.25)] sm:p-8">
+          <div className="tilt-hover-r flex h-full flex-col gap-8 rounded-[1.75rem] border-2 border-line bg-paper p-6 shadow-[0_20px_60px_-32px_rgba(26,22,24,0.25)] sm:p-8">
             <div>
               <h3 className="font-display text-xl font-semibold text-ink">{content.crm.title}</h3>
               <div className="mt-6">

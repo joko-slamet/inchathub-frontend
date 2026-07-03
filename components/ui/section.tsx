@@ -21,18 +21,16 @@ export function Eyebrow({
   tone?: "paper" | "ink";
 }) {
   return (
-    <div className="flex items-center gap-3">
-      <span
-        className={`h-px w-8 ${tone === "ink" ? "bg-paper/40" : "bg-signal"}`}
-      />
-      <span
-        className={`font-mono text-xs tracking-[0.18em] uppercase ${
-          tone === "ink" ? "text-paper/70" : "text-ink/60"
-        }`}
-      >
-        {children}
-      </span>
-    </div>
+    <span
+      className={`sticker items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold tracking-[0.06em] uppercase ${
+        tone === "ink"
+          ? "bg-paper/10 text-paper"
+          : "bg-signal-dim text-signal"
+      }`}
+    >
+      <span className={`size-1.5 rounded-full ${tone === "ink" ? "bg-paper" : "bg-signal"}`} />
+      {children}
+    </span>
   );
 }
 
@@ -61,7 +59,7 @@ export function Section({
         <ScrollReveal className={isCenter ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
           <div className={isCenter ? "flex flex-col items-center" : ""}>
             {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem]">
+            <h2 className="mt-5 text-3xl font-bold sm:text-4xl md:text-[2.75rem]">
               {title}
             </h2>
             {description && (

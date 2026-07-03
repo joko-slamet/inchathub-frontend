@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import { cookies, headers } from "next/headers";
-import { Space_Grotesk, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Inter, IBM_Plex_Mono } from "next/font/google";
 import { getSiteContent, defaultLocale, isLocale, LOCALE_COOKIE, type Locale } from "@/content/site-content";
 import { LocaleProvider } from "@/components/locale-provider";
 import { AuthProvider } from "@/components/auth-provider";
 import { getSession } from "@/lib/session";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
 });
 
 const inter = Inter({
@@ -90,7 +90,7 @@ export default async function RootLayout({
   return (
     <html
       lang={initialLocale}
-      className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      className={`${plusJakartaSans.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <AuthProvider user={session ? { role: session.role } : null}>

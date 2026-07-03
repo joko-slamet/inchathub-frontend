@@ -30,13 +30,13 @@ export function ChannelBadge({
   return (
     <div className="flex items-center gap-2">
       <span
-        className={`flex items-center justify-center rounded-lg border border-line bg-paper text-ink/70 ${
+        className={`flex items-center justify-center rounded-full border border-line bg-paper text-ink/70 transition-transform duration-200 hover:-translate-y-0.5 hover:rotate-6 ${
           size === "sm" ? "size-7" : "size-9"
         }`}
       >
         <Icon className={size === "sm" ? "size-3.5" : "size-4"} style={color ? { color } : undefined} />
       </span>
-      <span className="font-mono text-[0.65rem] tracking-wider text-ink/50 uppercase">
+      <span className="text-[0.7rem] font-semibold tracking-wide text-slate uppercase">
         {channel.badge}
       </span>
     </div>

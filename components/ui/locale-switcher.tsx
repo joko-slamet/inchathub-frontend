@@ -9,7 +9,7 @@ export function LocaleSwitcher({ className = "" }: { className?: string }) {
   const { locale, setLocale } = useLocale();
 
   return (
-    <div className={`flex items-center gap-1.5 font-mono text-xs uppercase ${className}`}>
+    <div className={`flex items-center gap-1.5 text-xs font-semibold uppercase ${className}`}>
       {locales.map((l, index) => (
         <span key={l} className="flex items-center gap-1.5">
           {index > 0 && <span className="text-ink/20">/</span>}

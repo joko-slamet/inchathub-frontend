@@ -20,10 +20,10 @@ export function InboxMockup({ content }: { content: SiteContent["omnichannel"]["
   const { conversations } = content;
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-line bg-paper shadow-[0_24px_64px_-32px_rgba(20,16,15,0.3)]">
+    <div className="overflow-hidden rounded-[1.75rem] border-2 border-line bg-paper shadow-[0_24px_64px_-32px_rgba(26,22,24,0.3)]">
       <div className="flex items-center justify-between border-b border-line px-5 py-3.5">
         <span className="text-sm font-semibold text-ink">{content.headerTitle}</span>
-        <span className="font-mono text-[0.65rem] text-ink/40 uppercase">
+        <span className="text-[0.7rem] font-semibold text-ink/40 uppercase">
           {conversations.filter((c) => c.unread).length} {content.unreadSuffix}
         </span>
       </div>
@@ -40,7 +40,7 @@ export function InboxMockup({ content }: { content: SiteContent["omnichannel"]["
                   active ? "bg-signal-dim" : "hover:bg-ink/[0.03]"
                 }`}
               >
-                <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-lg bg-ink/5 text-ink/60">
+                <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-slate-dim text-ink/60">
                   <Icon className="size-4" style={color ? { color } : undefined} />
                 </span>
                 <div className="min-w-0 flex-1">
@@ -52,7 +52,7 @@ export function InboxMockup({ content }: { content: SiteContent["omnichannel"]["
                     >
                       {conversation.name}
                     </p>
-                    <span className="shrink-0 font-mono text-[0.65rem] text-ink/40">
+                    <span className="shrink-0 text-[0.7rem] font-medium text-ink/40">
                       {conversation.time}
                     </span>
                   </div>

@@ -4,12 +4,15 @@ type Variant = "primary" | "outline" | "outline-inverse" | "ghost";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-paper";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:scale-95";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-signal text-white hover:bg-ink hover:-translate-y-0.5",
-  outline: "border border-ink/20 text-ink hover:border-ink hover:-translate-y-0.5",
-  "outline-inverse": "border border-paper/30 text-paper hover:border-paper hover:-translate-y-0.5",
+  primary:
+    "bg-signal text-white shadow-[0_10px_28px_-8px_rgba(190,30,45,0.55)] hover:-translate-y-1 hover:shadow-[0_16px_36px_-10px_rgba(190,30,45,0.6)] hover:rotate-[-1deg]",
+  outline:
+    "border-2 border-ink/15 text-ink hover:-translate-y-1 hover:border-signal hover:text-signal",
+  "outline-inverse":
+    "border-2 border-paper/30 text-paper hover:-translate-y-1 hover:border-paper",
   ghost: "text-ink hover:text-signal",
 };
 

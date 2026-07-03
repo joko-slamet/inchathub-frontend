@@ -14,8 +14,8 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
   const user = useAuth();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/90 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10 lg:px-16">
+    <header className="sticky top-3 z-50 px-3 sm:top-4 sm:px-6 md:px-10 lg:px-16">
+      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-line bg-paper/90 px-5 py-3 shadow-[0_12px_32px_-16px_rgba(26,22,24,0.25)] backdrop-blur-md sm:px-6">
         <Link href="/" className="flex items-center" aria-label="ChatHub">
           <Logo />
         </Link>
@@ -25,7 +25,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-ink/70 transition-colors hover:text-ink"
+              className="text-sm font-medium text-ink/70 transition-colors hover:text-signal"
             >
               {link.label}
             </a>
@@ -70,7 +70,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
       </div>
 
       {open && (
-        <div className="border-t border-line bg-paper px-6 py-6 md:hidden">
+        <div className="mx-auto mt-2 max-w-7xl rounded-3xl border border-line bg-paper px-6 py-6 shadow-[0_12px_32px_-16px_rgba(26,22,24,0.25)] md:hidden">
           <nav className="flex flex-col gap-4" aria-label="Mobile navigation">
             {content.links.map((link) => (
               <a

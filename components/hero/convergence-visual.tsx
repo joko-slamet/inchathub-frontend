@@ -29,12 +29,12 @@ export function ConvergenceVisual() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: index * 0.08 }}
-            className="relative flex items-center gap-2 rounded-xl border border-line bg-paper/95 px-3 py-2 shadow-[0_8px_24px_-14px_rgba(20,16,15,0.3)]"
+            className="relative flex items-center gap-2 rounded-full border border-line bg-paper/95 px-3.5 py-2 shadow-[0_10px_28px_-14px_rgba(26,22,24,0.3)]"
           >
-            <span className="flex size-7 items-center justify-center rounded-lg bg-ink/5 text-ink/70">
+            <span className="flex size-7 items-center justify-center rounded-full bg-slate-dim text-ink/70">
               <bubble.icon className="size-3.5" style={bubble.color ? { color: bubble.color } : undefined} />
             </span>
-            <span className="font-mono text-[0.65rem] tracking-wider text-ink/60 uppercase">
+            <span className="text-[0.7rem] font-semibold tracking-wide text-ink/60 uppercase">
               {bubble.badge}
             </span>
 
