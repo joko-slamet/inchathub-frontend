@@ -3,6 +3,7 @@
 import { LuRocket } from "react-icons/lu";
 import { getSiteContent } from "@/content/site-content";
 import { useLocale } from "@/components/locale-provider";
+import { usePricingContent } from "@/hooks/use-pricing-plans";
 import { Navbar } from "@/components/sections/navbar";
 import { PageHero } from "@/components/ui/page-hero";
 import { Pricing } from "@/components/sections/pricing";
@@ -13,6 +14,7 @@ import { Footer } from "@/components/sections/footer";
 export default function PricingPage() {
   const { locale } = useLocale();
   const content = getSiteContent(locale);
+  const pricing = usePricingContent(content.pricing, locale);
 
   return (
     <>
@@ -23,7 +25,7 @@ export default function PricingPage() {
           heading={content.pricingHero.heading}
           subheading={content.pricingHero.subheading}
         />
-        <Pricing content={content.pricing} />
+        <Pricing content={pricing} />
         <Faq content={content.faq} />
         <ClosingCta content={content.closingCta} />
       </main>

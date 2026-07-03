@@ -20,7 +20,8 @@
       "Bash(npm -v)",
       "Bash(pg_isready)",
       "Bash(systemctl is-active *)",
-      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(48\\).toString\\('hex'\\)\\)\")"
+      "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(48\\).toString\\('hex'\\)\\)\")",
+      "Bash(echo \"EXIT: $?\")"
     ],
     "additionalDirectories": [
       "/home/joko/projects/chathub/inchathub-frontend/app/[locale]"

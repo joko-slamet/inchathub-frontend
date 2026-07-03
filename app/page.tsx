@@ -2,6 +2,7 @@
 
 import { getSiteContent, channels, clients } from "@/content/site-content";
 import { useLocale } from "@/components/locale-provider";
+import { usePricingContent } from "@/hooks/use-pricing-plans";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
 import { Problem } from "@/components/sections/problem";
@@ -19,6 +20,7 @@ import { Blog } from "@/components/sections/blog";
 export default function Home() {
   const { locale } = useLocale();
   const content = getSiteContent(locale);
+  const pricing = usePricingContent(content.pricing, locale);
 
   return (
     <>
@@ -31,7 +33,7 @@ export default function Home() {
         <AiCrm content={content.aiCrm} />
         <WhyChatHub content={content.whyChatHub} />
         <Industries content={content.industries} clients={clients} />
-        <Pricing content={content.pricing} />
+        <Pricing content={pricing} />
         <Blog content={content.blog} limit={3} />
         <Faq content={content.faq} />
         <ClosingCta content={content.closingCta} />
