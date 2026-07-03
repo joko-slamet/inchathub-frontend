@@ -37,6 +37,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: meta.title,
   description: meta.description,
+  icons: {
+    icon: "/logo.ico",
+  },
   keywords: [
     "omnichannel",
     "AI chatbot",

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
 import { SiWhatsapp, SiInstagram, SiTelegram, SiFacebook } from "react-icons/si";
 import { LuMail, LuGlobe } from "react-icons/lu";
 
@@ -15,14 +14,12 @@ const bubbleLayout = [
 ];
 
 export function ConvergenceVisual() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <div
-      className="relative mx-auto h-[380px] w-full max-w-sm sm:h-[440px] sm:max-w-md lg:mx-0 lg:h-[520px] lg:max-w-none"
+      className="relative mx-auto h-[480px] w-full max-w-lg sm:h-[560px] sm:max-w-xl lg:mx-0 lg:h-[720px] lg:max-w-none"
       aria-hidden="true"
     >
-      {bubbleLayout.map((bubble, index) => (
+      {/* {bubbleLayout.map((bubble, index) => (
         <div key={bubble.badge} className={`absolute z-0 ${bubble.className}`}>
           <motion.div
             initial={{ opacity: 0, y: 14, scale: 0.85 }}
@@ -58,21 +55,25 @@ export function ConvergenceVisual() {
             )}
           </motion.div>
         </div>
-      ))}
+      ))} */}
 
-      <div className="absolute inset-0 z-10 flex items-end justify-center lg:left-auto lg:right-0 lg:w-[420px] lg:justify-end">
-        <Image
-          src="/images/woman-with-phone.png"
-          alt="Wanita profesional tersenyum sambil membalas chat pelanggan lewat ponsel"
-          width={928}
-          height={1152}
-          priority
-          className="h-full max-h-[380px] w-auto object-contain object-bottom sm:max-h-[440px] lg:max-h-[520px]"
-          style={{
-            maskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, black 82%, transparent 100%)",
-          }}
+      <div className="absolute inset-0 z-10 flex items-center justify-center lg:left-auto lg:right-0 lg:w-[680px] lg:justify-end">
+        <div
+          aria-hidden="true"
+          className="blob animate-float pointer-events-none absolute size-96 bg-signal-dim/70 blur-2xl sm:size-[28rem]"
         />
+        <div className="tilt-hover relative w-full max-w-[640px] rotate-2 overflow-hidden">
+          <div className="animate-float">
+            <Image
+              src="/images/hero-transparent.png"
+              alt="Maskot robot AI ChatHub dikelilingi jendela obrolan dari berbagai kanal"
+              width={1376}
+              height={768}
+              priority
+              className="h-auto w-full object-cover"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
