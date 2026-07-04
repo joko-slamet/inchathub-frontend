@@ -124,6 +124,9 @@ export interface SiteContent {
       title: string;
       excerpt: string;
       content: string[];
+      // Only set for AI-generated articles loaded from the backend — absent
+      // on the static locale fallback, which never had real cover images.
+      imageUrl?: string;
       author: string;
       date: string;
       readTime: string;

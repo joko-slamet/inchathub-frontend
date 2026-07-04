@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useParams, notFound } from "next/navigation";
-import { LuArrowLeft, LuCalendar, LuClock, LuUser } from "react-icons/lu";
+import { LuArrowLeft, LuCalendar, LuClock, LuUser, LuLoaderCircle } from "react-icons/lu";
 import { getSiteContent } from "@/content/site-content";
 import { useLocale } from "@/components/locale-provider";
+import { useArticles } from "@/hooks/use-articles";
+import { toPublicBlogPosts } from "@/lib/blog-format";
 import { Navbar } from "@/components/sections/navbar";
 import { BlogGrid } from "@/components/sections/blog-grid";
 import { ClosingCta } from "@/components/sections/closing-cta";
@@ -14,11 +16,30 @@ export default function BlogDetailPage() {
   const { locale } = useLocale();
   const content = getSiteContent(locale);
   const { slug } = useParams<{ slug: string }>();
+  const { articles, loading, error } = useArticles();
 
-  const post = content.blog.posts.find((p) => p.slug === slug);
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center gap-2 text-sm text-ink/50">
+        <LuLoaderCircle className="size-4 animate-spin" />
+        Memuat artikel...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center text-sm text-ink/50">
+        Gagal memuat artikel. Coba muat ulang halaman.
+      </div>
+    );
+  }
+
+  const posts = toPublicBlogPosts(articles ?? [], locale);
+  const post = posts.find((p) => p.slug === slug);
   if (!post) notFound();
 
-  const relatedPosts = content.blog.posts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const relatedPosts = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
     <>
@@ -45,12 +66,7 @@ export default function BlogDetailPage() {
               Kembali ke Blog
             </Link>
 
-            <span className="sticker mt-6 inline-flex items-center gap-2 rounded-full bg-signal-dim px-4 py-1.5 text-xs font-semibold tracking-[0.06em] text-signal uppercase">
-              <span className="size-1.5 rounded-full bg-signal" />
-              {post.category}
-            </span>
-
-            <h1 className="mt-4 font-display text-3xl leading-tight font-bold text-ink sm:text-4xl">
+            <h1 className="mt-6 font-display text-3xl leading-tight font-bold text-ink sm:text-4xl">
               {post.title}
             </h1>
 
@@ -68,6 +84,22 @@ export default function BlogDetailPage() {
                 {post.readTime}
               </span>
             </div>
+
+            {post.imageUrl ? (
+              <div className="relative mt-8 overflow-hidden rounded-[1.75rem] border-2 border-line">
+                {/* eslint-disable-next-line @next/next/no-img-element -- backend host isn't known ahead of time for next/image. */}
+                <img src={post.imageUrl} alt="" className="aspect-video w-full object-cover" />
+                <span className="sticker absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-signal-dim px-4 py-1.5 text-xs font-semibold tracking-[0.06em] text-signal uppercase">
+                  <span className="size-1.5 rounded-full bg-signal" />
+                  {post.category}
+                </span>
+              </div>
+            ) : (
+              <span className="sticker mt-8 inline-flex items-center gap-2 rounded-full bg-signal-dim px-4 py-1.5 text-xs font-semibold tracking-[0.06em] text-signal uppercase">
+                <span className="size-1.5 rounded-full bg-signal" />
+                {post.category}
+              </span>
+            )}
 
             <div className="mt-10 flex flex-col gap-5 border-t border-dashed border-line pt-10">
               {post.content.map((paragraph, index) => (

@@ -11,11 +11,20 @@ export function BlogGrid({ posts }: { posts: SiteContent["blog"]["posts"] }) {
           href={`/blog/${post.slug}`}
           className="group flex flex-col overflow-hidden rounded-[1.75rem] border-2 border-line transition-all duration-300 hover:-translate-y-1.5 hover:border-signal/30 hover:shadow-[0_24px_48px_-24px_rgba(190,30,45,0.3)]"
         >
-          <div className="relative flex h-40 items-center justify-center bg-signal-dim">
-            <LuNewspaper
-              className="size-10 text-signal/25 transition-transform duration-300 group-hover:rotate-6"
-              strokeWidth={1.5}
-            />
+          <div className="relative flex h-40 items-center justify-center overflow-hidden bg-signal-dim">
+            {post.imageUrl ? (
+              // eslint-disable-next-line @next/next/no-img-element -- backend host isn't known ahead of time for next/image.
+              <img
+                src={post.imageUrl}
+                alt=""
+                className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            ) : (
+              <LuNewspaper
+                className="size-10 text-signal/25 transition-transform duration-300 group-hover:rotate-6"
+                strokeWidth={1.5}
+              />
+            )}
             <span className="sticker absolute top-4 left-4 rounded-full bg-ink px-3 py-1 text-[0.7rem] font-semibold tracking-wide text-paper uppercase">
               {post.category}
             </span>

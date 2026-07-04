@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { updateAiArticleConfig } from "@/app/actions/ai-article-config";
 import { deleteArticle, generateArticleNow } from "@/app/actions/articles";
 import type { AiArticleConfigDTO, ArticleDTO } from "@/lib/ai-article-types";
+import { toArticleImageUrl } from "@/lib/article-image";
 
 function formatTimeList(times: string[]): string {
   if (times.length === 0) return "belum ada jadwal";
@@ -320,7 +321,7 @@ export function BlogAiEditor({
                         <div className="flex items-center gap-3">
                           {/* eslint-disable-next-line @next/next/no-img-element -- backend host isn't known ahead of time for next/image. */}
                           <img
-                            src={article.imageUrl}
+                            src={toArticleImageUrl(article.imageUrl)}
                             alt=""
                             className="size-12 shrink-0 rounded-lg border border-line object-cover"
                           />
@@ -354,8 +355,8 @@ export function BlogAiEditor({
                         <div className="flex items-center justify-end gap-1">
                           <button
                             type="button"
-                            onClick={() => window.open(article.imageUrl, "_blank")}
-                            aria-label="Lihat gambar artikel"
+                            onClick={() => window.open(`/blog/${article.slug}`, "_blank")}
+                            aria-label="Lihat halaman artikel"
                             className="rounded-lg p-2 text-ink/40 hover:bg-ink/5 hover:text-ink"
                           >
                             <LuExternalLink className="size-4" />

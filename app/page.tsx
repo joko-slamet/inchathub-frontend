@@ -3,6 +3,8 @@
 import { getSiteContent, channels, clients } from "@/content/site-content";
 import { useLocale } from "@/components/locale-provider";
 import { usePricingContent } from "@/hooks/use-pricing-plans";
+import { useArticles } from "@/hooks/use-articles";
+import { toPublicBlogPosts } from "@/lib/blog-format";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
 import { Problem } from "@/components/sections/problem";
@@ -21,6 +23,7 @@ export default function Home() {
   const { locale } = useLocale();
   const content = getSiteContent(locale);
   const pricing = usePricingContent(content.pricing, locale);
+  const { articles } = useArticles();
 
   return (
     <>
@@ -34,7 +37,9 @@ export default function Home() {
         <WhyChatHub content={content.whyChatHub} />
         <Industries content={content.industries} clients={clients} />
         <Pricing content={pricing} />
-        <Blog content={content.blog} limit={3} />
+        {articles && articles.length > 0 && (
+          <Blog content={{ ...content.blog, posts: toPublicBlogPosts(articles, locale) }} limit={3} />
+        )}
         <Faq content={content.faq} />
         <ClosingCta content={content.closingCta} />
       </main>
@@ -42,4 +47,3 @@ export default function Home() {
     </>
   );
 }
-//test
