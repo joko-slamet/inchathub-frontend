@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import {
   LuGraduationCap,
   LuHeartPulse,
@@ -29,6 +32,19 @@ const industryIcons: IconType[] = [
   LuClapperboard,
 ];
 
+const industryColors = [
+  "from-blue-50 border-blue-200/60 text-blue-600 bg-blue-100",
+  "from-red-50 border-red-200/60 text-red-600 bg-red-100",
+  "from-amber-50 border-amber-200/60 text-amber-600 bg-amber-100",
+  "from-slate-50 border-slate-200/60 text-slate-600 bg-slate-100",
+  "from-purple-50 border-purple-200/60 text-purple-600 bg-purple-100",
+  "from-emerald-50 border-emerald-200/60 text-emerald-600 bg-emerald-100",
+  "from-pink-50 border-pink-200/60 text-pink-600 bg-pink-100",
+  "from-sky-50 border-sky-200/60 text-sky-600 bg-sky-100",
+  "from-orange-50 border-orange-200/60 text-orange-600 bg-orange-100",
+  "from-violet-50 border-violet-200/60 text-violet-600 bg-violet-100",
+];
+
 export function Industries({
   content,
   clients,
@@ -49,45 +65,51 @@ export function Industries({
       description={content.description}
     >
       <ScrollReveal delay={0.15} className="mt-12">
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
           {content.list.map((industry, index) => {
             const IndustryIcon = industryIcons[index];
+            const [gradientClass, borderClass, textClass, bgClass] = industryColors[index].split(" ");
             return (
-              <div
+              <motion.div
                 key={industry.name}
-                className="group flex flex-col items-center gap-3 rounded-2xl border border-line px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-signal/30 hover:shadow-[0_16px_32px_-22px_rgba(190,30,45,0.35)]"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{ y: -8, scale: 1.05 }}
+                viewport={{ once: true }}
+                transition={{
+                  entry: { duration: 0.4, delay: index * 0.05 },
+                  hover: { type: "spring", stiffness: 350, damping: 18 },
+                }}
+                className={`group flex flex-col items-center gap-3 rounded-2xl border bg-gradient-to-b px-4 py-6 text-center transition-shadow duration-300 hover:shadow-lg ${gradientClass} ${borderClass}`}
               >
-                <span className="flex size-10 items-center justify-center rounded-full bg-signal-dim text-signal">
-                  <IndustryIcon className="size-5" />
+                <span className={`flex size-11 items-center justify-center rounded-full ${bgClass} transition-transform duration-300 group-hover:rotate-12`}>
+                  <IndustryIcon className={`size-5 ${textClass}`} />
                 </span>
-                <p className="text-xs font-medium text-ink/75 sm:text-sm">{industry.name}</p>
-              </div>
+                <p className="text-xs font-semibold text-ink/75 sm:text-sm leading-tight">{industry.name}</p>
+              </motion.div>
             );
           })}
         </div>
       </ScrollReveal>
 
-      {/* <ScrollReveal delay={0.2} className="mt-16">
-        <p className="text-center font-mono text-xs tracking-widest text-ink/40 uppercase">
-          {content.logoStripLabel}
-        </p> */}
-        {/* TODO: replace these name tiles with official client logo artwork once written permission is obtained from each institution/hospital/company. */}
-        {/* <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-          {clients.map((clientName) => (
-            <div
-              key={clientName}
-              className="flex h-20 items-center justify-center rounded-lg border border-dashed border-line bg-ink/[0.02] px-3 text-center"
-            >
-              <span className="text-xs font-medium text-ink/50">{clientName}</span>
-            </div>
-          ))}
-          <div className="flex h-20 items-center justify-center rounded-lg border border-dashed border-line bg-ink/[0.02] px-3 text-center">
-            <span className="font-mono text-[0.65rem] tracking-wide text-ink/35 uppercase">
-              {content.clientsMoreLabel}
-            </span>
+      {/* Decorative "trusted by" section */}
+      <ScrollReveal delay={0.2} className="mt-16 text-center">
+        <div className="relative inline-flex items-center gap-4 rounded-2xl border border-dashed border-line bg-slate-dim/50 px-8 py-5">
+          <div className="flex -space-x-3">
+            {["#be1e2d", "#25D366", "#1877F2", "#E4405F"].map((color, i) => (
+              <div
+                key={i}
+                className="size-8 rounded-full border-2 border-white shadow-sm"
+                style={{ backgroundColor: color }}
+              />
+            ))}
+          </div>
+          <div className="text-left">
+            <p className="text-sm font-semibold text-ink">500+ bisnis aktif</p>
+            <p className="text-xs text-ink/50">di seluruh Indonesia</p>
           </div>
         </div>
-      </ScrollReveal> */}
+      </ScrollReveal>
     </Section>
   );
 }

@@ -28,7 +28,7 @@ export function Eyebrow({
           : "bg-signal-dim text-signal"
       }`}
     >
-      <span className={`size-1.5 rounded-full ${tone === "ink" ? "bg-paper" : "bg-signal"}`} />
+      <span className={`size-1.5 rounded-full ${tone === "ink" ? "bg-paper animate-pulse" : "bg-signal animate-pulse"}`} />
       {children}
     </span>
   );
@@ -50,16 +50,26 @@ export function Section({
   return (
     <section
       id={id}
-      className={`relative scroll-mt-20 px-6 py-20 sm:py-28 md:px-10 lg:px-16 ${
+      className={`relative scroll-mt-20 overflow-hidden px-6 py-20 sm:py-28 md:px-10 lg:px-16 ${
         tone === "ink" ? "bg-ink text-paper" : "bg-paper text-ink"
       } ${className}`}
       style={style}
     >
+      {/* Subtle section separator ornament at top */}
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute top-0 left-0 right-0 h-px ${
+          tone === "ink"
+            ? "bg-gradient-to-r from-transparent via-paper/10 to-transparent"
+            : "bg-gradient-to-r from-transparent via-signal/15 to-transparent"
+        }`}
+      />
+
       <div className="mx-auto max-w-6xl">
         <ScrollReveal className={isCenter ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
           <div className={isCenter ? "flex flex-col items-center" : ""}>
             {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}
-            <h2 className="mt-5 text-3xl font-bold sm:text-4xl md:text-[2.75rem]">
+            <h2 className="mt-5 text-3xl font-bold sm:text-4xl md:text-[2.75rem] leading-tight">
               {title}
             </h2>
             {description && (
