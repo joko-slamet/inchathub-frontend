@@ -24,9 +24,7 @@ export function WhyChatHub({ content }: { content: SiteContent["whyChatHub"] }) 
           return (
             <ScrollReveal key={point.title} delay={index * 0.05} className="h-full">
               <div
-                className={`${
-                  index % 2 === 0 ? "tilt-hover" : "tilt-hover-r"
-                } flex h-full flex-col gap-3 rounded-2xl border border-line bg-paper p-6 shadow-[0_20px_60px_-32px_rgba(26,22,24,0.25)] transition-shadow duration-300 hover:shadow-[0_20px_45px_-24px_rgba(190,30,45,0.3)]`}
+                className={`flex h-full flex-col gap-3 rounded-2xl border border-line bg-paper p-6 shadow-[0_20px_60px_-32px_rgba(26,22,24,0.25)] transition-shadow duration-300 hover:shadow-[0_20px_45px_-24px_rgba(190,30,45,0.3)]`}
               >
                 <span className="flex size-10 items-center justify-center rounded-full bg-signal-dim text-signal">
                   <PointIcon className="size-5" />

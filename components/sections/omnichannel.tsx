@@ -41,7 +41,7 @@ export function Omnichannel({ content }: { content: SiteContent["omnichannel"] }
             const FeatureIcon = featureIcons[index];
             return (
               <ScrollReveal key={feature.title} delay={index * 0.05}>
-                <div className="group h-full rounded-2xl border border-line bg-paper p-5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:rotate-[-1deg] hover:border-signal/30 hover:shadow-[0_20px_40px_-20px_rgba(190,30,45,0.3)]">
+                <div className="group h-full rounded-2xl border border-line bg-paper p-5 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-signal/30 hover:shadow-[0_20px_40px_-20px_rgba(190,30,45,0.3)]">
                   <span className="flex size-10 items-center justify-center rounded-full bg-signal-dim text-signal">
                     <FeatureIcon className="size-5" />
                   </span>

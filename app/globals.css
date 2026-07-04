@@ -46,18 +46,6 @@
     display: inline-flex;
   }
 
-  .tilt-hover {
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .tilt-hover:hover {
-    transform: rotate(-1deg) translateY(-4px);
-  }
-
-  .tilt-hover-r:hover {
-    transform: rotate(1deg) translateY(-4px);
-  }
-
   .blob {
     border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
   }

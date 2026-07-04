@@ -8,13 +8,13 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-signal text-white shadow-[0_10px_28px_-8px_rgba(190,30,45,0.55)] hover:-translate-y-1 hover:shadow-[0_16px_36px_-10px_rgba(190,30,45,0.6)] hover:rotate-[-1deg]",
+    "bg-signal text-white shadow-[0_10px_28px_-8px_rgba(190,30,45,0.55)] hover:-translate-y-1 hover:shadow-[0_16px_36px_-10px_rgba(190,30,45,0.6)]",
   outline:
     "border-2 border-ink/15 text-ink hover:-translate-y-1 hover:border-signal hover:text-signal",
   "outline-inverse":
     "border-2 border-paper/30 text-paper hover:-translate-y-1 hover:border-paper",
   inverse:
-    "bg-paper text-signal shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:bg-ink hover:text-paper hover:rotate-[-1deg]",
+    "bg-paper text-signal shadow-[0_10px_28px_-8px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:bg-ink hover:text-paper",
   ghost: "text-ink hover:text-signal",
 };
 

@@ -57,7 +57,7 @@ export function Industries({
                 key={industry.name}
                 className="group flex flex-col items-center gap-3 rounded-2xl border border-line px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-signal/30 hover:shadow-[0_16px_32px_-22px_rgba(190,30,45,0.35)]"
               >
-                <span className="flex size-10 items-center justify-center rounded-full bg-signal-dim text-signal transition-transform duration-300 group-hover:rotate-12">
+                <span className="flex size-10 items-center justify-center rounded-full bg-signal-dim text-signal">
                   <IndustryIcon className="size-5" />
                 </span>
                 <p className="text-xs font-medium text-ink/75 sm:text-sm">{industry.name}</p>

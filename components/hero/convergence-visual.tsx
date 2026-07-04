@@ -62,7 +62,7 @@ export function ConvergenceVisual() {
           aria-hidden="true"
           className="blob animate-float pointer-events-none absolute size-96 bg-signal-dim/70 blur-2xl sm:size-[28rem]"
         />
-        <div className="tilt-hover relative w-full max-w-[640px] rotate-2 overflow-hidden">
+        <div className="relative w-full max-w-[640px] rotate-2 overflow-hidden">
           <div className="animate-float">
             <Image
               src="/images/hero-transparent.png"

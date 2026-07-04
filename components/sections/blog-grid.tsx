@@ -21,7 +21,7 @@ export function BlogGrid({ posts }: { posts: SiteContent["blog"]["posts"] }) {
               />
             ) : (
               <LuNewspaper
-                className="size-10 text-signal/25 transition-transform duration-300 group-hover:rotate-6"
+                className="size-10 text-signal/25"
                 strokeWidth={1.5}
               />
             )}

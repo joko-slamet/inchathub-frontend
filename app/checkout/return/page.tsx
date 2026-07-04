@@ -51,6 +51,11 @@ export default async function CheckoutReturnPage({
             <p className="mt-1.5 text-sm leading-relaxed text-ink/60">
               Paket Anda sudah aktif. Terima kasih sudah berlangganan ChatHub.
             </p>
+            <Link href="/dashboard" className="mt-6 w-full">
+              <Button variant="primary" size="lg" className="w-full">
+                Ke Dashboard
+              </Button>
+            </Link>
           </>
         )}
 
