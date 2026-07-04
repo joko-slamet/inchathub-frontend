@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useTransition, type FormEvent } from "react";
 import { SiWhatsapp, SiInstagram } from "react-icons/si";
-import { LuMapPin, LuSend, LuMail } from "react-icons/lu";
+import { LuMapPin, LuSend, LuMail, LuLoaderCircle } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import type { SiteContent } from "@/content/site-content";
+import { submitContactForm } from "@/app/actions/contact";
 
 // Positional match with contact.infoCards in content — keep order in sync.
 const cardIcons: { icon: IconType; color?: string }[] = [
@@ -20,15 +21,28 @@ const cardIcons: { icon: IconType; color?: string }[] = [
 
 export function Contact({ content, mapSrc }: { content: SiteContent["contact"]; mapSrc: string }) {
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string>();
+  const [submitting, startSubmitting] = useTransition();
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const payload = Object.fromEntries(formData.entries());
-    // No backend yet — log the submission and show a confirmation instead.
-    console.log("Contact form submitted:", payload);
-    setSubmitted(true);
-    event.currentTarget.reset();
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const name = String(formData.get("name") ?? "");
+    const email = String(formData.get("email") ?? "");
+    const phone = String(formData.get("phone") ?? "");
+    const message = String(formData.get("message") ?? "");
+
+    setSubmitError(undefined);
+    startSubmitting(async () => {
+      const result = await submitContactForm({ name, email, phone: phone || undefined, message });
+      if (!result.ok) {
+        setSubmitError(result.error);
+        return;
+      }
+      setSubmitted(true);
+      form.reset();
+    });
   }
 
   return (
@@ -138,10 +152,17 @@ export function Contact({ content, mapSrc }: { content: SiteContent["contact"]; 
               variant="primary"
               size="lg"
               className="w-full"
+              disabled={submitting}
             >
               {content.form.submitLabel}
-              <LuSend className="size-4" />
+              {submitting ? <LuLoaderCircle className="size-4 animate-spin" /> : <LuSend className="size-4" />}
             </Button>
+
+            {submitError && (
+              <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600">
+                {submitError}
+              </p>
+            )}
 
             {submitted && (
               <p className="rounded-lg bg-ok/10 px-3.5 py-2.5 text-sm text-ok">

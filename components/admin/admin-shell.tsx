@@ -10,6 +10,7 @@ import {
   LuNewspaper,
   LuBuilding2,
   LuReceipt,
+  LuInbox,
   LuMenu,
   LuX,
   LuLogOut,
@@ -30,6 +31,7 @@ const navItems: NavItem[] = [
   { label: "Order", href: "/panel/orders", icon: LuReceipt },
   { label: "Harga", href: "/panel/pricing", icon: LuTag },
   { label: "Blog", href: "/panel/blog", icon: LuNewspaper },
+  { label: "Formulir Kontak", href: "/panel/contact", icon: LuInbox },
   { label: "Profil Perusahaan", href: "/panel/about", icon: LuBuilding2 },
   { label: "Site Setting", href: "/panel/homepage", icon: LuSettings },
 ];
