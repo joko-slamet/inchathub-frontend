@@ -11,6 +11,7 @@ import {
   LuBuilding2,
   LuReceipt,
   LuInbox,
+  LuUsers,
   LuMenu,
   LuX,
   LuLogOut,
@@ -29,6 +30,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "Overview", href: "/panel", icon: LuLayoutDashboard },
   { label: "Order", href: "/panel/orders", icon: LuReceipt },
+  { label: "Customer", href: "/panel/customers", icon: LuUsers },
   { label: "Harga", href: "/panel/pricing", icon: LuTag },
   { label: "Blog", href: "/panel/blog", icon: LuNewspaper },
   { label: "Formulir Kontak", href: "/panel/contact", icon: LuInbox },
