@@ -7,7 +7,7 @@ import type { IconType } from "react-icons";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Button } from "@/components/ui/button";
-import { mapEmbedSrc, type SiteContent } from "@/content/site-content";
+import type { SiteContent } from "@/content/site-content";
 
 // Positional match with contact.infoCards in content — keep order in sync.
 const cardIcons: { icon: IconType; color?: string }[] = [
@@ -18,7 +18,7 @@ const cardIcons: { icon: IconType; color?: string }[] = [
   { icon: LuMail },
 ];
 
-export function Contact({ content }: { content: SiteContent["contact"] }) {
+export function Contact({ content, mapSrc }: { content: SiteContent["contact"]; mapSrc: string }) {
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -155,7 +155,7 @@ export function Contact({ content }: { content: SiteContent["contact"] }) {
           className="overflow-hidden rounded-2xl border border-line shadow-[0_16px_40px_-28px_rgba(20,16,15,0.3)] lg:col-span-2"
         >
           <iframe
-            src={mapEmbedSrc}
+            src={mapSrc}
             title={content.mapTitle}
             width="100%"
             height="360"

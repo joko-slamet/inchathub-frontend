@@ -4,6 +4,8 @@ import { getSiteContent, channels, clients } from "@/content/site-content";
 import { useLocale } from "@/components/locale-provider";
 import { usePricingContent } from "@/hooks/use-pricing-plans";
 import { useArticles } from "@/hooks/use-articles";
+import { useSiteSettingContent } from "@/hooks/use-site-settings";
+import { useVisionMissionContent } from "@/hooks/use-company-profile";
 import { toPublicBlogPosts } from "@/lib/blog-format";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
@@ -21,7 +23,9 @@ import { Blog } from "@/components/sections/blog";
 
 export default function Home() {
   const { locale } = useLocale();
-  const content = getSiteContent(locale);
+  const staticContent = getSiteContent(locale);
+  const content = useSiteSettingContent(staticContent, locale);
+  const visionMission = useVisionMissionContent(staticContent.visionMission, locale);
   const pricing = usePricingContent(content.pricing, locale);
   const { articles } = useArticles();
 
@@ -30,7 +34,7 @@ export default function Home() {
       <Navbar content={content.nav} />
       <main className="flex-1">
         <Hero content={content.hero} channels={channels} />
-        <VisionMission content={content.visionMission} />
+        <VisionMission content={visionMission} />
         <Problem content={content.problem} />
         <Omnichannel content={content.omnichannel} />
         <AiCrm content={content.aiCrm} />

@@ -1,271 +1,52 @@
-"use client";
+import { cookies } from "next/headers";
+import { getSiteContent, mapEmbedSrc, type Locale } from "@/content/site-content";
+import { SESSION_COOKIE } from "@/lib/session";
+import { AboutEditor, type AboutPageContent } from "@/components/panel/about-editor";
+import type { CompanyProfileDTO } from "@/lib/company-profile-types";
 
-import { useState } from "react";
-import { LuTrash2, LuPlus } from "react-icons/lu";
-import { getSiteContent, mapEmbedSrc, type Locale, type SiteContent } from "@/content/site-content";
-import { Field, TextAreaField } from "@/components/admin/field";
-import { LocaleTabs } from "@/components/admin/locale-tabs";
-import { SaveBar } from "@/components/admin/save-bar";
-
-interface AboutPageContent {
-  about: SiteContent["about"];
-  visionMission: SiteContent["visionMission"];
-  infoCards: SiteContent["contact"]["infoCards"];
+async function getCompanyProfile(token: string): Promise<CompanyProfileDTO | null> {
+  const res = await fetch(`${process.env.BACKEND_URL}/api/company-profile`, {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: "no-store",
+  });
+  if (!res.ok) return null;
+  return res.json();
 }
 
-type MissionItem = SiteContent["visionMission"]["missionItems"][number];
-type InfoCard = SiteContent["contact"]["infoCards"][number];
+function staticFallback(locale: Locale): AboutPageContent {
+  const c = getSiteContent(locale);
+  return { about: c.about, visionMission: c.visionMission, infoCards: c.contact.infoCards };
+}
 
-function initialContent(): Record<Locale, AboutPageContent> {
+// `about.countriesLabel`/`countries`/`countriesMoreLabel` have no admin UI
+// yet, so they're not part of CompanyProfileTranslation — kept from the
+// static base content untouched, only `paragraphs` comes from the backend.
+function buildContent(locale: Locale, profile: CompanyProfileDTO | null): AboutPageContent {
+  const base = staticFallback(locale);
+  const translation = profile?.translations.find((t) => t.locale === locale);
+  if (!translation) return base;
+
   return {
-    id: structuredClone({
-      hero: getSiteContent("id").aboutHero,
-      about: getSiteContent("id").about,
-      visionMission: getSiteContent("id").visionMission,
-      infoCards: getSiteContent("id").contact.infoCards,
-    }),
-    en: structuredClone({
-      hero: getSiteContent("en").aboutHero,
-      about: getSiteContent("en").about,
-      visionMission: getSiteContent("en").visionMission,
-      infoCards: getSiteContent("en").contact.infoCards,
-    }),
+    about: { ...base.about, paragraphs: translation.paragraphs },
+    visionMission: {
+      visionEyebrow: translation.visionEyebrow,
+      missionEyebrow: translation.missionEyebrow,
+      visionMain: translation.visionMain,
+      visionAccent: translation.visionAccent,
+      missionItems: translation.missionItems,
+    },
+    infoCards: translation.contactInfoCards,
   };
 }
 
-export default function AdminAboutPage() {
-  const [content, setContent] = useState<Record<Locale, AboutPageContent>>(initialContent);
-  const [activeLocale, setActiveLocale] = useState<Locale>("id");
-  const [mapSrc, setMapSrc] = useState(mapEmbedSrc);
-  const [saved, setSaved] = useState(false);
+export default async function AdminAboutPage() {
+  const token = (await cookies()).get(SESSION_COOKIE)?.value ?? "";
+  const profile = await getCompanyProfile(token);
 
-  const { about, visionMission, infoCards } = content[activeLocale];
+  const content: Record<Locale, AboutPageContent> = {
+    id: buildContent("id", profile),
+    en: buildContent("en", profile),
+  };
 
-  function updatePage(updater: (page: AboutPageContent) => AboutPageContent) {
-    setContent((prev) => ({ ...prev, [activeLocale]: updater(prev[activeLocale]) }));
-    setSaved(false);
-  }
-
-  function updateAbout<K extends keyof SiteContent["about"]>(key: K, value: SiteContent["about"][K]) {
-    updatePage((page) => ({ ...page, about: { ...page.about, [key]: value } }));
-  }
-
-  function updateParagraph(index: number, value: string) {
-    updateAbout(
-      "paragraphs",
-      about.paragraphs.map((p, i) => (i === index ? value : p)),
-    );
-  }
-
-  function addParagraph() {
-    updateAbout("paragraphs", [...about.paragraphs, ""]);
-  }
-
-  function removeParagraph(index: number) {
-    updateAbout(
-      "paragraphs",
-      about.paragraphs.filter((_, i) => i !== index),
-    );
-  }
-
-  function updateVisionMission<K extends keyof SiteContent["visionMission"]>(
-    key: K,
-    value: SiteContent["visionMission"][K],
-  ) {
-    updatePage((page) => ({ ...page, visionMission: { ...page.visionMission, [key]: value } }));
-  }
-
-  function updateMissionItem(index: number, patch: Partial<MissionItem>) {
-    updateVisionMission(
-      "missionItems",
-      visionMission.missionItems.map((item, i) => (i === index ? { ...item, ...patch } : item)),
-    );
-  }
-
-  function addMissionItem() {
-    updateVisionMission("missionItems", [...visionMission.missionItems, { textMain: "", textAccent: "" }]);
-  }
-
-  function removeMissionItem(index: number) {
-    updateVisionMission(
-      "missionItems",
-      visionMission.missionItems.filter((_, i) => i !== index),
-    );
-  }
-
-  function updateCard(index: number, patch: Partial<InfoCard>) {
-    updatePage((page) => ({
-      ...page,
-      infoCards: page.infoCards.map((card, i) => (i === index ? { ...card, ...patch } : card)),
-    }));
-  }
-
-  function addCard() {
-    updatePage((page) => ({ ...page, infoCards: [...page.infoCards, { label: "", value: "", href: "" }] }));
-  }
-
-  function removeCard(index: number) {
-    updatePage((page) => ({ ...page, infoCards: page.infoCards.filter((_, i) => i !== index) }));
-  }
-
-  function handleSave() {
-    // No backend yet — logs the edited content (both locales + shared map
-    // embed URL) as a placeholder for wiring a real content API later.
-    console.log("Company profile content saved (demo):", { content, mapSrc });
-    setSaved(true);
-  }
-
-  return (
-    <div className="mx-auto flex max-w-5xl flex-col gap-8">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="font-display text-2xl font-semibold tracking-tight text-ink">Profil Perusahaan</p>
-          <p className="mt-1 text-sm text-ink/60">
-            Ubah cerita perusahaan, visi misi, dan info kontak yang tampil di halaman /about-us dan /contact-us.
-          </p>
-        </div>
-
-        <LocaleTabs active={activeLocale} onChange={setActiveLocale} />
-      </div>
-
-      <div className="rounded-2xl border border-line bg-paper p-6">
-        <p className="font-display text-base font-semibold text-ink">Cerita Perusahaan</p>
-        <div className="mt-4 flex flex-col gap-3">
-          {about.paragraphs.map((paragraph, index) => (
-            <div key={index} className="flex items-start gap-2">
-              <div className="flex-1">
-                <TextAreaField
-                  label={`Paragraf ${index + 1}`}
-                  value={paragraph}
-                  onChange={(v) => updateParagraph(index, v)}
-                />
-              </div>
-              <button
-                type="button"
-                onClick={() => removeParagraph(index)}
-                aria-label="Hapus paragraf"
-                className="mt-6 shrink-0 rounded-lg p-2 text-ink/40 hover:bg-ink/5 hover:text-signal"
-              >
-                <LuTrash2 className="size-4" />
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addParagraph}
-            className="flex items-center gap-1.5 self-start text-sm font-medium text-signal hover:underline"
-          >
-            <LuPlus className="size-4" />
-            Tambah Paragraf
-          </button>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-line bg-paper p-6">
-        <p className="font-display text-base font-semibold text-ink">Visi & Misi</p>
-        <div className="mt-4 grid gap-4 sm:grid-cols-2">
-          <Field
-            label="Eyebrow Visi"
-            value={visionMission.visionEyebrow}
-            onChange={(v) => updateVisionMission("visionEyebrow", v)}
-          />
-          <Field
-            label="Eyebrow Misi"
-            value={visionMission.missionEyebrow}
-            onChange={(v) => updateVisionMission("missionEyebrow", v)}
-          />
-          <Field
-            label="Visi (bagian utama)"
-            value={visionMission.visionMain}
-            onChange={(v) => updateVisionMission("visionMain", v)}
-          />
-          <Field
-            label="Visi (bagian aksen merah)"
-            value={visionMission.visionAccent}
-            onChange={(v) => updateVisionMission("visionAccent", v)}
-          />
-        </div>
-
-        <p className="mt-6 text-sm font-medium text-ink/70">Poin Misi</p>
-        <div className="mt-3 flex flex-col gap-2">
-          {visionMission.missionItems.map((item, index) => (
-            <div key={index} className="flex items-center gap-2">
-              <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-signal-dim font-mono text-xs font-semibold text-signal">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <input
-                type="text"
-                value={item.textMain}
-                onChange={(e) => updateMissionItem(index, { textMain: e.target.value })}
-                placeholder="Teks utama"
-                className="min-w-0 flex-1 rounded-lg border border-line px-3 py-2 text-sm text-ink placeholder:text-ink/35 focus:border-ink/40 focus:outline-none"
-              />
-              <input
-                type="text"
-                value={item.textAccent}
-                onChange={(e) => updateMissionItem(index, { textAccent: e.target.value })}
-                placeholder="Teks aksen merah"
-                className="min-w-0 flex-1 rounded-lg border border-line px-3 py-2 text-sm text-ink placeholder:text-ink/35 focus:border-ink/40 focus:outline-none"
-              />
-              <button
-                type="button"
-                onClick={() => removeMissionItem(index)}
-                aria-label="Hapus poin misi"
-                className="shrink-0 rounded-lg p-2 text-ink/40 hover:bg-ink/5 hover:text-signal"
-              >
-                <LuTrash2 className="size-4" />
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addMissionItem}
-            className="mt-1 flex items-center gap-1.5 self-start text-sm font-medium text-signal hover:underline"
-          >
-            <LuPlus className="size-4" />
-            Tambah Poin Misi
-          </button>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-line bg-paper p-6">
-        <p className="font-display text-base font-semibold text-ink">Kartu Info Kontak</p>
-        <div className="mt-4 flex flex-col gap-3">
-          {infoCards.map((card, index) => (
-            <div key={index} className="grid gap-2 rounded-xl border border-line p-4 sm:grid-cols-[1fr_1fr_1.2fr_auto]">
-              <Field label="Label" value={card.label} onChange={(v) => updateCard(index, { label: v })} />
-              <Field label="Nilai Tampilan" value={card.value} onChange={(v) => updateCard(index, { value: v })} />
-              <Field label="Link (href)" value={card.href} onChange={(v) => updateCard(index, { href: v })} />
-              <button
-                type="button"
-                onClick={() => removeCard(index)}
-                aria-label="Hapus kartu"
-                className="mt-6 flex h-fit items-center gap-1.5 self-start rounded-lg p-2 text-ink/40 hover:bg-ink/5 hover:text-signal sm:mt-0 sm:self-end"
-              >
-                <LuTrash2 className="size-4" />
-              </button>
-            </div>
-          ))}
-          <button
-            type="button"
-            onClick={addCard}
-            className="flex items-center gap-1.5 self-start text-sm font-medium text-signal hover:underline"
-          >
-            <LuPlus className="size-4" />
-            Tambah Kartu
-          </button>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-line bg-paper p-6">
-        <p className="font-display text-base font-semibold text-ink">Peta (Google Maps)</p>
-        <p className="mt-1 text-xs text-ink/50">URL ini sama untuk kedua bahasa.</p>
-        <div className="mt-4">
-          <Field label="URL Embed Google Maps" value={mapSrc} onChange={setMapSrc} />
-        </div>
-      </div>
-
-      <SaveBar saved={saved} onSave={handleSave} />
-    </div>
-  );
+  return <AboutEditor initialContent={content} initialMapSrc={profile?.mapSrc ?? mapEmbedSrc} />;
 }
