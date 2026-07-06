@@ -1,13 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import type { Channel, SiteContent } from "@/content/site-content";
 import { Eyebrow } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { ChannelBadge } from "@/components/ui/channel-badge";
 import { ConvergenceVisual } from "@/components/hero/convergence-visual";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -16,7 +16,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 28, filter: "blur(4px)" },
   visible: {
     opacity: 1,

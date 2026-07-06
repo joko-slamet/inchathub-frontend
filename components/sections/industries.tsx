@@ -74,12 +74,13 @@ export function Industries({
                 key={industry.name}
                 initial={{ opacity: 0, scale: 0.85 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{ y: -8, scale: 1.05 }}
-                viewport={{ once: true }}
-                transition={{
-                  entry: { duration: 0.4, delay: index * 0.05 },
-                  hover: { type: "spring", stiffness: 350, damping: 18 },
+                whileHover={{
+                  y: -8,
+                  scale: 1.05,
+                  transition: { type: "spring", stiffness: 350, damping: 18 },
                 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
                 className={`group flex flex-col items-center gap-3 rounded-2xl border bg-gradient-to-b px-4 py-6 text-center transition-shadow duration-300 hover:shadow-lg ${gradientClass} ${borderClass}`}
               >
                 <span className={`flex size-11 items-center justify-center rounded-full ${bgClass} transition-transform duration-300 group-hover:rotate-12`}>
