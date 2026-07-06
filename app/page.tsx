@@ -1,9 +1,10 @@
 "use client";
 
-import { getSiteContent, channels, clients } from "@/content/site-content";
+import { getSiteContent, channels } from "@/content/site-content";
 import { useLocale } from "@/components/locale-provider";
 import { usePricingContent } from "@/hooks/use-pricing-plans";
 import { useArticles } from "@/hooks/use-articles";
+import { useCompanyLogos } from "@/hooks/use-company-logos";
 import { useSiteSettingContent } from "@/hooks/use-site-settings";
 import { useVisionMissionContent } from "@/hooks/use-company-profile";
 import { toPublicBlogPosts } from "@/lib/blog-format";
@@ -28,6 +29,7 @@ export default function Home() {
   const visionMission = useVisionMissionContent(staticContent.visionMission, locale);
   const pricing = usePricingContent(content.pricing, locale);
   const { articles } = useArticles();
+  const { logos } = useCompanyLogos();
 
   return (
     <>
@@ -39,7 +41,7 @@ export default function Home() {
         <Omnichannel content={content.omnichannel} />
         <AiCrm content={content.aiCrm} />
         <WhyChatHub content={content.whyChatHub} />
-        <Industries content={content.industries} clients={clients} />
+        <Industries content={content.industries} logos={logos ?? []} />
         <Pricing content={pricing} />
         {articles && articles.length > 0 && (
           <Blog content={{ ...content.blog, posts: toPublicBlogPosts(articles, locale) }} limit={3} />

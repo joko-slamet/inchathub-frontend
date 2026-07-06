@@ -17,6 +17,8 @@ import type { IconType } from "react-icons";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import type { SiteContent } from "@/content/site-content";
+import type { CompanyLogoDTO } from "@/lib/company-logo-types";
+import { toCompanyLogoImageUrl } from "@/lib/company-logo-image";
 
 // Positional match with industries.list in content — keep order in sync.
 const industryIcons: IconType[] = [
@@ -47,10 +49,10 @@ const industryColors = [
 
 export function Industries({
   content,
-  clients,
+  logos,
 }: {
   content: SiteContent["industries"];
-  clients: string[];
+  logos: CompanyLogoDTO[];
 }) {
   return (
     <Section
@@ -93,24 +95,28 @@ export function Industries({
         </div>
       </ScrollReveal>
 
-      {/* Decorative "trusted by" section */}
-      <ScrollReveal delay={0.2} className="mt-16 text-center">
-        <div className="relative inline-flex items-center gap-4 rounded-2xl border border-dashed border-line bg-slate-dim/50 px-8 py-5">
-          <div className="flex -space-x-3">
-            {["#be1e2d", "#25D366", "#1877F2", "#E4405F"].map((color, i) => (
-              <div
-                key={i}
-                className="size-8 rounded-full border-2 border-white shadow-sm"
-                style={{ backgroundColor: color }}
-              />
-            ))}
+      {/* Trusted-by client logo strip */}
+      {logos.length > 0 && (
+        <ScrollReveal delay={0.2} className="mt-16 text-center">
+          <p className="text-xs font-semibold tracking-[0.06em] text-ink/45 uppercase">
+            {content.logoStripLabel}
+          </p>
+          <div className="mt-6 overflow-hidden">
+            <div className="marquee-track flex w-max items-center gap-16">
+              {[...logos, ...logos].map((logo, index) => (
+                // eslint-disable-next-line @next/next/no-img-element -- logo host is
+                // the backend's own origin, resolved at runtime via env var.
+                <img
+                  key={`${logo.id}-${index}`}
+                  src={toCompanyLogoImageUrl(logo.imageUrl)}
+                  alt={logo.name}
+                  className="h-20 w-auto shrink-0 object-contain transition-all duration-300 hover:scale-105 sm:h-24"
+                />
+              ))}
+            </div>
           </div>
-          <div className="text-left">
-            <p className="text-sm font-semibold text-ink">500+ bisnis aktif</p>
-            <p className="text-xs text-ink/50">di seluruh Indonesia</p>
-          </div>
-        </div>
-      </ScrollReveal>
+        </ScrollReveal>
+      )}
     </Section>
   );
 }

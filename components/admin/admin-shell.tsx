@@ -12,6 +12,7 @@ import {
   LuReceipt,
   LuInbox,
   LuUsers,
+  LuImage,
   LuMenu,
   LuX,
   LuLogOut,
@@ -35,6 +36,7 @@ const navItems: NavItem[] = [
   { label: "Blog", href: "/panel/blog", icon: LuNewspaper },
   { label: "Formulir Kontak", href: "/panel/contact", icon: LuInbox },
   { label: "Profil Perusahaan", href: "/panel/about", icon: LuBuilding2 },
+  { label: "Our Client", href: "/panel/our-client", icon: LuImage },
   { label: "Site Setting", href: "/panel/homepage", icon: LuSettings },
 ];
 

@@ -119,7 +119,7 @@ export function Hero({
           {/* Subheadline */}
           <motion.p
             variants={itemVariants}
-            className="mt-8 max-w-xl text-base leading-relaxed text-ink/70 sm:text-lg"
+            className="mt-12 max-w-xl text-base leading-relaxed text-ink/70 sm:text-lg"
           >
             <span className="font-semibold text-signal">{content.subheadlineAccent}</span>{" "}
             {content.subheadlineMain}
