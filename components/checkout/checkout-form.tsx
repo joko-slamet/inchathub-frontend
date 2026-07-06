@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useActionState } from "react";
+import Link from "next/link";
 import {
   LuUser,
   LuMail,
@@ -36,11 +37,20 @@ function TextField({
   label,
   icon: Icon,
   trailing,
+  labelExtra,
   ...props
-}: { label: string; icon: typeof LuUser; trailing?: React.ReactNode } & React.InputHTMLAttributes<HTMLInputElement>) {
+}: {
+  label: string;
+  icon: typeof LuUser;
+  trailing?: React.ReactNode;
+  labelExtra?: React.ReactNode;
+} & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <label className="flex flex-col gap-1.5">
-      <span className="text-xs font-medium text-ink/60">{label}</span>
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-medium text-ink/60">{label}</span>
+        {labelExtra}
+      </div>
       <div className="flex items-center gap-2.5 rounded-lg border border-line px-3.5 py-2.5 focus-within:border-ink/40">
         <Icon className="size-4 shrink-0 text-ink/40" />
         <input
@@ -56,9 +66,11 @@ function TextField({
 function PasswordField({
   label,
   autoComplete,
+  forgotPasswordHref,
 }: {
   label: string;
   autoComplete: "new-password" | "current-password";
+  forgotPasswordHref?: string;
 }) {
   const [visible, setVisible] = useState(false);
   return (
@@ -71,6 +83,13 @@ function PasswordField({
       minLength={autoComplete === "new-password" ? 8 : undefined}
       autoComplete={autoComplete}
       placeholder="••••••••"
+      labelExtra={
+        forgotPasswordHref ? (
+          <Link href={forgotPasswordHref} className="text-xs text-ink/50 hover:text-ink">
+            Lupa password?
+          </Link>
+        ) : undefined
+      }
       trailing={
         <button
           type="button"
@@ -373,7 +392,6 @@ export function CheckoutForm({
       <form id={FORM_ID} action={loginAction} className="flex min-w-0 flex-col gap-5">
         <input type="hidden" name="planId" value={planId} />
         <input type="hidden" name="paymentMethod" value={paymentMethod} />
-        {picker}
 
         <div className="flex flex-col gap-4">
           <TextField
@@ -385,8 +403,14 @@ export function CheckoutForm({
             autoComplete="username"
             placeholder="nama@email.com"
           />
-          <PasswordField label="Password" autoComplete="current-password" />
+          <PasswordField
+            label="Password"
+            autoComplete="current-password"
+            forgotPasswordHref="/forgot-password"
+          />
         </div>
+
+        {picker}
 
         <FieldError error={loginState?.error} />
 

@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { SESSION_COOKIE } from "@/lib/session";
+import { SESSION_COOKIE, type Role } from "@/lib/session";
 
 export type LoginState = { error: string } | undefined;
 
@@ -17,6 +17,7 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
   }
 
   let token: string;
+  let role: Role;
   try {
     const res = await fetch(`${process.env.BACKEND_URL}/api/auth/login`, {
       method: "POST",
@@ -30,7 +31,9 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
       return { error: body?.error ?? "Email atau password salah." };
     }
 
-    ({ token } = await res.json());
+    const body = await res.json();
+    token = body.token;
+    role = body.user.role;
   } catch {
     return { error: "Tidak dapat terhubung ke server. Coba lagi nanti." };
   }
@@ -43,10 +46,80 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
     path: "/",
   });
 
-  redirect("/panel");
+  redirect(role === "ADMIN" ? "/panel" : "/dashboard");
 }
 
 export async function logout() {
   (await cookies()).delete(SESSION_COOKIE);
   redirect("/login");
+}
+
+export type ForgotPasswordState = { error?: string; success?: boolean } | undefined;
+
+export async function requestPasswordReset(
+  _prevState: ForgotPasswordState,
+  formData: FormData,
+): Promise<ForgotPasswordState> {
+  const email = formData.get("email");
+
+  if (typeof email !== "string" || !email) {
+    return { error: "Email wajib diisi." };
+  }
+
+  try {
+    const res = await fetch(`${process.env.BACKEND_URL}/api/auth/forgot-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      const body = await res.json().catch(() => null);
+      return { error: body?.error ?? "Email tidak terdaftar." };
+    }
+  } catch {
+    return { error: "Tidak dapat terhubung ke server. Coba lagi nanti." };
+  }
+
+  return { success: true };
+}
+
+export type ResetPasswordState = { error?: string; success?: boolean } | undefined;
+
+export async function resetPassword(
+  _prevState: ResetPasswordState,
+  formData: FormData,
+): Promise<ResetPasswordState> {
+  const token = formData.get("token");
+  const password = formData.get("password");
+  const confirmPassword = formData.get("confirmPassword");
+
+  if (typeof token !== "string" || !token) {
+    return { error: "Link reset password tidak valid." };
+  }
+  if (typeof password !== "string" || typeof confirmPassword !== "string" || !password || !confirmPassword) {
+    return { error: "Password wajib diisi." };
+  }
+  if (password !== confirmPassword) {
+    return { error: "Konfirmasi password tidak cocok." };
+  }
+
+  try {
+    const res = await fetch(`${process.env.BACKEND_URL}/api/auth/reset-password`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token, password }),
+      cache: "no-store",
+    });
+
+    if (!res.ok) {
+      const body = await res.json().catch(() => null);
+      return { error: body?.error ?? "Token tidak valid atau sudah kedaluwarsa." };
+    }
+  } catch {
+    return { error: "Tidak dapat terhubung ke server. Coba lagi nanti." };
+  }
+
+  return { success: true };
 }

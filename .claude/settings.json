@@ -21,7 +21,10 @@
       "Bash(pg_isready)",
       "Bash(systemctl is-active *)",
       "Bash(node -e \"console.log\\(require\\('crypto'\\).randomBytes\\(48\\).toString\\('hex'\\)\\)\")",
-      "Bash(echo \"EXIT: $?\")"
+      "Bash(echo \"EXIT: $?\")",
+      "WebFetch(domain:www.prisma.io)",
+      "WebSearch",
+      "Bash(grep -iE \"app$|/app/\")"
     ],
     "additionalDirectories": [
       "/home/joko/projects/chathub/inchathub-frontend/app/[locale]"

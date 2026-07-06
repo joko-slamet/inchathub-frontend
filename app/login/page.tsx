@@ -50,7 +50,12 @@ export default function LoginPage() {
           </label>
 
           <label className="flex flex-col gap-1.5">
-            <span className="text-xs font-medium text-ink/60">Password</span>
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-medium text-ink/60">Password</span>
+              <Link href="/forgot-password" className="text-xs text-ink/50 hover:text-ink">
+                Lupa password?
+              </Link>
+            </div>
             <div className="flex items-center gap-2.5 rounded-lg border border-line px-3.5 py-2.5 focus-within:border-ink/40">
               <LuLock className="size-4 shrink-0 text-ink/40" />
               <input
