@@ -528,6 +528,8 @@ export const id: SiteContent = {
       "Satu sesi demo, dan Anda akan lihat sendiri bagaimana chat yang tadinya berantakan di banyak aplikasi akhirnya rapi dalam satu layar.",
     badges: ["Omnichannel", "AI Chatbot", "Smart CRM", "WhatsApp API"],
     cta: "Request Demo Sekarang",
+    whatsappPhone: "6281510107070",
+    whatsappMessage: "Halo, saya ingin request demo ChatHub.",
   },
 
   footer: {

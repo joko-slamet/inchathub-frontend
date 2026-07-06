@@ -527,6 +527,8 @@ export const en: SiteContent = {
       "One demo, and you'll see for yourself how chats that used to be scattered across a dozen apps finally fit on a single screen.",
     badges: ["Omnichannel", "AI Chatbot", "Smart CRM", "WhatsApp API"],
     cta: "Request a Demo Now",
+    whatsappPhone: "6281510107070",
+    whatsappMessage: "Hi, I'd like to request a demo of ChatHub.",
   },
 
   footer: {

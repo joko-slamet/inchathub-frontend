@@ -91,8 +91,14 @@ export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) 
 
         <div className="mt-10 relative group">
           {/* Animated glow behind button */}
-          <div className="absolute -inset-2 rounded-full bg-paper/30 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-60" />
-          <Button href="https://wa.me/6281510107070" variant="inverse" size="lg">
+          <div className="pointer-events-none absolute -inset-2 rounded-full bg-paper/30 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-60" />
+          <Button
+            href={`https://wa.me/${content.whatsappPhone}?text=${encodeURIComponent(content.whatsappMessage)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="inverse"
+            size="lg"
+          >
             {content.cta}
           </Button>
         </div>

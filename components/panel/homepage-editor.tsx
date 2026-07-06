@@ -542,6 +542,20 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
             <TextAreaField label="Subheadline" value={closingCta.subheadline} onChange={(v) => updateClosingCta("subheadline", v)} />
           </div>
 
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            <Field
+              label="Nomor WhatsApp"
+              value={closingCta.whatsappPhone}
+              onChange={(v) => updateClosingCta("whatsappPhone", v)}
+              placeholder="62812xxxxxxx"
+            />
+            <Field
+              label="Pesan WhatsApp Default"
+              value={closingCta.whatsappMessage}
+              onChange={(v) => updateClosingCta("whatsappMessage", v)}
+            />
+          </div>
+
           <p className="mt-6 text-sm font-medium text-ink/70">Badge</p>
           <div className="mt-3 flex flex-col gap-2">
             {closingCta.badges.map((badge, index) => (

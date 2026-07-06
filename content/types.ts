@@ -206,6 +206,8 @@ export interface SiteContent {
     subheadline: string;
     badges: string[];
     cta: string;
+    whatsappPhone: string;
+    whatsappMessage: string;
   };
   footer: {
     tagline: string;
