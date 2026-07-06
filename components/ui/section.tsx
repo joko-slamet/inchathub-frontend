@@ -11,6 +11,7 @@ interface SectionProps {
   tone?: "paper" | "ink";
   className?: string;
   style?: CSSProperties;
+  maxWidth?: string;
 }
 
 export function Eyebrow({
@@ -44,6 +45,7 @@ export function Section({
   tone = "paper",
   className = "",
   style,
+  maxWidth = "max-w-6xl",
 }: SectionProps) {
   const isCenter = align === "center";
 
@@ -65,7 +67,7 @@ export function Section({
         }`}
       />
 
-      <div className="mx-auto max-w-6xl">
+      <div className={`mx-auto ${maxWidth}`}>
         <ScrollReveal className={isCenter ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
           <div className={isCenter ? "flex flex-col items-center" : ""}>
             {eyebrow && <Eyebrow tone={tone}>{eyebrow}</Eyebrow>}

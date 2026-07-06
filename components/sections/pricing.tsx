@@ -12,6 +12,7 @@ export function Pricing({ content }: { content: SiteContent["pricing"] }) {
     <Section
       id="harga"
       align="center"
+      maxWidth="max-w-7xl"
       eyebrow={content.eyebrow}
       title={
         <>

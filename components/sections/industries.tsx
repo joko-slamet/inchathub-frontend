@@ -101,7 +101,7 @@ export function Industries({
           <p className="text-xs font-semibold tracking-[0.06em] text-ink/45 uppercase">
             {content.logoStripLabel}
           </p>
-          <div className="mt-6 overflow-hidden">
+          <div className="relative left-1/2 mt-6 w-screen -translate-x-1/2 overflow-hidden">
             <div className="marquee-track flex w-max items-center gap-16">
               {[...logos, ...logos].map((logo, index) => (
                 // eslint-disable-next-line @next/next/no-img-element -- logo host is
