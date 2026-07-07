@@ -24,10 +24,8 @@
       "Bash(echo \"EXIT: $?\")",
       "WebFetch(domain:www.prisma.io)",
       "WebSearch",
-      "Bash(grep -iE \"app$|/app/\")"
+      "Bash(grep -iE \"app$|/app/\")",
+      "Bash(rm -f /tmp/migrate_err.log)"
     ],
-    "additionalDirectories": [
-      "/home/joko/projects/chathub/inchathub-frontend/app/[locale]"
-    ]
   }
 }

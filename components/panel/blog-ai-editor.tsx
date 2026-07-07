@@ -33,6 +33,12 @@ function articleTitle(article: ArticleDTO): string {
   return translation?.title ?? article.slug;
 }
 
+function seoScoreBadgeClass(score: number): string {
+  if (score >= 80) return "bg-emerald-100 text-emerald-700";
+  if (score >= 50) return "bg-amber-100 text-amber-700";
+  return "bg-red-100 text-red-700";
+}
+
 type Tab = "artikel" | "konfigurasi";
 
 const tabs: { id: Tab; label: string }[] = [
@@ -310,6 +316,7 @@ export function BlogAiEditor({
                   <tr className="border-b border-line text-xs font-semibold tracking-wide text-slate uppercase">
                     <th className="px-5 py-3.5">Artikel</th>
                     <th className="px-5 py-3.5">Topik</th>
+                    <th className="px-5 py-3.5">Skor SEO</th>
                     <th className="px-5 py-3.5">Tanggal Generate</th>
                     <th className="px-5 py-3.5" />
                   </tr>
@@ -344,6 +351,18 @@ export function BlogAiEditor({
                         <span className="inline-flex items-center rounded-full bg-signal-dim px-2.5 py-1 text-xs font-semibold text-signal">
                           {article.topic}
                         </span>
+                      </td>
+                      <td className="px-5 py-4">
+                        {article.seoScore === null ? (
+                          <span className="text-xs text-ink/40">-</span>
+                        ) : (
+                          <span
+                            title={article.seoFeedback ?? undefined}
+                            className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${seoScoreBadgeClass(article.seoScore)}`}
+                          >
+                            {article.seoScore}/100
+                          </span>
+                        )}
                       </td>
                       <td className="px-5 py-4 whitespace-nowrap text-ink/70">
                         {new Date(article.generatedAt).toLocaleString("id-ID", {

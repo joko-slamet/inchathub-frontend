@@ -34,6 +34,8 @@ export type ArticleDTO = {
   topic: string;
   dayType: ArticleDayType;
   imageUrl: string;
+  seoScore: number | null;
+  seoFeedback: string | null;
   translations: ArticleTranslationDTO[];
   generatedAt: string;
   createdAt: string;
