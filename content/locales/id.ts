@@ -15,6 +15,7 @@ export const id: SiteContent = {
   nav: {
     links: [
       { label: "Produk", href: "/product" },
+      { label: "Promo", href: "/promo" },
       { label: "Harga", href: "/pricing" },
       { label: "Blog", href: "/blog" },
       { label: "Hubungi Kami", href: "/contact-us" },
@@ -167,6 +168,19 @@ export const id: SiteContent = {
   blogHero: {
     heading: "Blog & Insight ChatHub",
     subheading: "Tips, studi kasus, dan tren seputar omnichannel, AI chatbot, dan CRM untuk bisnis Anda.",
+  },
+
+  promoHero: {
+    heading: "Promo ChatHub",
+    subheading: "Penawaran spesial yang sedang berlangsung untuk paket ChatHub Anda.",
+  },
+
+  promo: {
+    eyebrow: "Promo Spesial",
+    titleMain: "Penawaran Terbatas untuk",
+    titleAccent: "Bisnis Anda",
+    description: "Jangan lewatkan promo yang sedang berlangsung — kode promo langsung bisa dipakai.",
+    viewAllLabel: "Lihat Semua Promo",
   },
 
   blog: {

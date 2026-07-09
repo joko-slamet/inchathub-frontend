@@ -15,6 +15,7 @@ export const en: SiteContent = {
   nav: {
     links: [
       { label: "Product", href: "/product" },
+      { label: "Promo", href: "/promo" },
       { label: "Pricing", href: "/pricing" },
       { label: "Blog", href: "/blog" },
       { label: "Contact Us", href: "/contact-us" },
@@ -166,6 +167,19 @@ export const en: SiteContent = {
   blogHero: {
     heading: "ChatHub Blog & Insights",
     subheading: "Tips, case studies, and trends on omnichannel, AI chatbots, and CRM for your business.",
+  },
+
+  promoHero: {
+    heading: "ChatHub Promos",
+    subheading: "Ongoing special offers for your ChatHub plan.",
+  },
+
+  promo: {
+    eyebrow: "Special Promo",
+    titleMain: "Limited-Time Offers for",
+    titleAccent: "Your Business",
+    description: "Don't miss out on our current promos — the promo code works right away.",
+    viewAllLabel: "View All Promos",
   },
 
   blog: {

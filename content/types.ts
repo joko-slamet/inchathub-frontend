@@ -112,6 +112,17 @@ export interface SiteContent {
     heading: string;
     subheading: string;
   };
+  promoHero: {
+    heading: string;
+    subheading: string;
+  };
+  promo: {
+    eyebrow: string;
+    titleMain: string;
+    titleAccent: string;
+    description: string;
+    viewAllLabel: string;
+  };
   blog: {
     eyebrow: string;
     titleMain: string;

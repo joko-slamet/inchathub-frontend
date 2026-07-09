@@ -11,6 +11,7 @@ import {
   LuBuilding2,
   LuInbox,
   LuImage,
+  LuBadgePercent,
   LuMenu,
   LuX,
   LuLogOut,
@@ -30,6 +31,7 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: "Overview", href: "/panel", icon: LuLayoutDashboard },
   { label: "Harga", href: "/panel/pricing", icon: LuTag },
+  { label: "Promo", href: "/panel/promo", icon: LuBadgePercent },
   { label: "Blog", href: "/panel/blog", icon: LuNewspaper },
   { label: "Formulir Kontak", href: "/panel/contact", icon: LuInbox },
   { label: "Profil Perusahaan", href: "/panel/about", icon: LuBuilding2 },

@@ -5,9 +5,11 @@ import { useLocale } from "@/components/locale-provider";
 import { usePricingContent } from "@/hooks/use-pricing-plans";
 import { useArticles } from "@/hooks/use-articles";
 import { useCompanyLogos } from "@/hooks/use-company-logos";
+import { usePromos } from "@/hooks/use-promos";
 import { useSiteSettingContent } from "@/hooks/use-site-settings";
 import { useVisionMissionContent } from "@/hooks/use-company-profile";
 import { toPublicBlogPosts } from "@/lib/blog-format";
+import { toPublicPromoCards } from "@/lib/promo-format";
 import { Navbar } from "@/components/sections/navbar";
 import { Hero } from "@/components/sections/hero";
 import { Problem } from "@/components/sections/problem";
@@ -15,6 +17,7 @@ import { Omnichannel } from "@/components/sections/omnichannel";
 import { AiCrm } from "@/components/sections/ai-crm";
 import { WhyChatHub } from "@/components/sections/why-chathub";
 import { Pricing } from "@/components/sections/pricing";
+import { Promo } from "@/components/sections/promo";
 import { Industries } from "@/components/sections/industries";
 import { Faq } from "@/components/sections/faq";
 import { ClosingCta } from "@/components/sections/closing-cta";
@@ -30,6 +33,7 @@ export default function Home() {
   const pricing = usePricingContent(content.pricing, locale);
   const { articles } = useArticles();
   const { logos } = useCompanyLogos();
+  const { promos } = usePromos();
 
   return (
     <>
@@ -42,6 +46,9 @@ export default function Home() {
         <AiCrm content={content.aiCrm} />
         <WhyChatHub content={content.whyChatHub} />
         <Industries content={content.industries} logos={logos ?? []} />
+        {promos && promos.length > 0 && (
+          <Promo content={content.promo} promos={toPublicPromoCards(promos, locale)} limit={3} />
+        )}
         <Pricing content={pricing} whatsappPhone={content.closingCta.whatsappPhone} />
         {articles && articles.length > 0 && (
           <Blog content={{ ...content.blog, posts: toPublicBlogPosts(articles, locale) }} limit={3} />
