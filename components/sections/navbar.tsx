@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { LuMenu, LuX, LuLogIn, LuLayoutDashboard } from "react-icons/lu";
+import { LuMenu, LuX, LuLayoutDashboard } from "react-icons/lu";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
@@ -39,21 +39,13 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
           <LocaleSwitcher />
           <ThemeToggle />
           <div className="flex items-center gap-3">
-            {user ? (
+            {user && (
               <Link
                 href="/panel"
                 className="flex items-center gap-1.5 text-sm font-medium text-ink/70 transition-colors hover:text-ink"
               >
                 <LuLayoutDashboard className="size-4" />
                 Panel Admin
-              </Link>
-            ) : (
-              <Link
-                href="/login"
-                className="flex items-center gap-1.5 text-sm font-medium text-ink/70 transition-colors hover:text-ink"
-              >
-                <LuLogIn className="size-4" />
-                {content.loginLabel}
               </Link>
             )}
             <Button href={trialUrl} target="_blank" rel="noopener noreferrer" variant="primary" size="md">
@@ -92,7 +84,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
             <ThemeToggle />
           </div>
           <div className="mt-4 flex flex-col gap-3">
-            {user ? (
+            {user && (
               <Link
                 href="/panel"
                 onClick={() => setOpen(false)}
@@ -100,15 +92,6 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
               >
                 <LuLayoutDashboard className="size-4" />
                 Panel Admin
-              </Link>
-            ) : (
-              <Link
-                href="/login"
-                onClick={() => setOpen(false)}
-                className="flex items-center justify-center gap-1.5 text-sm font-medium text-ink/70"
-              >
-                <LuLogIn className="size-4" />
-                {content.loginLabel}
               </Link>
             )}
             <Button

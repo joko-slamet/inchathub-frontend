@@ -136,7 +136,7 @@ export function Hero({
                 {content.ctaPrimary}
               </Button>
             </div>
-            <Button href="#problem" variant="outline" size="lg">
+            <Button href="#how-it-works" variant="outline" size="lg">
               {content.ctaSecondary}
             </Button>
           </motion.div>

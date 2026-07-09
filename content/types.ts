@@ -50,6 +50,7 @@ export interface SiteContent {
   problem: {
     titleMain: string;
     titleAccent: string;
+    points: string[];
   };
   omnichannel: {
     eyebrow: string;

@@ -16,7 +16,7 @@ const painPoints = [
 export function Problem({ content }: { content: SiteContent["problem"] }) {
   return (
     <Section
-      id="problem"
+      id="how-it-works"
       title={
         <>
           {content.titleMain} <span className="text-signal">{content.titleAccent}</span>
@@ -38,9 +38,7 @@ export function Problem({ content }: { content: SiteContent["problem"] }) {
               </span>
               <div className="flex items-center gap-2">
                 <LuArrowRight className="size-3 text-ink/30 shrink-0" />
-                <p className="text-xs font-medium text-ink/70">
-                  {["Pesan tersebar di banyak kanal", "Respons lambat, pelanggan kecewa", "Tidak ada data & insight terpusat"][i]}
-                </p>
+                <p className="text-xs font-medium text-ink/70">{content.points[i]}</p>
               </div>
             </motion.div>
           ))}

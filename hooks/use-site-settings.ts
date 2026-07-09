@@ -44,7 +44,10 @@ export function useSiteSettingContent(base: SiteContent, locale: Locale): SiteCo
   return {
     ...base,
     hero: row.hero,
-    problem: row.problem,
+    // Spread over the static fallback (not a straight replace) so a DB row
+    // saved before `points` existed still renders a default instead of
+    // crashing on `content.problem.points[i]` being undefined.
+    problem: { ...base.problem, ...row.problem },
     omnichannel: row.omnichannel,
     aiCrm: row.aiCrm,
     whyChatHub: row.whyChatHub,

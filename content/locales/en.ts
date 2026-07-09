@@ -14,6 +14,7 @@ export const en: SiteContent = {
 
   nav: {
     links: [
+      { label: "Home", href: "/" },
       { label: "Product", href: "/product" },
       { label: "Promo", href: "/promo" },
       { label: "Pricing", href: "/pricing" },
@@ -39,6 +40,7 @@ export const en: SiteContent = {
   problem: {
     titleMain: "Every Channel. One Inbox.",
     titleAccent: "Zero Missed Conversations.",
+    points: ["Messages scattered across channels", "Slow replies, frustrated customers", "No centralized data & insights"],
   },
 
   omnichannel: {

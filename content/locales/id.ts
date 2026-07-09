@@ -14,6 +14,7 @@ export const id: SiteContent = {
 
   nav: {
     links: [
+      { label: "Beranda", href: "/" },
       { label: "Produk", href: "/product" },
       { label: "Promo", href: "/promo" },
       { label: "Harga", href: "/pricing" },
@@ -39,6 +40,7 @@ export const id: SiteContent = {
   problem: {
     titleMain: "Semua Channel. Satu Inbox.",
     titleAccent: "Tanpa Chat yang Terlewat.",
+    points: ["Pesan tersebar di banyak kanal", "Respons lambat, pelanggan kecewa", "Tidak ada data & insight terpusat"],
   },
 
   omnichannel: {
