@@ -1,4 +1,4 @@
-import type { SiteContent } from "@/content/types";
+import { TRIAL_URL, type SiteContent } from "@/content/types";
 
 export const id: SiteContent = {
   meta: {
@@ -31,7 +31,7 @@ export const id: SiteContent = {
     headlineAccent: "Setiap Interaksi Pelanggan",
     subheadlineAccent: "Chat Hub",
     subheadlineMain: "menyatukan komunikasi, engagement, dan otomasi pelanggan dalam satu platform.",
-    ctaPrimary: "Request Demo Gratis",
+    ctaPrimary: "Uji Coba Gratis",
     ctaSecondary: "Lihat Cara Kerja",
     channelsLabel: "Terhubung dengan channel yang pelanggan Anda sudah pakai sehari-hari",
   },
@@ -181,6 +181,15 @@ export const id: SiteContent = {
     titleAccent: "Bisnis Anda",
     description: "Jangan lewatkan promo yang sedang berlangsung — kode promo langsung bisa dipakai.",
     viewAllLabel: "Lihat Semua Promo",
+  },
+
+  tryFree: {
+    eyebrow: "Coba Gratis",
+    titleMain: "Rasakan Sendiri",
+    titleAccent: "Sebelum Berlangganan",
+    description: "Jelajahi semua fitur ChatHub tanpa risiko — mulai uji coba gratis Anda hari ini.",
+    ctaLabel: "Mulai Coba Gratis",
+    bullets: ["Tanpa kartu kredit", "Akses semua fitur premium", "Batalkan kapan saja"],
   },
 
   blog: {
@@ -544,6 +553,7 @@ export const id: SiteContent = {
     cta: "Request Demo Sekarang",
     whatsappPhone: "6281510107070",
     whatsappMessage: "Halo, saya ingin request demo ChatHub.",
+    trialUrl: TRIAL_URL,
   },
 
   footer: {

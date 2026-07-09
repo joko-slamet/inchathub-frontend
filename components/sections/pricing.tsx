@@ -5,15 +5,12 @@ import { LuCheck, LuX, LuSparkles, LuArrowRight } from "react-icons/lu";
 import { Section } from "@/components/ui/section";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Button } from "@/components/ui/button";
+import { useTrialUrl } from "@/hooks/use-trial-url";
 import type { SiteContent } from "@/content/site-content";
 
-export function Pricing({
-  content,
-  whatsappPhone,
-}: {
-  content: SiteContent["pricing"];
-  whatsappPhone: string;
-}) {
+export function Pricing({ content }: { content: SiteContent["pricing"] }) {
+  const trialUrl = useTrialUrl();
+
   return (
     <Section
       id="harga"
@@ -104,7 +101,7 @@ export function Pricing({
               {/* CTA */}
               <div className="p-6 pt-8">
                 <Button
-                  href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent(`Halo, saya tertarik dengan paket ${plan.name}. Bisa dibantu?`)}`}
+                  href={trialUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   variant={plan.popular ? "primary" : "outline"}

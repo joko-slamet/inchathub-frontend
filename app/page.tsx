@@ -17,6 +17,7 @@ import { Omnichannel } from "@/components/sections/omnichannel";
 import { AiCrm } from "@/components/sections/ai-crm";
 import { WhyChatHub } from "@/components/sections/why-chathub";
 import { Pricing } from "@/components/sections/pricing";
+import { TryFree } from "@/components/sections/try-free";
 import { Promo } from "@/components/sections/promo";
 import { Industries } from "@/components/sections/industries";
 import { Faq } from "@/components/sections/faq";
@@ -46,10 +47,11 @@ export default function Home() {
         <AiCrm content={content.aiCrm} />
         <WhyChatHub content={content.whyChatHub} />
         <Industries content={content.industries} logos={logos ?? []} />
+        <TryFree content={content.tryFree} />
         {promos && promos.length > 0 && (
           <Promo content={content.promo} promos={toPublicPromoCards(promos, locale)} limit={3} />
         )}
-        <Pricing content={pricing} whatsappPhone={content.closingCta.whatsappPhone} />
+        <Pricing content={pricing} />
         {articles && articles.length > 0 && (
           <Blog content={{ ...content.blog, posts: toPublicBlogPosts(articles, locale) }} limit={3} />
         )}

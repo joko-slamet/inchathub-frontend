@@ -8,11 +8,13 @@ import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useAuth } from "@/components/auth-provider";
+import { useTrialUrl } from "@/hooks/use-trial-url";
 import type { SiteContent } from "@/content/site-content";
 
 export function Navbar({ content }: { content: SiteContent["nav"] }) {
   const [open, setOpen] = useState(false);
   const user = useAuth();
+  const trialUrl = useTrialUrl();
 
   return (
     <header className="sticky top-3 z-50 px-3 sm:top-4 sm:px-6 md:px-10 lg:px-16">
@@ -54,7 +56,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
                 {content.loginLabel}
               </Link>
             )}
-            <Button href="/#kontak" variant="primary" size="md">
+            <Button href={trialUrl} target="_blank" rel="noopener noreferrer" variant="primary" size="md">
               {content.ctaPrimary}
             </Button>
           </div>
@@ -109,7 +111,14 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
                 {content.loginLabel}
               </Link>
             )}
-            <Button href="/#kontak" variant="primary" size="md" onClick={() => setOpen(false)}>
+            <Button
+              href={trialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="md"
+              onClick={() => setOpen(false)}
+            >
               {content.ctaPrimary}
             </Button>
           </div>

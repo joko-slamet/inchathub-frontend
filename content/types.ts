@@ -11,6 +11,14 @@ export function isLocale(value: string): value is Locale {
   return (locales as string[]).includes(value);
 }
 
+// Default trial signup URL — seeds closingCta.trialUrl in the static locale
+// files below and is the ultimate fallback if the backend has no
+// SiteSetting row yet. The value admins actually see/edit lives in the CMS
+// (closingCta.trialUrl via the homepage editor); this constant is not read
+// directly by any component. Lives here (not site-content.ts) so the locale
+// files can import it too without a circular import.
+export const TRIAL_URL = "https://app.inchathub.com/register";
+
 export interface Channel {
   name: string;
   badge: string;
@@ -123,6 +131,14 @@ export interface SiteContent {
     description: string;
     viewAllLabel: string;
   };
+  tryFree: {
+    eyebrow: string;
+    titleMain: string;
+    titleAccent: string;
+    description: string;
+    ctaLabel: string;
+    bullets: string[];
+  };
   blog: {
     eyebrow: string;
     titleMain: string;
@@ -219,6 +235,10 @@ export interface SiteContent {
     cta: string;
     whatsappPhone: string;
     whatsappMessage: string;
+    // Admin-editable trial signup URL — every "Coba Gratis"/"Try Free" CTA
+    // across the site (navbar, pricing cards, the Try Free section) reads
+    // this same value so it only needs to be updated in one place.
+    trialUrl: string;
   };
   footer: {
     tagline: string;

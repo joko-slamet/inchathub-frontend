@@ -556,6 +556,19 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
             />
           </div>
 
+          <div className="mt-4">
+            <Field
+              label="URL Coba Gratis"
+              value={closingCta.trialUrl}
+              onChange={(v) => updateClosingCta("trialUrl", v)}
+              placeholder="https://app.inchathub.com/register"
+            />
+            <p className="mt-1.5 text-xs text-ink/50">
+              Dipakai oleh semua tombol &quot;Coba Gratis&quot; di situs — navbar, section Coba Gratis, dan tombol di
+              tiap kartu harga.
+            </p>
+          </div>
+
           <p className="mt-6 text-sm font-medium text-ink/70">Badge</p>
           <div className="mt-3 flex flex-col gap-2">
             {closingCta.badges.map((badge, index) => (

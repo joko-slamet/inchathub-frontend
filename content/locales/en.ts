@@ -1,4 +1,4 @@
-import type { SiteContent } from "@/content/types";
+import { TRIAL_URL, type SiteContent } from "@/content/types";
 
 export const en: SiteContent = {
   meta: {
@@ -31,7 +31,7 @@ export const en: SiteContent = {
     headlineAccent: "Every Customer Interaction",
     subheadlineAccent: "Chat Hub",
     subheadlineMain: "unifies customer communication, engagement, and automation in one platform.",
-    ctaPrimary: "Request a Free Demo",
+    ctaPrimary: "Try for Free",
     ctaSecondary: "See How It Works",
     channelsLabel: "Connected to the channels your customers already use every day",
   },
@@ -180,6 +180,15 @@ export const en: SiteContent = {
     titleAccent: "Your Business",
     description: "Don't miss out on our current promos — the promo code works right away.",
     viewAllLabel: "View All Promos",
+  },
+
+  tryFree: {
+    eyebrow: "Try It Free",
+    titleMain: "Experience It Yourself",
+    titleAccent: "Before You Subscribe",
+    description: "Explore every ChatHub feature risk-free — start your free trial today.",
+    ctaLabel: "Start Free Trial",
+    bullets: ["No credit card required", "Full access to premium features", "Cancel anytime"],
   },
 
   blog: {
@@ -543,6 +552,7 @@ export const en: SiteContent = {
     cta: "Request a Demo Now",
     whatsappPhone: "6281510107070",
     whatsappMessage: "Hi, I'd like to request a demo of ChatHub.",
+    trialUrl: TRIAL_URL,
   },
 
   footer: {

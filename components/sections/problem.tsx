@@ -52,7 +52,7 @@ export function Problem({ content }: { content: SiteContent["problem"] }) {
           {/* Diagram with decorative frame */}
           <div className="relative group">
             {/* Animated glow behind image */}
-            <div className="absolute -inset-2 rounded-[2.2rem] bg-gradient-to-br from-signal/10 via-signal-dim to-transparent opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
+            <div className="pointer-events-none absolute -inset-2 rounded-[2.2rem] bg-gradient-to-br from-signal/10 via-signal-dim to-transparent opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100" />
 
             {/* Corner accent ornaments */}
             <div className="absolute -top-3 -left-3 size-10 rounded-tl-2xl border-t-2 border-l-2 border-signal/30 pointer-events-none" />

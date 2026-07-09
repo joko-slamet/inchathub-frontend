@@ -6,6 +6,7 @@ import { Eyebrow } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { ChannelBadge } from "@/components/ui/channel-badge";
 import { ConvergenceVisual } from "@/components/hero/convergence-visual";
+import { useTrialUrl } from "@/hooks/use-trial-url";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -33,6 +34,8 @@ export function Hero({
   content: SiteContent["hero"];
   channels: Channel[];
 }) {
+  const trialUrl = useTrialUrl();
+
   return (
     <section
       id="beranda"
@@ -128,8 +131,8 @@ export function Hero({
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="mt-9 flex flex-col gap-3 sm:flex-row">
             <div className="relative group">
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-signal to-signal/60 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-60" />
-              <Button href="#kontak" variant="primary" size="lg">
+              <div className="pointer-events-none absolute -inset-1 rounded-full bg-gradient-to-r from-signal to-signal/60 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-60" />
+              <Button href={trialUrl} target="_blank" rel="noopener noreferrer" variant="primary" size="lg">
                 {content.ctaPrimary}
               </Button>
             </div>
