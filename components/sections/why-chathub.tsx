@@ -51,7 +51,7 @@ export function WhyChatHub({ content }: { content: SiteContent["whyChatHub"] }) 
               <LuStar className="size-5 fill-amber-400 text-amber-400" />
             </motion.div>
           ))}
-          <span className="ml-1 text-sm font-medium text-ink/60">Dipercaya ratusan bisnis Indonesia</span>
+          <span className="ml-1 mt-4 text-sm font-medium text-ink/60">{content.ratingLabel}</span>
         </div>
       </ScrollReveal>
 

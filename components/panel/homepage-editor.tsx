@@ -174,6 +174,24 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
     updatePage((p) => ({ ...p, closingCta: { ...p.closingCta, badges: p.closingCta.badges.filter((_, i) => i !== index) } }));
   }
 
+  function updateTrustBullet(index: number, value: string) {
+    updatePage((p) => ({
+      ...p,
+      closingCta: { ...p.closingCta, trustBullets: p.closingCta.trustBullets.map((b, i) => (i === index ? value : b)) },
+    }));
+  }
+
+  function addTrustBullet() {
+    updatePage((p) => ({ ...p, closingCta: { ...p.closingCta, trustBullets: [...p.closingCta.trustBullets, ""] } }));
+  }
+
+  function removeTrustBullet(index: number) {
+    updatePage((p) => ({
+      ...p,
+      closingCta: { ...p.closingCta, trustBullets: p.closingCta.trustBullets.filter((_, i) => i !== index) },
+    }));
+  }
+
   function updateFaq<K extends keyof SiteContent["faq"]>(key: K, value: SiteContent["faq"][K]) {
     updatePage((p) => ({ ...p, faq: { ...p.faq, [key]: value } }));
   }
@@ -434,6 +452,7 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
             <div />
             <Field label="Judul (bagian utama)" value={whyChatHub.titleMain} onChange={(v) => updateWhyChatHub("titleMain", v)} />
             <Field label="Judul (bagian aksen merah)" value={whyChatHub.titleAccent} onChange={(v) => updateWhyChatHub("titleAccent", v)} />
+            <Field label="Label Rating" value={whyChatHub.ratingLabel} onChange={(v) => updateWhyChatHub("ratingLabel", v)} />
           </div>
           <div className="mt-6 flex flex-col gap-3">
             {whyChatHub.points.map((point, index) => (
@@ -567,6 +586,32 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
               Dipakai oleh semua tombol &quot;Coba Gratis&quot; di situs — navbar, section Coba Gratis, dan tombol di
               tiap kartu harga.
             </p>
+          </div>
+
+          <p className="mt-6 text-sm font-medium text-ink/70">Trust Bullet</p>
+          <div className="mt-3 flex flex-col gap-2">
+            {closingCta.trustBullets.map((bullet, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <input
+                  type="text"
+                  value={bullet}
+                  onChange={(e) => updateTrustBullet(index, e.target.value)}
+                  className="min-w-0 flex-1 rounded-lg border border-line px-3 py-2 text-sm text-ink focus:border-ink/40 focus:outline-none"
+                />
+                <button
+                  type="button"
+                  onClick={() => removeTrustBullet(index)}
+                  aria-label="Hapus trust bullet"
+                  className="shrink-0 rounded-lg p-2 text-ink/40 hover:bg-ink/5 hover:text-signal"
+                >
+                  <LuTrash2 className="size-4" />
+                </button>
+              </div>
+            ))}
+            <button type="button" onClick={addTrustBullet} className="mt-1 flex items-center gap-1.5 self-start text-sm font-medium text-signal hover:underline">
+              <LuPlus className="size-4" />
+              Tambah Trust Bullet
+            </button>
           </div>
 
           <p className="mt-6 text-sm font-medium text-ink/70">Badge</p>

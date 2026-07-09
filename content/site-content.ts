@@ -17,14 +17,14 @@ export function getSiteContent(locale: Locale): SiteContent {
 // Channel names/badges are proper nouns — identical across locales, so they
 // live outside the translated content.
 export const channels: Channel[] = [
-  { name: "WhatsApp", badge: "WA" },
-  { name: "Instagram", badge: "IG" },
-  { name: "Facebook", badge: "FB" },
-  { name: "Telegram", badge: "TG" },
-  { name: "Email", badge: "MAIL" },
-  { name: "Web Chat", badge: "WEB" },
-  { name: "Teams", badge: "TEAMS" },
-  { name: "Threads", badge: "TH" },
+  { name: "WhatsApp", badge: "WhatsApp" },
+  { name: "Instagram", badge: "Instagram" },
+  { name: "Facebook", badge: "Facebook" },
+  { name: "Telegram", badge: "Telegram" },
+  { name: "Email", badge: "Email" },
+  { name: "Web Chat", badge: "Web Chat" },
+  { name: "Teams", badge: "Teams" },
+  { name: "Threads", badge: "Threads" },
   { name: "X", badge: "X" },
 ];
 

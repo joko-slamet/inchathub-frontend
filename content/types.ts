@@ -100,6 +100,7 @@ export interface SiteContent {
     eyebrow: string;
     titleMain: string;
     titleAccent: string;
+    ratingLabel: string;
     points: { title: string; description: string }[];
   };
   pricingHero: {
@@ -233,6 +234,7 @@ export interface SiteContent {
     title: string;
     subheadline: string;
     badges: string[];
+    trustBullets: string[];
     cta: string;
     whatsappPhone: string;
     whatsappMessage: string;

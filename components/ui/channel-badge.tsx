@@ -7,14 +7,14 @@ import type { Channel } from "@/content/site-content";
 // Real brand colors for actual social/chat platforms; generic channels (Email,
 // Web Chat, Teams — no authentic brand glyph available) stay neutral.
 const channelIcons: Record<string, { Icon: IconType; color?: string }> = {
-  WA: { Icon: SiWhatsapp, color: "#25D366" },
-  IG: { Icon: SiInstagram, color: "#E4405F" },
-  FB: { Icon: SiFacebook, color: "#1877F2" },
-  TG: { Icon: SiTelegram, color: "#26A5E4" },
-  MAIL: { Icon: LuMail },
-  WEB: { Icon: LuGlobe },
-  TEAMS: { Icon: LuVideo },
-  TH: { Icon: SiThreads, color: "#000000" },
+  WhatsApp: { Icon: SiWhatsapp, color: "#25D366" },
+  Instagram: { Icon: SiInstagram, color: "#E4405F" },
+  Facebook: { Icon: SiFacebook, color: "#1877F2" },
+  Telegram: { Icon: SiTelegram, color: "#26A5E4" },
+  Email: { Icon: LuMail },
+  "Web Chat": { Icon: LuGlobe },
+  Teams: { Icon: LuVideo },
+  Threads: { Icon: SiThreads, color: "#000000" },
   X: { Icon: SiX, color: "#000000" },
 };
 

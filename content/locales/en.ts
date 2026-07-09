@@ -138,6 +138,7 @@ export const en: SiteContent = {
     eyebrow: "Why They Choose Us",
     titleMain: "Systems built to",
     titleAccent: "increase sales.",
+    ratingLabel: "Trusted by hundreds of Indonesian businesses",
     points: [
       { title: "Smart Automation", description: "Automatic replies, follow-ups, and reminders so no chat gets missed." },
       { title: "Organized Customer", description: "Customer data neatly stored with history, tags, and a clear pipeline." },
@@ -551,6 +552,7 @@ export const en: SiteContent = {
     subheadline:
       "One demo, and you'll see for yourself how chats that used to be scattered across a dozen apps finally fit on a single screen.",
     badges: ["Omnichannel", "AI Chatbot", "Smart CRM", "WhatsApp API"],
+    trustBullets: ["Set up in 1 business day", "Free onboarding", "No long-term contract"],
     cta: "Request a Demo Now",
     whatsappPhone: "6281510107070",
     whatsappMessage: "Hi, I'd like to request a demo of ChatHub.",

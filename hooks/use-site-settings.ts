@@ -50,9 +50,12 @@ export function useSiteSettingContent(base: SiteContent, locale: Locale): SiteCo
     problem: { ...base.problem, ...row.problem },
     omnichannel: row.omnichannel,
     aiCrm: row.aiCrm,
-    whyChatHub: row.whyChatHub,
+    // Same defensive merge as `problem`/`closingCta` above.
+    whyChatHub: { ...base.whyChatHub, ...row.whyChatHub },
     industries: row.industries,
-    closingCta: row.closingCta,
+    // Same defensive merge as `problem` above — a DB row saved before
+    // `trustBullets` existed would otherwise render an empty bullet row.
+    closingCta: { ...base.closingCta, ...row.closingCta },
     faq: row.faq,
     footer: row.footer,
   };

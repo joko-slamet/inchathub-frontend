@@ -6,11 +6,7 @@ import { Button } from "@/components/ui/button";
 import { LuSend, LuSparkles, LuZap, LuShieldCheck } from "react-icons/lu";
 import type { SiteContent } from "@/content/site-content";
 
-const trustBullets = [
-  { icon: LuSparkles, text: "Setup dalam 1 hari kerja" },
-  { icon: LuZap, text: "Onboarding gratis" },
-  { icon: LuShieldCheck, text: "Tanpa kontrak panjang" },
-];
+const trustBulletIcons = [LuSparkles, LuZap, LuShieldCheck];
 
 export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) {
   return (
@@ -70,12 +66,15 @@ export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) 
 
         {/* Trust bullets */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-          {trustBullets.map(({ icon: Icon, text }) => (
-            <span key={text} className="flex items-center gap-2 rounded-full bg-paper/10 px-4 py-2 text-xs font-semibold text-paper/85 backdrop-blur-sm border border-paper/10">
-              <Icon className="size-3.5" />
-              {text}
-            </span>
-          ))}
+          {content.trustBullets.map((text, i) => {
+            const Icon = trustBulletIcons[i % trustBulletIcons.length];
+            return (
+              <span key={text} className="flex items-center gap-2 rounded-full bg-paper/10 px-4 py-2 text-xs font-semibold text-paper/85 backdrop-blur-sm border border-paper/10">
+                <Icon className="size-3.5" />
+                {text}
+              </span>
+            );
+          })}
         </div>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">

@@ -139,6 +139,7 @@ export const id: SiteContent = {
     eyebrow: "Kenapa Mereka Memilih Kami",
     titleMain: "Sistem dibangun untuk",
     titleAccent: "tingkatkan penjualan.",
+    ratingLabel: "Dipercaya ratusan bisnis Indonesia",
     points: [
       { title: "Smart Automation", description: "Balas, follow-up, dan reminder otomatis tanpa chat terlewat." },
       { title: "Organized Customer", description: "Data pelanggan tersimpan rapi dengan histori, tag, dan pipeline jelas." },
@@ -552,6 +553,7 @@ export const id: SiteContent = {
     subheadline:
       "Satu sesi demo, dan Anda akan lihat sendiri bagaimana chat yang tadinya berantakan di banyak aplikasi akhirnya rapi dalam satu layar.",
     badges: ["Omnichannel", "AI Chatbot", "Smart CRM", "WhatsApp API"],
+    trustBullets: ["Setup dalam 1 hari kerja", "Onboarding gratis", "Tanpa kontrak panjang"],
     cta: "Request Demo Sekarang",
     whatsappPhone: "6281510107070",
     whatsappMessage: "Halo, saya ingin request demo ChatHub.",
