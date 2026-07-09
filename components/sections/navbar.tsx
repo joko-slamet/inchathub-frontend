@@ -12,8 +12,6 @@ import type { SiteContent } from "@/content/site-content";
 export function Navbar({ content }: { content: SiteContent["nav"] }) {
   const [open, setOpen] = useState(false);
   const user = useAuth();
-  const accountHref = user?.role === "ADMIN" ? "/panel" : "/dashboard";
-  const accountLabel = user?.role === "ADMIN" ? "Panel Admin" : "Dashboard";
 
   return (
     <header className="sticky top-3 z-50 px-3 sm:top-4 sm:px-6 md:px-10 lg:px-16">
@@ -39,11 +37,11 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
           <div className="flex items-center gap-3">
             {user ? (
               <Link
-                href={accountHref}
+                href="/panel"
                 className="flex items-center gap-1.5 text-sm font-medium text-ink/70 transition-colors hover:text-ink"
               >
                 <LuLayoutDashboard className="size-4" />
-                {accountLabel}
+                Panel Admin
               </Link>
             ) : (
               <Link
@@ -91,12 +89,12 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
           <div className="mt-4 flex flex-col gap-3">
             {user ? (
               <Link
-                href={accountHref}
+                href="/panel"
                 onClick={() => setOpen(false)}
                 className="flex items-center justify-center gap-1.5 text-sm font-medium text-ink/70"
               >
                 <LuLayoutDashboard className="size-4" />
-                {accountLabel}
+                Panel Admin
               </Link>
             ) : (
               <Link

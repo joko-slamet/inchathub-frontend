@@ -42,7 +42,7 @@ export default function Home() {
         <AiCrm content={content.aiCrm} />
         <WhyChatHub content={content.whyChatHub} />
         <Industries content={content.industries} logos={logos ?? []} />
-        <Pricing content={pricing} />
+        <Pricing content={pricing} whatsappPhone={content.closingCta.whatsappPhone} />
         {articles && articles.length > 0 && (
           <Blog content={{ ...content.blog, posts: toPublicBlogPosts(articles, locale) }} limit={3} />
         )}

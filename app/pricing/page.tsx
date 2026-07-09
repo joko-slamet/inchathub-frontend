@@ -25,7 +25,7 @@ export default function PricingPage() {
           heading={content.pricingHero.heading}
           subheading={content.pricingHero.subheading}
         />
-        <Pricing content={pricing} />
+        <Pricing content={pricing} whatsappPhone={content.closingCta.whatsappPhone} />
         <Faq content={content.faq} />
         <ClosingCta content={content.closingCta} />
       </main>

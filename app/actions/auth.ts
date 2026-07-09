@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { SESSION_COOKIE, type Role } from "@/lib/session";
+import { SESSION_COOKIE } from "@/lib/session";
 
 export type LoginState = { error: string } | undefined;
 
@@ -17,7 +17,6 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
   }
 
   let token: string;
-  let role: Role;
   try {
     const res = await fetch(`${process.env.BACKEND_URL}/api/auth/login`, {
       method: "POST",
@@ -31,9 +30,7 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
       return { error: body?.error ?? "Email atau password salah." };
     }
 
-    const body = await res.json();
-    token = body.token;
-    role = body.user.role;
+    ({ token } = await res.json());
   } catch {
     return { error: "Tidak dapat terhubung ke server. Coba lagi nanti." };
   }
@@ -46,7 +43,7 @@ export async function login(_prevState: LoginState, formData: FormData): Promise
     path: "/",
   });
 
-  redirect(role === "ADMIN" ? "/panel" : "/dashboard");
+  redirect("/panel");
 }
 
 export async function logout() {

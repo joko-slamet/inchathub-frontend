@@ -7,7 +7,13 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import type { SiteContent } from "@/content/site-content";
 
-export function Pricing({ content }: { content: SiteContent["pricing"] }) {
+export function Pricing({
+  content,
+  whatsappPhone,
+}: {
+  content: SiteContent["pricing"];
+  whatsappPhone: string;
+}) {
   return (
     <Section
       id="harga"
@@ -98,7 +104,9 @@ export function Pricing({ content }: { content: SiteContent["pricing"] }) {
               {/* CTA */}
               <div className="p-6 pt-8">
                 <Button
-                  href={plan.key ? `/checkout?plan=${plan.key}` : "/#kontak"}
+                  href={`https://wa.me/${whatsappPhone}?text=${encodeURIComponent(`Halo, saya tertarik dengan paket ${plan.name}. Bisa dibantu?`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variant={plan.popular ? "primary" : "outline"}
                   size="md"
                   className="group w-full"

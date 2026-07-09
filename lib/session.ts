@@ -5,7 +5,7 @@ import { jwtVerify } from "jose";
 
 export const SESSION_COOKIE = "session";
 
-export type Role = "USER" | "ADMIN";
+export type Role = "ADMIN";
 
 export type SessionPayload = {
   sub: string;
