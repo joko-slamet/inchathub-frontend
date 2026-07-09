@@ -15,6 +15,7 @@ import {
 import { TextAreaField } from "@/components/admin/field";
 import { Toggle } from "@/components/admin/toggle";
 import { ChipInput } from "@/components/admin/chip-input";
+import { LinkListInput } from "@/components/admin/link-list-input";
 import { Button } from "@/components/ui/button";
 import { updateAiArticleConfig } from "@/app/actions/ai-article-config";
 import { deleteArticle, generateArticleNow } from "@/app/actions/articles";
@@ -95,6 +96,7 @@ export function BlogAiEditor({
         weekdayTopics: config.weekdayTopics,
         weekendTopics: config.weekendTopics,
         prompt: config.prompt,
+        internalLinks: config.internalLinks,
       });
       if (!result.ok) {
         setSaveError(result.error);
@@ -202,10 +204,10 @@ export function BlogAiEditor({
 
           <div className="mt-6">
             <TextAreaField
-              label="Prompt Tambahan untuk AI"
+              label="Prompt AI"
               value={config.prompt}
               onChange={(v) => updateConfig("prompt", v)}
-              rows={3}
+              rows={15}
             />
           </div>
 
@@ -221,6 +223,15 @@ export function BlogAiEditor({
               values={config.weekendTopics}
               onChange={(v) => updateConfig("weekendTopics", v)}
               placeholder="Ketik topik lalu Enter..."
+            />
+          </div>
+
+          <div className="mt-4">
+            <LinkListInput
+              label="Link Internal untuk AI"
+              hint="AI hanya akan menyisipkan link dari daftar ini ke artikel yang di-generate, kalau relevan dengan topiknya. Isi keterangan singkat biar AI tahu kapan link ini pas dipakai — link di luar daftar ini tidak akan pernah muncul di artikel."
+              values={config.internalLinks}
+              onChange={(v) => updateConfig("internalLinks", v)}
             />
           </div>
 

@@ -1,3 +1,8 @@
+export type InternalLink = {
+  url: string;
+  description: string;
+};
+
 export type AiArticleConfigDTO = {
   id: string;
   enabled: boolean;
@@ -5,6 +10,7 @@ export type AiArticleConfigDTO = {
   weekdayTopics: string[];
   weekendTopics: string[];
   prompt: string;
+  internalLinks: InternalLink[];
   createdAt: string;
   updatedAt: string;
 };
@@ -15,6 +21,7 @@ export type AiArticleConfigInput = {
   weekdayTopics?: string[];
   weekendTopics?: string[];
   prompt?: string;
+  internalLinks?: InternalLink[];
 };
 
 export type ArticleDayType = "WEEKDAY" | "WEEKEND";

@@ -9,6 +9,7 @@ import { useArticles } from "@/hooks/use-articles";
 import { toPublicBlogPosts } from "@/lib/blog-format";
 import { Navbar } from "@/components/sections/navbar";
 import { BlogGrid } from "@/components/sections/blog-grid";
+import { LinkifiedText } from "@/components/ui/linkified-text";
 import { ClosingCta } from "@/components/sections/closing-cta";
 import { Footer } from "@/components/sections/footer";
 
@@ -104,7 +105,7 @@ export default function BlogDetailPage() {
             <div className="mt-10 flex flex-col gap-5 border-t border-dashed border-line pt-10">
               {post.content.map((paragraph, index) => (
                 <p key={index} className="text-base leading-relaxed text-ink/80 sm:text-lg">
-                  {paragraph}
+                  <LinkifiedText text={paragraph} />
                 </p>
               ))}
             </div>
