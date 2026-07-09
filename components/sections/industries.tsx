@@ -34,17 +34,17 @@ const industryIcons: IconType[] = [
   LuClapperboard,
 ];
 
-const industryColors = [
-  "from-blue-50 border-blue-200/60 text-blue-600 bg-blue-100",
-  "from-red-50 border-red-200/60 text-red-600 bg-red-100",
-  "from-amber-50 border-amber-200/60 text-amber-600 bg-amber-100",
-  "from-slate-50 border-slate-200/60 text-slate-600 bg-slate-100",
-  "from-purple-50 border-purple-200/60 text-purple-600 bg-purple-100",
-  "from-emerald-50 border-emerald-200/60 text-emerald-600 bg-emerald-100",
-  "from-pink-50 border-pink-200/60 text-pink-600 bg-pink-100",
-  "from-sky-50 border-sky-200/60 text-sky-600 bg-sky-100",
-  "from-orange-50 border-orange-200/60 text-orange-600 bg-orange-100",
-  "from-violet-50 border-violet-200/60 text-violet-600 bg-violet-100",
+const industryColors: { gradient: string; border: string; text: string; bg: string }[] = [
+  { gradient: "from-blue-50 dark:from-blue-950/30", border: "border-blue-200/60 dark:border-blue-800/40", text: "text-blue-600 dark:text-blue-400", bg: "bg-blue-100 dark:bg-blue-900/40" },
+  { gradient: "from-red-50 dark:from-red-950/30", border: "border-red-200/60 dark:border-red-800/40", text: "text-red-600 dark:text-red-400", bg: "bg-red-100 dark:bg-red-900/40" },
+  { gradient: "from-amber-50 dark:from-amber-950/30", border: "border-amber-200/60 dark:border-amber-800/40", text: "text-amber-600 dark:text-amber-400", bg: "bg-amber-100 dark:bg-amber-900/40" },
+  { gradient: "from-slate-50 dark:from-slate-800/30", border: "border-slate-200/60 dark:border-slate-700/40", text: "text-slate-600 dark:text-slate-400", bg: "bg-slate-100 dark:bg-slate-800/40" },
+  { gradient: "from-purple-50 dark:from-purple-950/30", border: "border-purple-200/60 dark:border-purple-800/40", text: "text-purple-600 dark:text-purple-400", bg: "bg-purple-100 dark:bg-purple-900/40" },
+  { gradient: "from-emerald-50 dark:from-emerald-950/30", border: "border-emerald-200/60 dark:border-emerald-800/40", text: "text-emerald-600 dark:text-emerald-400", bg: "bg-emerald-100 dark:bg-emerald-900/40" },
+  { gradient: "from-pink-50 dark:from-pink-950/30", border: "border-pink-200/60 dark:border-pink-800/40", text: "text-pink-600 dark:text-pink-400", bg: "bg-pink-100 dark:bg-pink-900/40" },
+  { gradient: "from-sky-50 dark:from-sky-950/30", border: "border-sky-200/60 dark:border-sky-800/40", text: "text-sky-600 dark:text-sky-400", bg: "bg-sky-100 dark:bg-sky-900/40" },
+  { gradient: "from-orange-50 dark:from-orange-950/30", border: "border-orange-200/60 dark:border-orange-800/40", text: "text-orange-600 dark:text-orange-400", bg: "bg-orange-100 dark:bg-orange-900/40" },
+  { gradient: "from-violet-50 dark:from-violet-950/30", border: "border-violet-200/60 dark:border-violet-800/40", text: "text-violet-600 dark:text-violet-400", bg: "bg-violet-100 dark:bg-violet-900/40" },
 ];
 
 export function Industries({
@@ -70,7 +70,7 @@ export function Industries({
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5">
           {content.list.map((industry, index) => {
             const IndustryIcon = industryIcons[index];
-            const [gradientClass, borderClass, textClass, bgClass] = industryColors[index].split(" ");
+            const { gradient: gradientClass, border: borderClass, text: textClass, bg: bgClass } = industryColors[index];
             return (
               <motion.div
                 key={industry.name}

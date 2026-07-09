@@ -77,7 +77,7 @@ export function CompanyLogoEditor({ initialLogos }: { initialLogos: CompanyLogoD
         </div>
 
         {uploadError && (
-          <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600">
+          <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-400">
             {uploadError}
           </p>
         )}
@@ -117,7 +117,7 @@ export function CompanyLogoEditor({ initialLogos }: { initialLogos: CompanyLogoD
                   onClick={() => handleDelete(logo.id)}
                   disabled={deletingId === logo.id}
                   aria-label={`Hapus logo ${logo.name}`}
-                  className="absolute top-2 right-2 rounded-lg p-1.5 text-ink/40 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-red-50 hover:text-red-600"
+                  className="absolute top-2 right-2 rounded-lg p-1.5 text-ink/40 opacity-0 transition-opacity group-hover:opacity-100 hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-950/40 dark:hover:text-red-400"
                 >
                   {deletingId === logo.id ? (
                     <LuLoaderCircle className="size-4 animate-spin" />

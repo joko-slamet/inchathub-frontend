@@ -26,7 +26,7 @@ export default function ForgotPasswordPage() {
         {state?.success ? (
           <>
             <p className="flex items-center gap-2 font-display text-xl font-semibold tracking-tight text-ink">
-              <LuCircleCheck className="size-5 text-emerald-600" />
+              <LuCircleCheck className="size-5 text-emerald-600 dark:text-emerald-400" />
               Periksa email Anda
             </p>
             <p className="mt-2 text-sm text-ink/60">
@@ -43,7 +43,7 @@ export default function ForgotPasswordPage() {
 
             <form action={formAction} className="mt-6 flex flex-col gap-4">
               {state?.error && (
-                <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600">
+                <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-400">
                   {state.error}
                 </p>
               )}

@@ -28,10 +28,10 @@ const featureIcons: IconType[] = [LuInbox, LuUsers, LuHistory, LuTicket, LuChart
 const impactIcons: IconType[] = [LuZap, LuSparkles, LuTrendingUp, LuCheckCheck];
 
 const impactColors = [
-  "from-yellow-50 to-amber-50 border-amber-200 text-amber-600",
-  "from-purple-50 to-violet-50 border-violet-200 text-violet-600",
-  "from-emerald-50 to-green-50 border-green-200 text-emerald-600",
-  "from-sky-50 to-blue-50 border-blue-200 text-sky-600",
+  "from-yellow-50 to-amber-50 dark:from-yellow-950/20 dark:to-amber-950/20 border-amber-200 dark:border-amber-800/40 text-amber-600 dark:text-amber-400",
+  "from-purple-50 to-violet-50 dark:from-purple-950/20 dark:to-violet-950/20 border-violet-200 dark:border-violet-800/40 text-violet-600 dark:text-violet-400",
+  "from-emerald-50 to-green-50 dark:from-emerald-950/20 dark:to-green-950/20 border-green-200 dark:border-green-800/40 text-emerald-600 dark:text-emerald-400",
+  "from-sky-50 to-blue-50 dark:from-sky-950/20 dark:to-blue-950/20 border-blue-200 dark:border-blue-800/40 text-sky-600 dark:text-sky-400",
 ];
 
 export function Omnichannel({ content }: { content: SiteContent["omnichannel"] }) {
@@ -103,7 +103,7 @@ export function Omnichannel({ content }: { content: SiteContent["omnichannel"] }
                 transition={{ type: "spring", stiffness: 300 }}
                 className={`flex flex-col items-start gap-3 rounded-2xl border bg-gradient-to-br p-4 transition-shadow duration-300 hover:shadow-md ${colorClass}`}
               >
-                <span className="flex size-9 items-center justify-center rounded-full bg-white shadow-sm">
+                <span className="flex size-9 items-center justify-center rounded-full bg-white dark:bg-ink/40 shadow-sm">
                   <ImpactIcon className="size-4" />
                 </span>
                 <p className="text-sm font-medium text-ink/80">{item.label}</p>

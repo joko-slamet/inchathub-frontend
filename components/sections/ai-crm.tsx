@@ -122,7 +122,7 @@ export function AiCrm({ content }: { content: SiteContent["aiCrm"] }) {
 
             {/* Header */}
             <div className="relative flex items-center gap-3">
-              <span className="flex size-11 items-center justify-center rounded-2xl bg-ink text-white shadow-md">
+              <span className="flex size-11 items-center justify-center rounded-2xl bg-ink text-paper shadow-md">
                 <LuUsers className="size-5" />
               </span>
               <div>

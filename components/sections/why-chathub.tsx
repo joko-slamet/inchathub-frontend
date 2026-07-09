@@ -11,18 +11,18 @@ import type { SiteContent } from "@/content/site-content";
 const pointIcons: IconType[] = [LuLightbulb, LuHeadset, LuReceipt, LuMaximize2, LuBadgePercent];
 
 const cardAccents = [
-  "from-yellow-50 border-yellow-200/80 hover:border-yellow-300",
-  "from-sky-50 border-sky-200/80 hover:border-sky-300",
-  "from-emerald-50 border-emerald-200/80 hover:border-emerald-300",
-  "from-purple-50 border-purple-200/80 hover:border-purple-300",
+  "from-yellow-50 dark:from-yellow-950/20 border-yellow-200/80 dark:border-yellow-800/40 hover:border-yellow-300 dark:hover:border-yellow-700",
+  "from-sky-50 dark:from-sky-950/20 border-sky-200/80 dark:border-sky-800/40 hover:border-sky-300 dark:hover:border-sky-700",
+  "from-emerald-50 dark:from-emerald-950/20 border-emerald-200/80 dark:border-emerald-800/40 hover:border-emerald-300 dark:hover:border-emerald-700",
+  "from-purple-50 dark:from-purple-950/20 border-purple-200/80 dark:border-purple-800/40 hover:border-purple-300 dark:hover:border-purple-700",
   "from-signal-dim border-signal/15 hover:border-signal/30",
 ];
 
 const iconColors = [
-  "bg-yellow-100 text-yellow-600",
-  "bg-sky-100 text-sky-600",
-  "bg-emerald-100 text-emerald-600",
-  "bg-purple-100 text-purple-600",
+  "bg-yellow-100 text-yellow-600 dark:bg-yellow-900/40 dark:text-yellow-400",
+  "bg-sky-100 text-sky-600 dark:bg-sky-900/40 dark:text-sky-400",
+  "bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-400",
+  "bg-purple-100 text-purple-600 dark:bg-purple-900/40 dark:text-purple-400",
   "bg-signal-dim text-signal",
 ];
 

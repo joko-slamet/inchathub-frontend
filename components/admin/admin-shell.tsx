@@ -18,6 +18,7 @@ import {
 } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { Logo } from "@/components/ui/logo";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { logout } from "@/app/actions/auth";
 
 interface NavItem {
@@ -136,6 +137,7 @@ export function AdminShell({
           </div>
 
           <div className="flex items-center gap-2.5">
+            <ThemeToggle />
             <span className="flex size-9 items-center justify-center rounded-full bg-signal-dim font-mono text-xs font-semibold text-signal">
               {user.name.charAt(0).toUpperCase()}
             </span>

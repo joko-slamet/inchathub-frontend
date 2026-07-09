@@ -728,7 +728,7 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
       </div>
 
       {saveError && (
-        <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600">
+        <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-400">
           {saveError}
         </p>
       )}
@@ -744,7 +744,7 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
           type="button"
           onClick={handleSave}
           disabled={saving}
-          className="flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ink disabled:opacity-60"
+          className="flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ink dark:hover:text-ink disabled:opacity-60"
         >
           {saving ? <LuLoaderCircle className="size-4 animate-spin" /> : <LuSave className="size-4" />}
           Simpan Perubahan

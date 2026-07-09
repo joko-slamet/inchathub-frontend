@@ -6,6 +6,7 @@ import { LuMenu, LuX, LuLogIn, LuLayoutDashboard } from "react-icons/lu";
 import { Logo } from "@/components/ui/logo";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useAuth } from "@/components/auth-provider";
 import type { SiteContent } from "@/content/site-content";
 
@@ -34,6 +35,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
 
         <div className="hidden items-center gap-5 md:flex">
           <LocaleSwitcher />
+          <ThemeToggle />
           <div className="flex items-center gap-3">
             {user ? (
               <Link
@@ -85,6 +87,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
           </nav>
           <div className="mt-6 flex items-center justify-between">
             <LocaleSwitcher />
+            <ThemeToggle />
           </div>
           <div className="mt-4 flex flex-col gap-3">
             {user ? (

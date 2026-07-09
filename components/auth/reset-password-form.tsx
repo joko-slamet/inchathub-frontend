@@ -14,7 +14,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
     return (
       <>
         <p className="flex items-center gap-2 font-display text-xl font-semibold tracking-tight text-ink">
-          <LuCircleCheck className="size-5 text-emerald-600" />
+          <LuCircleCheck className="size-5 text-emerald-600 dark:text-emerald-400" />
           Password berhasil direset
         </p>
         <p className="mt-2 text-sm text-ink/60">
@@ -36,7 +36,7 @@ export function ResetPasswordForm({ token }: { token: string }) {
         <input type="hidden" name="token" value={token} />
 
         {state?.error && (
-          <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600">
+          <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-400">
             {state.error}
           </p>
         )}

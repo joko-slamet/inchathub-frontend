@@ -159,7 +159,7 @@ export function Contact({ content, mapSrc }: { content: SiteContent["contact"]; 
             </Button>
 
             {submitError && (
-              <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600">
+              <p className="rounded-lg border border-red-200 bg-red-50 px-3.5 py-2.5 text-sm text-red-600 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-400">
                 {submitError}
               </p>
             )}

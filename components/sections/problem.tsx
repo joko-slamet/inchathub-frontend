@@ -8,9 +8,9 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import type { SiteContent } from "@/content/site-content";
 
 const painPoints = [
-  { icon: LuTriangleAlert, color: "text-amber-500", bg: "bg-amber-50 border-amber-200" },
-  { icon: LuTrendingDown, color: "text-red-500", bg: "bg-red-50 border-red-200" },
-  { icon: LuClock, color: "text-orange-500", bg: "bg-orange-50 border-orange-200" },
+  { icon: LuTriangleAlert, color: "text-amber-500 dark:text-amber-400", bg: "bg-amber-50 border-amber-200 dark:bg-amber-950/20 dark:border-amber-800/40" },
+  { icon: LuTrendingDown, color: "text-red-500 dark:text-red-400", bg: "bg-red-50 border-red-200 dark:bg-red-950/20 dark:border-red-800/40" },
+  { icon: LuClock, color: "text-orange-500 dark:text-orange-400", bg: "bg-orange-50 border-orange-200 dark:bg-orange-950/20 dark:border-orange-800/40" },
 ];
 
 export function Problem({ content }: { content: SiteContent["problem"] }) {
@@ -33,7 +33,7 @@ export function Problem({ content }: { content: SiteContent["problem"] }) {
               transition={{ type: "spring", stiffness: 300 }}
               className={`flex items-center gap-3 rounded-2xl border p-4 ${bg} transition-shadow duration-300 hover:shadow-md`}
             >
-              <span className={`flex size-9 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm`}>
+              <span className={`flex size-9 shrink-0 items-center justify-center rounded-xl bg-white dark:bg-ink/40 shadow-sm`}>
                 <Icon className={`size-5 ${color}`} />
               </span>
               <div className="flex items-center gap-2">

@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, Inter, IBM_Plex_Mono } from "next/font/google";
 import { getSiteContent, defaultLocale, isLocale, LOCALE_COOKIE, type Locale } from "@/content/site-content";
 import { LocaleProvider } from "@/components/locale-provider";
 import { AuthProvider } from "@/components/auth-provider";
+import { ThemeProvider } from "@/components/theme-provider";
 import { getSession } from "@/lib/session";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import "./globals.css";
@@ -95,12 +96,15 @@ export default async function RootLayout({
     <html
       lang={initialLocale}
       className={`${plusJakartaSans.variable} ${inter.variable} ${ibmPlexMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-        <AuthProvider user={session ? { role: session.role } : null}>
-          <LocaleProvider initialLocale={initialLocale}>{children}</LocaleProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider user={session ? { role: session.role } : null}>
+            <LocaleProvider initialLocale={initialLocale}>{children}</LocaleProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

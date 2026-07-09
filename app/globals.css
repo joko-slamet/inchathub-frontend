@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
-@theme inline {
-  /* Brand color tokens */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Plain (non-inline) @theme: colors are static hex literals, so Tailwind
+   compiles utilities like bg-paper/text-ink/border-line to var(--color-*)
+   and keeps referencing that custom property at paint time. This is what
+   lets the .dark override below actually re-theme the whole site — with
+   "inline" (used below only for fonts, which genuinely need it since they
+   reference next/font's own runtime CSS variables), Tailwind bakes in the
+   resolved hex directly and .dark { --color-ink: ... } would have no effect
+   on any utility class. */
+@theme {
   --color-ink: #1a1618;
   --color-paper: #ffffff;
   --color-signal: #be1e2d;
@@ -10,11 +19,37 @@
   --color-slate-dim: #f1f1f2;
   --color-line: #e5e4e5;
   --color-ok: #1b7f4c;
+}
 
-  /* Typography tokens */
+@theme inline {
   --font-display: var(--font-plus-jakarta-sans);
   --font-sans: var(--font-inter);
   --font-mono: var(--font-ibm-plex-mono);
+}
+
+.dark {
+  --color-ink: #f2f0ef;
+  --color-paper: #17141a;
+  --color-signal: #ef4453;
+  --color-signal-dim: #3a1116;
+  --color-slate: #a3a1a3;
+  --color-slate-dim: #221f21;
+  --color-line: #322e30;
+  --color-ok: #34c281;
+}
+
+/* Tells the browser this page explicitly supports both schemes and which
+   one is currently active — without this, some browsers apply their own
+   automatic/heuristic dark-mode guess to the page before real CSS is fully
+   ready, then correct it once our actual .dark class + colors take over,
+   which looks exactly like an extra flash on top of anything our own code
+   does. */
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 @layer base {
@@ -222,8 +257,19 @@
     box-shadow: 0 0 24px rgba(190, 30, 45, 0.35), 0 0 48px rgba(190, 30, 45, 0.15);
   }
 
+  .dark .glow-signal {
+    box-shadow: 0 0 24px rgba(239, 68, 83, 0.45), 0 0 48px rgba(239, 68, 83, 0.2);
+  }
+
   .text-gradient {
     background: linear-gradient(135deg, #be1e2d 0%, #e84a5c 50%, #be1e2d 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .dark .text-gradient {
+    background: linear-gradient(135deg, #ef4453 0%, #ff8a94 50%, #ef4453 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -234,6 +280,13 @@
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .dark .glass {
+    background: rgba(23, 20, 26, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .noise-overlay {
