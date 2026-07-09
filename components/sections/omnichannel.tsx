@@ -5,7 +5,6 @@ import {
   LuInbox,
   LuUsers,
   LuHistory,
-  LuStickyNote,
   LuTicket,
   LuChartColumn,
   LuShieldCheck,
@@ -13,7 +12,6 @@ import {
   LuSparkles,
   LuTrendingUp,
   LuCheckCheck,
-  LuArrowUpRight,
 } from "react-icons/lu";
 import type { IconType } from "react-icons";
 import { Section } from "@/components/ui/section";
@@ -71,7 +69,6 @@ export function Omnichannel({ content }: { content: SiteContent["omnichannel"] }
                     <h3 className="mt-4 text-base font-semibold text-ink group-hover:text-signal transition-colors duration-200">
                       {feature.title}
                     </h3>
-                    <LuArrowUpRight className="absolute right-0 bottom-0 size-4 text-signal/0 transition-all duration-300 group-hover:text-signal/60 group-hover:-translate-y-1 group-hover:translate-x-0" />
                   </div>
                 </motion.div>
               </ScrollReveal>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useId } from "react";
 import { motion, type Variants } from "framer-motion";
 import type { Channel, SiteContent } from "@/content/site-content";
 import { Eyebrow } from "@/components/ui/section";
@@ -35,6 +36,7 @@ export function Hero({
   channels: Channel[];
 }) {
   const trialUrl = useTrialUrl();
+  const underlineClipId = useId();
 
   return (
     <section
@@ -102,18 +104,33 @@ export function Hero({
               <span className="text-gradient animate-gradient">{content.headlineAccent}</span>
               <svg
                 className="pointer-events-none absolute top-full left-0 mt-1 w-full"
-                viewBox="0 0 200 12"
+                viewBox="-3 0 203 14"
                 fill="none"
                 aria-hidden="true"
               >
-                <motion.path
-                  d="M2 9C40 2 160 2 198 9"
-                  stroke="var(--color-signal)"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                {/* Filled taper shape (thick at left, thin at right) instead of a
+                    constant-width stroke, to mimic a marker stroke trailing off.
+                    Both ends close with a semicircle arc (radius = half the local
+                    thickness) instead of a straight edge, so they read as rounded
+                    caps rather than square or pointy. A clip-path rect that grows
+                    left-to-right reveals it like a pen actually scribbling the
+                    line, instead of the whole shape just scaling/fading in. */}
+                <defs>
+                  <clipPath id={underlineClipId}>
+                    <motion.rect
+                      x="-3"
+                      y="0"
+                      height="14"
+                      initial={{ width: 0 }}
+                      animate={{ width: 203 }}
+                      transition={{ duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    />
+                  </clipPath>
+                </defs>
+                <path
+                  d="M2 7 C40 0.8 160 2.1 198 9.5 A0.5 0.5 0 0 1 198 10.5 C160 3.9 40 5.2 2 13 A3 3 0 0 1 2 7 Z"
+                  fill="var(--color-signal)"
+                  clipPath={`url(#${underlineClipId})`}
                 />
               </svg>
             </span>

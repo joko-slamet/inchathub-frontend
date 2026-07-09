@@ -590,7 +590,7 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
 
           <p className="mt-6 text-sm font-medium text-ink/70">Trust Bullet</p>
           <div className="mt-3 flex flex-col gap-2">
-            {closingCta.trustBullets.map((bullet, index) => (
+            {closingCta?.trustBullets?.map((bullet, index) => (
               <div key={index} className="flex items-center gap-2">
                 <input
                   type="text"

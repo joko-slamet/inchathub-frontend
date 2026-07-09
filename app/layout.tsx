@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   title: meta.title,
   description: meta.description,
   icons: {
-    icon: "/logo.ico",
+    icon: "/favicon.png",
   },
   keywords: [
     "omnichannel",
