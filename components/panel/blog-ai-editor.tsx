@@ -12,6 +12,7 @@ import {
   LuCheck,
   LuWand,
   LuX,
+  LuEye,
 } from "react-icons/lu";
 import { TextAreaField } from "@/components/admin/field";
 import { Toggle } from "@/components/admin/toggle";
@@ -330,6 +331,7 @@ export function BlogAiEditor({
                     <th className="px-5 py-3.5">Artikel</th>
                     <th className="px-5 py-3.5">Topik</th>
                     <th className="px-5 py-3.5">Skor SEO</th>
+                    <th className="px-5 py-3.5">Pembaca</th>
                     <th className="px-5 py-3.5" />
                   </tr>
                 </thead>
@@ -376,6 +378,12 @@ export function BlogAiEditor({
                             {article.seoScore}/100
                           </button>
                         )}
+                      </td>
+                      <td className="px-5 py-4">
+                        <span className="flex items-center gap-1.5 text-ink/60">
+                          <LuEye className="size-4" />
+                          {article.viewCount.toLocaleString("id-ID")}
+                        </span>
                       </td>
                       <td className="px-5 py-4">
                         <div className="flex items-center justify-end gap-1">

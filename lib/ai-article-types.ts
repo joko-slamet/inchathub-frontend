@@ -43,6 +43,7 @@ export type ArticleDTO = {
   imageUrl: string;
   seoScore: number | null;
   seoFeedback: string | null;
+  viewCount: number;
   translations: ArticleTranslationDTO[];
   generatedAt: string;
   createdAt: string;

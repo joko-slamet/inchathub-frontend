@@ -6,6 +6,7 @@ import { LuArrowLeft, LuCalendar, LuClock, LuUser, LuLoaderCircle } from "react-
 import { getSiteContent } from "@/content/site-content";
 import { useLocale } from "@/components/locale-provider";
 import { useArticles } from "@/hooks/use-articles";
+import { useRecordArticleView } from "@/hooks/use-record-article-view";
 import { toPublicBlogPosts } from "@/lib/blog-format";
 import { Navbar } from "@/components/sections/navbar";
 import { BlogGrid } from "@/components/sections/blog-grid";
@@ -18,6 +19,13 @@ export default function BlogDetailPage() {
   const content = getSiteContent(locale);
   const { slug } = useParams<{ slug: string }>();
   const { articles, loading, error } = useArticles();
+
+  const posts = toPublicBlogPosts(articles ?? [], locale);
+  const post = posts.find((p) => p.slug === slug);
+  // Called unconditionally (before the loading/error/not-found returns
+  // below) to satisfy the rules of hooks — it no-ops internally until
+  // `post` actually resolves to a real slug.
+  useRecordArticleView(post?.slug);
 
   if (loading) {
     return (
@@ -36,8 +44,6 @@ export default function BlogDetailPage() {
     );
   }
 
-  const posts = toPublicBlogPosts(articles ?? [], locale);
-  const post = posts.find((p) => p.slug === slug);
   if (!post) notFound();
 
   const relatedPosts = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
