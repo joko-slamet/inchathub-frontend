@@ -549,12 +549,12 @@ export const id: SiteContent = {
   },
 
   closingCta: {
-    title: "Siap Mengubah Cara Bisnis Anda Berkomunikasi dengan Pelanggan?",
+    title: "Siap Melayani Pelanggan Lebih Cepat Mulai Hari Ini?",
     subheadline:
-      "Satu sesi demo, dan Anda akan lihat sendiri bagaimana chat yang tadinya berantakan di banyak aplikasi akhirnya rapi dalam satu layar.",
+      "Daftar gratis dalam 2 menit, tanpa kartu kredit. Rasakan sendiri bagaimana chat yang tadinya berantakan di banyak aplikasi akhirnya rapi dalam satu layar.",
     badges: ["Omnichannel", "AI Chatbot", "Smart CRM", "WhatsApp API"],
     trustBullets: ["Setup dalam 1 hari kerja", "Onboarding gratis", "Tanpa kontrak panjang"],
-    cta: "Request Demo Sekarang",
+    cta: "Coba Gratis Sekarang",
     whatsappPhone: "6281510107070",
     whatsappMessage: "Halo, saya ingin request demo ChatHub.",
     trialUrl: TRIAL_URL,

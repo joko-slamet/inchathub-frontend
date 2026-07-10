@@ -548,12 +548,12 @@ export const en: SiteContent = {
   },
 
   closingCta: {
-    title: "Ready to Change How Your Business Talks to Customers?",
+    title: "Ready to Serve Customers Faster, Starting Today?",
     subheadline:
-      "One demo, and you'll see for yourself how chats that used to be scattered across a dozen apps finally fit on a single screen.",
+      "Sign up free in 2 minutes, no credit card required. See for yourself how chats that used to be scattered across a dozen apps finally fit on a single screen.",
     badges: ["Omnichannel", "AI Chatbot", "Smart CRM", "WhatsApp API"],
     trustBullets: ["Set up in 1 business day", "Free onboarding", "No long-term contract"],
-    cta: "Request a Demo Now",
+    cta: "Start Free Trial",
     whatsappPhone: "6281510107070",
     whatsappMessage: "Hi, I'd like to request a demo of ChatHub.",
     trialUrl: TRIAL_URL,

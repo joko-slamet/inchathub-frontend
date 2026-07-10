@@ -5,10 +5,13 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { LuSend, LuSparkles, LuZap, LuShieldCheck } from "react-icons/lu";
 import type { SiteContent } from "@/content/site-content";
+import { useTrialUrl } from "@/hooks/use-trial-url";
 
 const trustBulletIcons = [LuSparkles, LuZap, LuShieldCheck];
 
 export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) {
+  const trialUrl = useTrialUrl();
+
   return (
     <section
       id="kontak"
@@ -91,13 +94,7 @@ export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) 
         <div className="mt-10 relative group">
           {/* Animated glow behind button */}
           <div className="pointer-events-none absolute -inset-2 rounded-full bg-paper/30 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-60" />
-          <Button
-            href={`https://wa.me/${content.whatsappPhone}?text=${encodeURIComponent(content.whatsappMessage)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="inverse"
-            size="lg"
-          >
+          <Button href={trialUrl} target="_blank" rel="noopener noreferrer" variant="inverse" size="lg">
             {content.cta}
           </Button>
         </div>
