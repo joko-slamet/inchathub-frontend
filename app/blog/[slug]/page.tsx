@@ -5,7 +5,8 @@ import { useParams, notFound } from "next/navigation";
 import { LuArrowLeft, LuCalendar, LuClock, LuUser, LuLoaderCircle } from "react-icons/lu";
 import { getSiteContent } from "@/content/site-content";
 import { useLocale } from "@/components/locale-provider";
-import { useArticles } from "@/hooks/use-articles";
+import { useArticle } from "@/hooks/use-article";
+import { useRelatedArticles } from "@/hooks/use-related-articles";
 import { useRecordArticleView } from "@/hooks/use-record-article-view";
 import { toPublicBlogPosts } from "@/lib/blog-format";
 import { Navbar } from "@/components/sections/navbar";
@@ -18,10 +19,12 @@ export default function BlogDetailPage() {
   const { locale } = useLocale();
   const content = getSiteContent(locale);
   const { slug } = useParams<{ slug: string }>();
-  const { articles, loading, error } = useArticles();
+  const { article, loading, notFound: articleNotFound, error } = useArticle(slug);
+  // Separate, non-blocking fetch — only needed for the "related posts" strip
+  // further down the page, so it must never delay the primary article.
+  const { articles: relatedArticles } = useRelatedArticles(slug, 3);
 
-  const posts = toPublicBlogPosts(articles ?? [], locale);
-  const post = posts.find((p) => p.slug === slug);
+  const post = article ? toPublicBlogPosts([article], locale)[0] : undefined;
   // Called unconditionally (before the loading/error/not-found returns
   // below) to satisfy the rules of hooks — it no-ops internally until
   // `post` actually resolves to a real slug.
@@ -44,9 +47,9 @@ export default function BlogDetailPage() {
     );
   }
 
-  if (!post) notFound();
+  if (articleNotFound || !post) notFound();
 
-  const relatedPosts = posts.filter((p) => p.slug !== post.slug).slice(0, 3);
+  const relatedPosts = relatedArticles ? toPublicBlogPosts(relatedArticles, locale) : [];
 
   return (
     <>
