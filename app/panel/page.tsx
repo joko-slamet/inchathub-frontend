@@ -11,7 +11,7 @@ import {
 import type { IconType } from "react-icons";
 import { SESSION_COOKIE } from "@/lib/session";
 import { formatRelativeTime } from "@/lib/relative-time";
-import type { ArticleDTO } from "@/lib/ai-article-types";
+import type { ArticleDTO, ArticlePage } from "@/lib/ai-article-types";
 import type { ContactSubmissionDTO } from "@/lib/contact-submission-types";
 
 async function getJson<T>(path: string, token: string | undefined): Promise<T> {
@@ -40,14 +40,19 @@ const contentShortcuts: { label: string; icon: IconType; href: string }[] = [
 export default async function AdminOverviewPage() {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
 
-  const [articles, submissions] = await Promise.all([
-    getJson<ArticleDTO[]>("/api/articles", token),
+  // Page 1 (most recent 10) is enough for both the total count (via `total`)
+  // and the "recent activity" feed below, which only ever shows the 6 most
+  // recent items across articles + submissions combined — no need to fetch
+  // every article just for this overview page.
+  const [articlePage, submissions] = await Promise.all([
+    getJson<ArticlePage>("/api/articles?page=1&limit=10", token),
     getJson<ContactSubmissionDTO[]>("/api/contact-submissions", token),
   ]);
+  const articles = articlePage.data;
 
   const stats: { label: string; value: string; icon: IconType }[] = [
     { label: "Pesan Masuk", value: String(submissions.length), icon: LuInbox },
-    { label: "Artikel Blog", value: String(articles.length), icon: LuNewspaper },
+    { label: "Artikel Blog", value: String(articlePage.total), icon: LuNewspaper },
   ];
 
   const now = new Date();

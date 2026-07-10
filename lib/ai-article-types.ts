@@ -49,3 +49,10 @@ export type ArticleDTO = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type ArticlePage = {
+  data: ArticleDTO[];
+  total: number;
+  page: number;
+  totalPages: number;
+};

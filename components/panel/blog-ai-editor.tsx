@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Link from "next/link";
 import {
   LuTrash2,
   LuSparkles,
@@ -13,6 +14,8 @@ import {
   LuWand,
   LuX,
   LuEye,
+  LuChevronLeft,
+  LuChevronRight,
 } from "react-icons/lu";
 import { TextAreaField } from "@/components/admin/field";
 import { Toggle } from "@/components/admin/toggle";
@@ -52,9 +55,15 @@ const tabs: { id: Tab; label: string }[] = [
 export function BlogAiEditor({
   initialConfig,
   initialArticles,
+  page,
+  totalPages,
+  total,
 }: {
   initialConfig: AiArticleConfigDTO;
   initialArticles: ArticleDTO[];
+  page: number;
+  totalPages: number;
+  total: number;
 }) {
   const [activeTab, setActiveTab] = useState<Tab>("artikel");
   const [config, setConfig] = useState(initialConfig);
@@ -312,9 +321,7 @@ export function BlogAiEditor({
       {activeTab === "artikel" && (
         <div className="flex flex-col gap-4">
           <div>
-            <p className="font-display text-base font-semibold text-ink">
-              Artikel Ter-generate AI ({articles.length})
-            </p>
+            <p className="font-display text-base font-semibold text-ink">Artikel Ter-generate AI ({total})</p>
             <p className="mt-0.5 text-xs text-ink/55">Riwayat artikel yang berhasil dibuat otomatis oleh AI.</p>
           </div>
 
@@ -410,6 +417,34 @@ export function BlogAiEditor({
                   ))}
                 </tbody>
               </table>
+            </div>
+          )}
+
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-4">
+              <Link
+                href={`/panel/blog?page=${page - 1}`}
+                aria-disabled={page <= 1}
+                className={`flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm font-medium text-ink/70 hover:border-ink/40 hover:text-ink ${
+                  page <= 1 ? "pointer-events-none opacity-40" : ""
+                }`}
+              >
+                <LuChevronLeft className="size-4" />
+                Sebelumnya
+              </Link>
+              <span className="text-sm font-medium text-ink/60">
+                Halaman {page} dari {totalPages}
+              </span>
+              <Link
+                href={`/panel/blog?page=${page + 1}`}
+                aria-disabled={page >= totalPages}
+                className={`flex items-center gap-1.5 rounded-full border border-line px-4 py-2 text-sm font-medium text-ink/70 hover:border-ink/40 hover:text-ink ${
+                  page >= totalPages ? "pointer-events-none opacity-40" : ""
+                }`}
+              >
+                Selanjutnya
+                <LuChevronRight className="size-4" />
+              </Link>
             </div>
           )}
         </div>
