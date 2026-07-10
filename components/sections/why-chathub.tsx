@@ -39,7 +39,7 @@ export function WhyChatHub({ content }: { content: SiteContent["whyChatHub"] }) 
     >
       {/* Stars / rating ornament */}
       <ScrollReveal delay={0.05}>
-        <div className="mb-8 flex items-center gap-2">
+        <div className="mb-8 flex items-center gap-2 mt-2">
           {Array.from({ length: 5 }).map((_, i) => (
             <motion.div
               key={i}
@@ -51,7 +51,7 @@ export function WhyChatHub({ content }: { content: SiteContent["whyChatHub"] }) 
               <LuStar className="size-5 fill-amber-400 text-amber-400" />
             </motion.div>
           ))}
-          <span className="ml-1 mt-4 text-sm font-medium text-ink/60">{content.ratingLabel}</span>
+          <span className="ml-1 text-sm font-medium text-ink/60">{content.ratingLabel}</span>
         </div>
       </ScrollReveal>
 
