@@ -11,6 +11,7 @@ import {
   LuLoaderCircle,
   LuCheck,
   LuWand,
+  LuX,
 } from "react-icons/lu";
 import { TextAreaField } from "@/components/admin/field";
 import { Toggle } from "@/components/admin/toggle";
@@ -63,6 +64,7 @@ export function BlogAiEditor({
   const [generating, startGenerating] = useTransition();
   const [generateError, setGenerateError] = useState<string>();
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [feedbackArticle, setFeedbackArticle] = useState<ArticleDTO | null>(null);
 
   function updateConfig<K extends keyof AiArticleConfigDTO>(key: K, value: AiArticleConfigDTO[K]) {
     setConfig((prev) => ({ ...prev, [key]: value }));
@@ -328,7 +330,6 @@ export function BlogAiEditor({
                     <th className="px-5 py-3.5">Artikel</th>
                     <th className="px-5 py-3.5">Topik</th>
                     <th className="px-5 py-3.5">Skor SEO</th>
-                    <th className="px-5 py-3.5">Tanggal Generate</th>
                     <th className="px-5 py-3.5" />
                   </tr>
                 </thead>
@@ -367,19 +368,14 @@ export function BlogAiEditor({
                         {article.seoScore === null ? (
                           <span className="text-xs text-ink/40">-</span>
                         ) : (
-                          <span
-                            title={article.seoFeedback ?? undefined}
-                            className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${seoScoreBadgeClass(article.seoScore)}`}
+                          <button
+                            type="button"
+                            onClick={() => setFeedbackArticle(article)}
+                            className={`cursor-pointer inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold transition-opacity hover:opacity-80 ${seoScoreBadgeClass(article.seoScore)}`}
                           >
                             {article.seoScore}/100
-                          </span>
+                          </button>
                         )}
-                      </td>
-                      <td className="px-5 py-4 whitespace-nowrap text-ink/70">
-                        {new Date(article.generatedAt).toLocaleString("id-ID", {
-                          dateStyle: "medium",
-                          timeStyle: "short",
-                        })}
                       </td>
                       <td className="px-5 py-4">
                         <div className="flex items-center justify-end gap-1">
@@ -408,6 +404,43 @@ export function BlogAiEditor({
               </table>
             </div>
           )}
+        </div>
+      )}
+
+      {feedbackArticle && feedbackArticle.seoScore !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 p-4 backdrop-blur-sm"
+          onClick={() => setFeedbackArticle(null)}
+        >
+          <div
+            className="w-full max-w-md rounded-2xl border border-line bg-paper p-6 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="font-display text-base font-semibold text-ink">Feedback SEO</p>
+                <p className="mt-0.5 text-xs text-ink/55">{articleTitle(feedbackArticle)}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setFeedbackArticle(null)}
+                aria-label="Tutup"
+                className="shrink-0 rounded-lg p-1.5 text-ink/40 hover:bg-ink/5 hover:text-ink"
+              >
+                <LuX className="size-4" />
+              </button>
+            </div>
+
+            <span
+              className={`mt-4 inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${seoScoreBadgeClass(feedbackArticle.seoScore)}`}
+            >
+              {feedbackArticle.seoScore}/100
+            </span>
+
+            <p className="mt-3 text-sm leading-relaxed text-ink/70">
+              {feedbackArticle.seoFeedback ?? "Tidak ada feedback."}
+            </p>
+          </div>
         </div>
       )}
     </div>
