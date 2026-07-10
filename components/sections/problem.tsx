@@ -25,7 +25,7 @@ export function Problem({ content }: { content: SiteContent["problem"] }) {
     >
       {/* Pain point mini cards above the diagram */}
       <ScrollReveal delay={0.1}>
-        <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+        <div className="mb-10 mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
           {painPoints.map(({ icon: Icon, color, bg }, i) => (
             <motion.div
               key={i}
