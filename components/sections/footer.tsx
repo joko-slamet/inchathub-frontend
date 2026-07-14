@@ -1,15 +1,25 @@
 import Link from "next/link";
-import { SiInstagram, SiWhatsapp } from "react-icons/si";
+import { FaFacebook, FaGlobe, FaInstagram, FaLinkedin, FaTiktok, FaWhatsapp } from "react-icons/fa";
 import type { IconType } from "react-icons";
 import { Logo } from "@/components/ui/logo";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import type { SiteContent } from "@/content/site-content";
 
-// Positional match with footer.social in content — keep order in sync.
-const socialIcons: { Icon: IconType; color: string }[] = [
-  { Icon: SiInstagram, color: "#E4405F" },
-  { Icon: SiWhatsapp, color: "#25D366" },
+// Admin can freely add/rename/reorder social rows in the panel, so icons are
+// resolved by matching the label rather than by array position — a fixed-size
+// positional array would throw once the admin added a row past its length.
+const socialIconsByKeyword: { keyword: string; Icon: IconType; color: string }[] = [
+  { keyword: "instagram", Icon: FaInstagram, color: "#E4405F" },
+  { keyword: "whatsapp", Icon: FaWhatsapp, color: "#25D366" },
+  { keyword: "tiktok", Icon: FaTiktok, color: "#000000" },
+  { keyword: "facebook", Icon: FaFacebook, color: "#1877F2" },
+  { keyword: "linkedin", Icon: FaLinkedin, color: "#0A66C2" },
 ];
+
+function resolveSocialIcon(label: string): { Icon: IconType; color: string } {
+  const match = socialIconsByKeyword.find(({ keyword }) => label.toLowerCase().includes(keyword));
+  return match ?? { Icon: FaGlobe, color: "#64748B" };
+}
 
 export function Footer({
   content,
@@ -28,8 +38,8 @@ export function Footer({
             <p className="text-sm leading-relaxed text-ink/60">{content.taglineSecondary}</p>
 
             <div className="mt-6 flex items-center gap-3">
-              {content.social.map((item, index) => {
-                const { Icon, color } = socialIcons[index];
+              {content.social.map((item) => {
+                const { Icon, color } = resolveSocialIcon(item.label);
                 return (
                   <a
                     key={item.label}
