@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { WhatsAppFloatButton } from "@/components/ui/whatsapp-float-button";
 import { getSession } from "@/lib/session";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/google-tag-manager";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -100,6 +101,8 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        <GoogleTagManagerNoScript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <ThemeProvider>
           <AuthProvider user={session ? { role: session.role } : null}>
