@@ -3,7 +3,7 @@
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import { decrypt, SESSION_COOKIE } from "@/lib/session";
-import type { ArticleDTO } from "@/lib/ai-article-types";
+import type { ArticleDTO, ArticleTranslationInput } from "@/lib/ai-article-types";
 
 type ActionResult<T> = { ok: true; data: T } | { ok: false; error: string };
 
@@ -39,6 +39,33 @@ export async function deleteArticle(id: string): Promise<ActionResult<true>> {
 
   revalidatePath("/panel/blog");
   return { ok: true, data: true };
+}
+
+// Saving triggers an OpenRouter call on the backend to re-score SEO against
+// the revised text, so this can take a few seconds — the caller should show
+// a pending state rather than assume this resolves instantly.
+export async function updateArticle(
+  id: string,
+  translations: ArticleTranslationInput[],
+): Promise<ActionResult<ArticleDTO>> {
+  let token: string;
+  try {
+    token = await requireAdminToken();
+  } catch {
+    return { ok: false, error: "Anda harus login sebagai admin." };
+  }
+
+  const res = await fetch(`${process.env.BACKEND_URL}/api/articles/${id}`, {
+    method: "PATCH",
+    headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    body: JSON.stringify({ translations }),
+    cache: "no-store",
+  });
+
+  if (!res.ok) return { ok: false, error: await parseErrorBody(res) };
+
+  revalidatePath("/panel/blog");
+  return { ok: true, data: await res.json() };
 }
 
 // Can take a while (two OpenRouter calls: text + image), so the caller

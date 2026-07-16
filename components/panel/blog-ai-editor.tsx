@@ -16,6 +16,7 @@ import {
   LuEye,
   LuChevronLeft,
   LuChevronRight,
+  LuPencil,
 } from "react-icons/lu";
 import { TextAreaField } from "@/components/admin/field";
 import { Toggle } from "@/components/admin/toggle";
@@ -145,7 +146,7 @@ export function BlogAiEditor({
   }
 
   return (
-    <div className="mx-auto flex max-w-5xl flex-col gap-8">
+    <div className="mx-auto flex max-w-7xl flex-col gap-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="font-display text-2xl font-semibold tracking-tight text-ink">Kelola Blog</p>
@@ -402,6 +403,13 @@ export function BlogAiEditor({
                           >
                             <LuExternalLink className="size-4" />
                           </button>
+                          <Link
+                            href={`/panel/blog/${article.id}/edit`}
+                            aria-label="Revisi artikel"
+                            className="rounded-lg p-2 text-ink/40 hover:bg-ink/5 hover:text-ink"
+                          >
+                            <LuPencil className="size-4" />
+                          </Link>
                           <button
                             type="button"
                             onClick={() => handleDelete(article.id)}

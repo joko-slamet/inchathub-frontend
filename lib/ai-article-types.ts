@@ -50,6 +50,13 @@ export type ArticleDTO = {
   updatedAt: string;
 };
 
+export type ArticleTranslationInput = {
+  locale: string;
+  title: string;
+  excerpt: string;
+  content: string[];
+};
+
 export type ArticlePage = {
   data: ArticleDTO[];
   total: number;

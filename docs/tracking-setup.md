@@ -99,6 +99,8 @@ Kalau template gallery tidak tersedia, alternatif: tag **Custom HTML** dengan sn
 
 ### 3.4. (Opsional) Kirim nama CTA sebagai parameter
 
+Bukan tag terpisah — ini menggantikan isi script di tag `Meta Pixel - Lead Event` yang sama dari langkah 3.3 (trigger & tag sequencing tetap sama, cuma isi Custom HTML-nya diganti):
+
 ```html
 <script>
   fbq('track', 'Lead', { content_name: '{{DOM - gtm-id}}' });
