@@ -48,7 +48,14 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
                 Panel Admin
               </Link>
             )}
-            <Button href={trialUrl} target="_blank" rel="noopener noreferrer" variant="primary" size="md">
+            <Button
+              href={trialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="primary"
+              size="md"
+              data-gtm-id="cta_navbar"
+            >
               {content.ctaPrimary}
             </Button>
           </div>
@@ -101,6 +108,7 @@ export function Navbar({ content }: { content: SiteContent["nav"] }) {
               variant="primary"
               size="md"
               onClick={() => setOpen(false)}
+              data-gtm-id="cta_navbar_mobile"
             >
               {content.ctaPrimary}
             </Button>

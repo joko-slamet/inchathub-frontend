@@ -94,7 +94,14 @@ export function ClosingCta({ content }: { content: SiteContent["closingCta"] }) 
         <div className="mt-10 relative group">
           {/* Animated glow behind button */}
           <div className="pointer-events-none absolute -inset-2 rounded-full bg-paper/30 opacity-0 blur-lg transition-opacity duration-300 group-hover:opacity-60" />
-          <Button href={trialUrl} target="_blank" rel="noopener noreferrer" variant="inverse" size="lg">
+          <Button
+            href={trialUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="inverse"
+            size="lg"
+            data-gtm-id="cta_closing"
+          >
             {content.cta}
           </Button>
         </div>

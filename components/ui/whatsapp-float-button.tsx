@@ -3,7 +3,6 @@
 import { usePathname } from "next/navigation";
 import { FaWhatsapp } from "react-icons/fa";
 import { useWhatsAppContact } from "@/hooks/use-whatsapp-contact";
-import { pushDataLayerEvent } from "@/lib/gtm";
 
 export function WhatsAppFloatButton() {
   const pathname = usePathname();
@@ -19,7 +18,7 @@ export function WhatsAppFloatButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat via WhatsApp"
-      onClick={() => pushDataLayerEvent("whatsapp_click", { source: "float_button", page_path: pathname })}
+      data-gtm-id="cta_whatsapp_float"
       className="fixed right-8 bottom-8 z-50 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_12px_32px_-8px_rgba(37,211,102,0.6)] transition-transform duration-200 hover:scale-110 active:scale-95"
     >
       <span

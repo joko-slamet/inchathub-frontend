@@ -107,6 +107,7 @@ export function Pricing({ content }: { content: SiteContent["pricing"] }) {
                   variant={plan.popular ? "primary" : "outline"}
                   size="md"
                   className="group w-full"
+                  data-gtm-id={`cta_pricing_${plan.name.toLowerCase()}`}
                 >
                   <span className="flex items-center justify-center gap-2">
                     {content.ctaLabel}

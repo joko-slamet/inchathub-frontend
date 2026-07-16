@@ -85,6 +85,7 @@ export function TryFree({ content }: { content: SiteContent["tryFree"] }) {
                   variant="primary"
                   size="lg"
                   className="relative px-9 py-4 text-base"
+                  data-gtm-id="cta_try_free_section"
                 >
                   <LuRocket className="size-5" />
                   {content.ctaLabel}
