@@ -11,7 +11,10 @@ async function getRegistrations(): Promise<WebinarRegistrationDTO[]> {
     cache: "no-store",
   });
 
-  if (!res.ok) throw new Error("Gagal mengambil data registrasi.");
+  if (!res.ok) {
+    const body = await res.text().catch(() => "");
+    throw new Error(body || "Gagal mengambil data registrasi.");
+  }
 
   return res.json();
 }
