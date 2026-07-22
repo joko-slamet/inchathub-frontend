@@ -1,92 +1,71 @@
 
-'use client';
+import { cookies } from "next/headers";
+import { LuUsers } from "react-icons/lu";
+import { SESSION_COOKIE } from "@/lib/session";
+import type { WebinarRegistrationDTO } from "@/lib/webinar-registration-types";
 
-import React, { useEffect, useState } from 'react';
+async function getRegistrations(): Promise<WebinarRegistrationDTO[]> {
+  const token = (await cookies()).get(SESSION_COOKIE)?.value;
+  const res = await fetch(`${process.env.BACKEND_URL}/api/webinar-registrations`, {
+    headers: { Authorization: `Bearer ${token}` },
+    cache: "no-store",
+  });
 
-interface WebinarRegistration {
-  id: string;
-  name: string;
-  city: string;
-  email: string;
-  whatsapp: string;
-  createdAt: string;
+  if (!res.ok) throw new Error("Gagal mengambil data registrasi.");
+
+  return res.json();
 }
 
-const RegistrasiWebinarAdminPage = () => {
-  const [registrations, setRegistrations] = useState<WebinarRegistration[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchRegistrations = async () => {
-      try {
-        const response = await fetch('/api/webinar-registrations');
-        if (!response.ok) {
-          throw new Error('Gagal mengambil data registrasi.');
-        }
-        const data: WebinarRegistration[] = await response.json();
-        setRegistrations(data);
-      } catch (err: any) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRegistrations();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="p-6">
-        <h1 className="text-2xl font-bold mb-6">Registrasi Webinar Admin</h1>
-        <p>Memuat data...</p>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="p-6">
-        <h1 className="text-2xl font-bold mb-6">Registrasi Webinar Admin</h1>
-        <p className="text-red-500">Error: {error}</p>
-      </div>
-    );
-  }
+export default async function RegistrasiWebinarAdminPage() {
+  const registrations = await getRegistrations();
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Registrasi Webinar Admin</h1>
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-line rounded-lg shadow-md">
-          <thead>
-            <tr>
-              <th className="py-3 px-4 border-b text-left text-sm font-semibold text-ink">Nama</th>
-              <th className="py-3 px-4 border-b text-left text-sm font-semibold text-ink">Kota</th>
-              <th className="py-3 px-4 border-b text-left text-sm font-semibold text-ink">Email</th>
-              <th className="py-3 px-4 border-b text-left text-sm font-semibold text-ink">Nomor WhatsApp</th>
-            </tr>
-          </thead>
-          <tbody>
-            {registrations.length === 0 ? (
-              <tr>
-                <td colSpan={4} className="py-4 px-4 text-center text-ink/60">Belum ada pendaftar.</td>
-              </tr>
-            ) : (
-              registrations.map((reg) => (
-                <tr key={reg.id}>
-                  <td className="py-3 px-4 border-b text-sm text-ink">{reg.name}</td>
-                  <td className="py-3 px-4 border-b text-sm text-ink">{reg.city}</td>
-                  <td className="py-3 px-4 border-b text-sm text-ink">{reg.email}</td>
-                  <td className="py-3 px-4 border-b text-sm text-ink">{reg.whatsapp}</td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+    <div className="mx-auto flex max-w-6xl flex-col gap-8">
+      <div>
+        <p className="font-display text-2xl font-semibold tracking-tight text-ink">Registrasi Webinar</p>
+        <p className="mt-1 text-sm text-ink/60">
+          Daftar peserta yang sudah mendaftar webinar ({registrations.length} pendaftar).
+        </p>
       </div>
+
+      {registrations.length === 0 ? (
+        <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-line py-16 text-center">
+          <LuUsers className="size-8 text-ink/25" />
+          <p className="text-sm text-ink/60">Belum ada pendaftar webinar.</p>
+        </div>
+      ) : (
+        <div className="overflow-hidden rounded-2xl border border-line bg-paper">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-line">
+              <thead className="bg-slate-dim/60">
+                <tr>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wide text-ink/60 uppercase">Nama</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wide text-ink/60 uppercase">Kota</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wide text-ink/60 uppercase">Email</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wide text-ink/60 uppercase">WhatsApp</th>
+                  <th className="px-4 py-3 text-left text-xs font-semibold tracking-wide text-ink/60 uppercase">Tanggal</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-line">
+                {registrations.map((registration) => (
+                  <tr key={registration.id} className="hover:bg-slate-dim/35">
+                    <td className="px-4 py-3 text-sm font-medium text-ink">{registration.name}</td>
+                    <td className="px-4 py-3 text-sm text-ink/75">{registration.city}</td>
+                    <td className="px-4 py-3 text-sm text-ink/75">{registration.email}</td>
+                    <td className="px-4 py-3 text-sm text-ink/75">{registration.whatsapp}</td>
+                    <td className="px-4 py-3 text-sm text-ink/60">
+                      {new Date(registration.createdAt).toLocaleString("id-ID", {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      })}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   );
-};
-
-export default RegistrasiWebinarAdminPage;
+}
