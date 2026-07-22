@@ -36,6 +36,7 @@ const navItems: NavItem[] = [
   { label: "Formulir Kontak", href: "/panel/contact", icon: LuInbox },
   { label: "Profil Perusahaan", href: "/panel/about", icon: LuBuilding2 },
   { label: "Our Client", href: "/panel/our-client", icon: LuImage },
+  { label: "Registrasi Webinar", href: "/panel/registrasi-webinar", icon: LuNewspaper },
   { label: "Site Setting", href: "/panel/homepage", icon: LuSettings },
 ];
 

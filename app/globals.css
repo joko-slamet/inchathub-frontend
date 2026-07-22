@@ -14,8 +14,10 @@
   --color-ink: #1a1618;
   --color-paper: #ffffff;
   --color-signal: #be1e2d;
+  --color-signal-dark: #a31a26;
   --color-signal-dim: #fbe6e5;
   --color-slate: #808184;
+  --color-slate-dark: #666769;
   --color-slate-dim: #f1f1f2;
   --color-line: #e5e4e5;
   --color-ok: #1b7f4c;
@@ -31,8 +33,10 @@
   --color-ink: #f2f0ef;
   --color-paper: #17141a;
   --color-signal: #ef4453;
+  --color-signal-dark: #d43b48;
   --color-signal-dim: #3a1116;
   --color-slate: #a3a1a3;
+  --color-slate-dark: #8c8a8c;
   --color-slate-dim: #221f21;
   --color-line: #322e30;
   --color-ok: #34c281;
