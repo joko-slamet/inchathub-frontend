@@ -30,7 +30,9 @@ const RegistrasiWebinarPage = () => {
       const data = await response.json();
 
       if (response.ok) {
-        setMessage('Registrasi berhasil! Kami akan menghubungi Anda segera.');
+         setMessage(
+    'Registrasi berhasil!\nKami baru saja kirim email sebagai konfirmasi atas data yang tercatat di sistem.\nMohon cek email Anda. Klik folder Spam sekiranya email belum diterima.\nTerima kasih....'
+  );
         setName('');
         setCity('');
         setEmail('');
