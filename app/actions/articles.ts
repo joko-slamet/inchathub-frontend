@@ -41,7 +41,7 @@ export async function deleteArticle(id: string): Promise<ActionResult<true>> {
   return { ok: true, data: true };
 }
 
-// Saving triggers an OpenRouter call on the backend to re-score SEO against
+// Saving triggers an OpenAI call on the backend to re-score SEO against
 // the revised text, so this can take a few seconds — the caller should show
 // a pending state rather than assume this resolves instantly.
 export async function updateArticle(
@@ -69,7 +69,7 @@ export async function updateArticle(
 }
 
 // Rewrites the article's text to address its current SEO feedback, then
-// re-scores it — two OpenRouter calls, so the caller should show a pending
+// re-scores it — two OpenAI calls, so the caller should show a pending
 // state rather than assume this resolves quickly.
 export async function improveArticleSeo(id: string): Promise<ActionResult<ArticleDTO>> {
   let token: string;
@@ -91,7 +91,7 @@ export async function improveArticleSeo(id: string): Promise<ActionResult<Articl
   return { ok: true, data: await res.json() };
 }
 
-// Can take a while (two OpenRouter calls: text + image), so the caller
+// Can take a while (two OpenAI calls: text + image), so the caller
 // should show a pending state rather than assume this resolves quickly.
 export async function generateArticleNow(): Promise<ActionResult<ArticleDTO>> {
   let token: string;
