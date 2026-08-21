@@ -68,6 +68,29 @@ export async function updateArticle(
   return { ok: true, data: await res.json() };
 }
 
+// Rewrites the article's text to address its current SEO feedback, then
+// re-scores it — two OpenRouter calls, so the caller should show a pending
+// state rather than assume this resolves quickly.
+export async function improveArticleSeo(id: string): Promise<ActionResult<ArticleDTO>> {
+  let token: string;
+  try {
+    token = await requireAdminToken();
+  } catch {
+    return { ok: false, error: "Anda harus login sebagai admin." };
+  }
+
+  const res = await fetch(`${process.env.BACKEND_URL}/api/articles/${id}/improve-seo`, {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    cache: "no-store",
+  });
+
+  if (!res.ok) return { ok: false, error: await parseErrorBody(res) };
+
+  revalidatePath("/panel/blog");
+  return { ok: true, data: await res.json() };
+}
+
 // Can take a while (two OpenRouter calls: text + image), so the caller
 // should show a pending state rather than assume this resolves quickly.
 export async function generateArticleNow(): Promise<ActionResult<ArticleDTO>> {

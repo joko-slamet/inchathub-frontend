@@ -3,11 +3,11 @@
 import { useState, useTransition } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { LuArrowLeft, LuSave, LuLoaderCircle } from "react-icons/lu";
+import { LuArrowLeft, LuSave, LuLoaderCircle, LuSparkles } from "react-icons/lu";
 import { Field, TextAreaField } from "@/components/admin/field";
 import { LocaleTabs } from "@/components/admin/locale-tabs";
 import type { Locale } from "@/content/site-content";
-import { updateArticle } from "@/app/actions/articles";
+import { improveArticleSeo, updateArticle } from "@/app/actions/articles";
 import type { ArticleDTO, ArticleTranslationInput } from "@/lib/ai-article-types";
 import { toArticleImageUrl } from "@/lib/article-image";
 
@@ -45,8 +45,11 @@ export function ArticleEditForm({ article }: { article: ArticleDTO }) {
   const router = useRouter();
   const [activeLocale, setActiveLocale] = useState<Locale>("id");
   const [translations, setTranslations] = useState<ArticleTranslationInput[]>(toDraft(article));
+  const [seo, setSeo] = useState({ score: article.seoScore, feedback: article.seoFeedback });
   const [saving, startSaving] = useTransition();
   const [error, setError] = useState<string>();
+  const [improving, startImproving] = useTransition();
+  const [improveError, setImproveError] = useState<string>();
 
   const translation = translations.find((t) => t.locale === activeLocale) ?? {
     locale: activeLocale,
@@ -73,6 +76,19 @@ export function ArticleEditForm({ article }: { article: ArticleDTO }) {
         return;
       }
       router.push("/panel/blog");
+    });
+  }
+
+  function handleImproveSeo() {
+    setImproveError(undefined);
+    startImproving(async () => {
+      const result = await improveArticleSeo(article.id);
+      if (!result.ok) {
+        setImproveError(result.error);
+        return;
+      }
+      setTranslations(toDraft(result.data));
+      setSeo({ score: result.data.seoScore, feedback: result.data.seoFeedback });
     });
   }
 
@@ -104,22 +120,36 @@ export function ArticleEditForm({ article }: { article: ArticleDTO }) {
         <LocaleTabs active={activeLocale} onChange={setActiveLocale} />
       </div>
 
-      {article.seoScore !== null && (
+      {seo.score !== null && (
         <div className="rounded-2xl border border-line bg-paper p-5">
-          <div className="flex items-center gap-2.5">
-            <span
-              className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${seoScoreBadgeClass(article.seoScore)}`}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <span
+                className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${seoScoreBadgeClass(seo.score)}`}
+              >
+                {seo.score}/100
+              </span>
+              <p className="font-display text-sm font-semibold text-ink">Feedback SEO dari AI</p>
+            </div>
+            <button
+              type="button"
+              onClick={handleImproveSeo}
+              disabled={improving || saving}
+              className="flex items-center gap-1.5 rounded-full border border-line px-3.5 py-1.5 text-xs font-medium text-ink/70 transition-colors hover:border-ink/40 hover:text-ink disabled:opacity-60"
             >
-              {article.seoScore}/100
-            </span>
-            <p className="font-display text-sm font-semibold text-ink">Feedback SEO dari AI</p>
+              {improving ? (
+                <LuLoaderCircle className="size-3.5 animate-spin" />
+              ) : (
+                <LuSparkles className="size-3.5" />
+              )}
+              Perbaiki Otomatis dengan AI
+            </button>
           </div>
-          <p className="mt-2.5 text-sm leading-relaxed text-ink/70">
-            {article.seoFeedback ?? "Tidak ada feedback."}
-          </p>
+          <p className="mt-2.5 text-sm leading-relaxed text-ink/70">{seo.feedback ?? "Tidak ada feedback."}</p>
           <p className="mt-2.5 text-xs text-ink/40">
             Skor akan dihitung ulang oleh AI setiap kali perubahan disimpan.
           </p>
+          {improveError && <p className="mt-2.5 text-sm text-red-600">{improveError}</p>}
         </div>
       )}
 
@@ -150,7 +180,7 @@ export function ArticleEditForm({ article }: { article: ArticleDTO }) {
           <button
             type="button"
             onClick={handleSave}
-            disabled={saving}
+            disabled={saving || improving}
             className="flex items-center gap-2 rounded-full bg-signal px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-ink dark:hover:text-ink disabled:opacity-60"
           >
             {saving ? <LuLoaderCircle className="size-4 animate-spin" /> : <LuSave className="size-4" />}
