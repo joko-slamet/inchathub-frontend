@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { WhatsAppFloatButton } from "@/components/ui/whatsapp-float-button";
 import { getSession } from "@/lib/session";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { GoogleAds } from "@/components/analytics/google-ads";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/google-tag-manager";
 import "./globals.css";
 
@@ -104,6 +105,7 @@ export default async function RootLayout({
         <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         <GoogleTagManagerNoScript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        <GoogleAds adsId={process.env.NEXT_PUBLIC_GOOGLE_ADS_ID} />
         <ThemeProvider>
           <AuthProvider user={session ? { role: session.role } : null}>
             <LocaleProvider initialLocale={initialLocale}>
