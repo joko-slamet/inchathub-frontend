@@ -580,7 +580,7 @@ export function HomepageEditor({ initialContent }: { initialContent: Record<Loca
               label="URL Coba Gratis"
               value={closingCta.trialUrl}
               onChange={(v) => updateClosingCta("trialUrl", v)}
-              placeholder="https://app.inchathub.com/register"
+              placeholder="https://panel.chathub.us/register"
             />
             <p className="mt-1.5 text-xs text-ink/50">
               Dipakai oleh semua tombol &quot;Coba Gratis&quot; di situs — navbar, section Coba Gratis, dan tombol di

@@ -17,7 +17,7 @@ export function isLocale(value: string): value is Locale {
 // (closingCta.trialUrl via the homepage editor); this constant is not read
 // directly by any component. Lives here (not site-content.ts) so the locale
 // files can import it too without a circular import.
-export const TRIAL_URL = "https://app.inchathub.com/register";
+export const TRIAL_URL = "https://panel.chathub.us/register";
 
 export interface Channel {
   name: string;
