@@ -30,7 +30,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   weight: ["400", "500"],
 });
 
-const siteUrl = "https://chathub.co.id";
+const siteUrl = "https://inchathub.com";
 
 // Metadata is static (evaluated at build/module-load time, not per-request)
 // so it always reflects the default locale — crawlers see Indonesian meta

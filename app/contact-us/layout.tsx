@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getSiteContent, defaultLocale } from "@/content/site-content";
 
-const siteUrl = "https://chathub.co.id";
+const siteUrl = "https://inchathub.com";
 
 // Metadata is static (build/module-load time), so it always reflects the
 // default locale for crawlers, unlike the page content itself, which is
