@@ -63,11 +63,20 @@ export const metadata: Metadata = {
     siteName: "ChatHub",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "ChatHub — Satu Platform untuk Setiap Percakapan Pelanggan",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: meta.ogTitle,
     description: meta.twitterDescription,
+    images: ["/og-image.png"],
   },
 };
 
